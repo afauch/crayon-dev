@@ -95,14 +95,26 @@ namespace Crayon
 
 		// Set Color
 
+		// No parameters - use defaults
+		public static void SetColor(this GameObject gameObject, Color color) {
+			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+		}
+
 		// Add duration
 		public static void SetColor(this GameObject gameObject, Color color, float duration) {
-			Debug.Log ("SetColor Called on " + gameObject.name);
-			// Create instance of material
-			Material targetMaterial = Object.Instantiate(gameObject.GetComponent<Renderer> ().material);
-			targetMaterial.SetColor("_Color", color);
-			Debug.Log("original color for " + gameObject.name + " in SetColor: " + gameObject.GetComponent<Renderer>().material.color);
-			TweenColor (gameObject, targetMaterial, duration, Defaults._easing);
+			TweenColor (gameObject, color, duration, Defaults._easing);
+		}
+
+		// Add duration
+		public static void SetColor(this GameObject gameObject, Color color, float duration, Easing easing) {
+			TweenColor (gameObject, color, duration, easing);
+		}
+
+		// No parameters - use defaults
+		public static void SetColor(this GameObject gameObject, string hexColor) {
+			Color color = Color.white;
+			ColorUtility.TryParseHtmlString (hexColor, out color);
+			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
 		}
 
 		// ---
@@ -122,12 +134,12 @@ namespace Crayon
 			}
 		}
 
-		// Generic method to handle color tweens
-		private static void TweenColor(GameObject gameObject, Material targetMaterial, float duration, Easing easing) {
-
-			// TODO: Should this trickle down to children?
+		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing) {
+			// Create instance of material
+			Material targetMaterial = Object.Instantiate(gameObject.GetComponent<Renderer> ().material);
+			targetMaterial.SetColor("_Color", targetColor);
+			// Call Coroutine
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing));
-
 		}
 
 		// ---

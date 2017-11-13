@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57614bf2ada8c47e0a9cde054f15924b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: {r: 1, g: 0.6827587, b: 0, a: 1}
+  _color: {r: 1, g: 0.6827587, b: 0, a: 0.534}
 --- !u!23 &494233404
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2adc64ed64c24a38b1f60aa596b4764, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

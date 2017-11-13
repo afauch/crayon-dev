@@ -10,7 +10,7 @@ public class TestColorTween : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		this.gameObject.SetColor (_color, 3.0f);
+		this.gameObject.SetColor ("#FF0000");
 
 	}
 	
