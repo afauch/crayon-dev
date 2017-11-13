@@ -4,53 +4,7 @@ using UnityEngine;
 
 namespace Crayon
 {
-
-	// Easing
-	public enum Easing {
-		BackIn,
-		BackOut,
-		BackInOut,
-		BounceIn,
-		BounceOut,
-		BounceInOut,
-		CircularIn,
-		CircularOut,
-		CircularInOut,
-		CubicIn,
-		CubicOut,
-		CubicInOut,
-		ElasticIn,
-		ElasticOut,
-		ElasticInOut,
-		ExponentialIn,
-		ExponentialOut,
-		ExponentialInOut,
-		Linear,
-		QuadraticIn,
-		QuadraticOut,
-		QuadraticInOut,
-		QuarticIn,
-		QuarticOut,
-		QuarticInOut,
-		QuinticIn,
-		QuinticOut,
-		QuinticInOut
-	}
-
-	// FadeDirection
-	public enum FadeDirection {
-		In,
-		Out
-	}
-
-	// Stores instances of Defaults
-	public static class Defaults {
-
-		public const float _duration = 0.8f;
-		public const Easing _easing = Easing.Linear;
-
-	}
-
+	
 	// Extension Methods
 	public static class ExtensionMethods {
 

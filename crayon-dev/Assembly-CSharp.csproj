@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Crayon\CrayonDefaults.cs" />
+     <Compile Include="Assets\Crayon\CrayonEnums.cs" />
      <Compile Include="Assets\Crayon\CrayonNamespace.cs" />
      <Compile Include="Assets\Crayon\CrayonRunner.cs" />
      <Compile Include="Assets\Crayon\CrayonUtils.cs" />
