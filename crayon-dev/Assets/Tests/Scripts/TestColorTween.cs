@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Crayon;
+
+public class TestColorTween : MonoBehaviour {
+
+	public Color _color = Color.white;
+
+	// Use this for initialization
+	void Start () {
+
+		this.gameObject.SetColor (_color, 3.0f);
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
