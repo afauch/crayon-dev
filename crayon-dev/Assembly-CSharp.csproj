@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Crayon\CrayonNamespace.cs" />
      <Compile Include="Assets\Crayon\CrayonRunner.cs" />
+     <Compile Include="Assets\Crayon\CrayonUtils.cs" />
      <Compile Include="Assets\Crayon\Plugin\Easing.cs" />
      <Compile Include="Assets\Crayon\Plugin\Singleton.cs" />
      <Compile Include="Assets\Crayon\Plugin\StandardShaderUtils.cs" />
