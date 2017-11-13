@@ -57,6 +57,7 @@
      <Compile Include="Assets\Crayon\Plugin\Singleton.cs" />
      <Compile Include="Assets\Crayon\Plugin\StandardShaderUtils.cs" />
      <Compile Include="Assets\Tests\Scripts\TestFade.cs" />
+     <Compile Include="Assets\Tests\TestFadeInNew.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity2017b/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

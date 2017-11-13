@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// Source:
+/// bellicapax
+/// https://answers.unity.com/questions/1004666/change-material-rendering-mode-in-runtime.html
+/// </summary>
+
+using UnityEngine;
 
 public static class StandardShaderUtils
 {
