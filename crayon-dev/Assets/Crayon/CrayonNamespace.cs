@@ -36,6 +36,10 @@ namespace Crayon
 	// Extension Methods
 	public static class ExtensionMethods {
 
+		// ---
+		// GameObject Extensions
+		// ---
+
 		// Specify no duration - use a default
 		public static void FadeIn(this GameObject gameObject) {
 
@@ -63,7 +67,8 @@ namespace Crayon
 			Fade (gameObject, FadeDirection.In, duration, Utils.GetEasing(easing));
 
 		}
-		
+
+
 		// Generic method to handle all fades
 		private static void Fade(GameObject gameObject, FadeDirection fadeDirection, float duration, Easing easing) {
 
@@ -73,6 +78,35 @@ namespace Crayon
 				CrayonRunner.Instance.Run (Fade (t.gameObject, duration, easing));
 			}
 
+		}
+
+		// ---
+		// Renderer Extensions
+		// ---
+	
+		// Given a renderer, return a material that can be used for fading color/opacity
+		public static Material GetUsableMaterial(this Renderer renderer) {
+
+			Material material = renderer.material;
+			string shaderName = material.shader.name;
+
+			switch (shaderName) {
+			case "Standard":
+				Debug.Log ("Standard shader used");
+				// TODO: Add conditionals to make this more efficient
+				// Turn on FadeMode
+				StandardShaderUtils.ChangeRenderMode(material,StandardShaderUtils.BlendMode.Fade);
+				break;
+			default:
+				Debug.Log ("Default called");
+				break;
+			}
+
+			// TODO: Is this efficient?
+			material.enableInstancing = true;
+
+			return material;
+				
 		}
 			
 		// ---
@@ -85,15 +119,15 @@ namespace Crayon
 
 			Debug.Log ("Fade Called");
 
-			// What type of shader is this?
-
-
 			// elapsedTime
 			float elapsedTime = 0;
 
 			// get the starting material and color
 			Renderer r = g.GetComponent<Renderer>();
-			Material m = r.material;
+
+			// What material are we using
+
+			Material m = r.GetUsableMaterial();
 
 			Color endColor = m.GetColor ("_Color");
 			Color startColor = new Color(endColor.r, endColor.g, endColor.b, 0.0f);

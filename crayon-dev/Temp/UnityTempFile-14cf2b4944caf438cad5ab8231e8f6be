@@ -105,7 +105,7 @@
 'Assets/Crayon/Plugin/Easing.cs'
 'Assets/Crayon/Plugin/Singleton.cs'
 'Assets/Crayon/Plugin/StandardShaderUtils.cs'
-'Assets/TestScripts/TestFade.cs'
+'Assets/Tests/Scripts/TestFade.cs'
 -r:'/Applications/Unity2017b/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity2017b/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity2017b/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'

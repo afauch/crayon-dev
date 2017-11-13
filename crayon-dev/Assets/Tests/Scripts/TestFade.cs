@@ -8,7 +8,7 @@ public class TestFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		gameObject.FadeIn (10.0f, Easing.Linear);
+		gameObject.FadeIn (0.8f, Easing.Linear);
 
 	}
 	
