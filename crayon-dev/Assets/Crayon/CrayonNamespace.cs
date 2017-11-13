@@ -15,21 +15,21 @@ namespace Crayon
 		// Fade - Ins
 
 		// Specify no duration - use a default
-		public static void FadeIn(this GameObject gameObject) {
-			Fade (gameObject, FadeDirection.In, Defaults._duration, Defaults._easing, false);
-		}
-		// Specify duration only
-		public static void FadeIn(this GameObject gameObject, float duration) {
-			Fade (gameObject, FadeDirection.In, duration, Defaults._easing, false);
-		}
-		// Specify duration and easing
-		public static void FadeIn(this GameObject gameObject, float duration, Easing easing) {
+		public static void FadeIn(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
 			Fade (gameObject, FadeDirection.In, duration, easing, false);
 		}
-		// Specify duration and easing as string 
-		public static void FadeIn(this GameObject gameObject, float duration, string easing) {
-			Fade (gameObject, FadeDirection.In, duration, Utils.GetEasing(easing), false);
-		}
+//		// Specify duration only
+//		public static void FadeIn(this GameObject gameObject, float duration) {
+//			Fade (gameObject, FadeDirection.In, duration, Defaults._easing, false);
+//		}
+//		// Specify duration and easing
+//		public static void FadeIn(this GameObject gameObject, float duration, Easing easing) {
+//			Fade (gameObject, FadeDirection.In, duration, easing, false);
+//		}
+//		// Specify duration and easing as string 
+//		public static void FadeIn(this GameObject gameObject, float duration, string easing) {
+//			Fade (gameObject, FadeDirection.In, duration, Utils.GetEasing(easing), false);
+//		}
 
 		// Fade-Ins (New)
 
