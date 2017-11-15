@@ -56,6 +56,12 @@ namespace Crayon
 			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), true);
 		}
 
+		// Set Opacity
+		// Normal parameters
+		public static void SetOpacity(this GameObject gameObject, float opacity, float duration = Defaults._duration, Easing easing = Defaults._easing) {
+			Fade (gameObject, FadeDirection.Out, opacity, duration, easing, false);
+		}
+
 		// Set Color
 
 		// Normal parameters

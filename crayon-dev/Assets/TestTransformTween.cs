@@ -13,6 +13,7 @@ public class TestTransformTween : MonoBehaviour {
 		gameObject.SetRelativePosition (new Vector3 (0.0f, 1.0f, 0.0f), time, Easing.QuarticInOut);
 		gameObject.SetRelativeRotation (new Vector3 (0.0f, 0.0f, 10.0f), time, Easing.CubicOut);
 		gameObject.SetRelativeScale(1.2f, time, Easing.CubicOut);
+		gameObject.SetOpacity (0.5f, time, Easing.Linear);
 		
 	}
 	
