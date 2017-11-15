@@ -81,6 +81,18 @@ namespace Crayon
 			TweenPosition (gameObject, targetPosition, duration, easing, false, true);
 		}
 
+		// Set Rotation
+		public static void SetRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			Quaternion targetQuaternionRotation = Quaternion.Euler (targetRotation);
+			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, false);
+		}
+
+		// Set Relative Rotation
+		public static void SetRelativeRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			Quaternion targetQuaternionRotation = Quaternion.Euler (targetRotation);
+			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, true);
+		}
+
 		// ---
 		// Generic methods
 		// ---
@@ -108,6 +120,10 @@ namespace Crayon
 
 		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative) {
 			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative));
+		}
+
+		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
+			CrayonRunner.Instance.Run (TweenRotationCoroutine(gameObject, targetRotation, duration, easing, destroy, isRelative));
 		}
 
 		// ---
@@ -222,6 +238,38 @@ namespace Crayon
 				// set the position
 				Vector3 interpolatedPosition = Vector3.Lerp(startPosition, endPosition, t);
 				gameObject.transform.position = interpolatedPosition;
+				yield return null;
+			}
+			if (destroy)
+				GameObject.Destroy (gameObject);
+
+		}
+
+		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
+
+			Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// elapsedTime
+			float elapsedTime = 0;
+			// are we moving in absolute terms
+			// or relative to current position
+			Quaternion startRotation = gameObject.transform.rotation;
+			Quaternion endRotation;
+			if (isRelative) {
+				// the supplied Quaternion is relative to the original position
+				endRotation = startRotation * targetRotation;
+			} else {
+				endRotation = targetRotation;
+			}
+
+			while (elapsedTime < duration) {
+				// this interpolates position
+				float t = elapsedTime / duration;
+				// shift 't' based on the easing function
+				t = Utils.GetT (t, easing);
+				elapsedTime += Time.deltaTime;
+				// set the position
+				Quaternion interpolatedRotation = Quaternion.Lerp(startRotation, endRotation, t);
+				gameObject.transform.rotation = interpolatedRotation;
 				yield return null;
 			}
 			if (destroy)
