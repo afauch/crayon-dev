@@ -8,8 +8,11 @@ public class TestTransformTween : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// gameObject.SetRelativePosition (new Vector3 (4.0f, 0.0f, 0.0f), 1.0f, Easing.QuarticInOut);
-		gameObject.SetRelativeRotation (new Vector3 (180.0f, 30.0f, 60.0f), 2.0f, Easing.CubicOut);
+		float time = 3.0f;
+
+		gameObject.SetRelativePosition (new Vector3 (0.0f, 1.0f, 0.0f), time, Easing.QuarticInOut);
+		gameObject.SetRelativeRotation (new Vector3 (0.0f, 0.0f, 10.0f), time, Easing.CubicOut);
+		gameObject.SetRelativeScale(1.2f, time, Easing.CubicOut);
 		
 	}
 	

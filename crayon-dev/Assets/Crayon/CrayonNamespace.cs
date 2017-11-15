@@ -93,6 +93,24 @@ namespace Crayon
 			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, true);
 		}
 
+		// Set Scale
+		public static void SetScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			TweenScale (gameObject, targetScale, duration, easing, false, false);
+		}
+		public static void SetScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			Vector3 targetVector3Scale = new Vector3 (targetScale, targetScale, targetScale);
+			TweenScale (gameObject, targetVector3Scale, duration, easing, false, false);
+		}
+
+		// Set Relative Scale
+		public static void SetRelativeScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			TweenScale (gameObject, targetScale, duration, easing, false, true);
+		}
+		public static void SetRelativeScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			Vector3 targetVector3Scale = new Vector3 (targetScale, targetScale, targetScale);
+			TweenScale (gameObject, targetVector3Scale, duration, easing, false, true);
+		}
+
 		// ---
 		// Generic methods
 		// ---
@@ -124,6 +142,10 @@ namespace Crayon
 
 		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
 			CrayonRunner.Instance.Run (TweenRotationCoroutine(gameObject, targetRotation, duration, easing, destroy, isRelative));
+		}
+
+		private static void TweenScale(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative) {
+			CrayonRunner.Instance.Run (TweenScaleCoroutine(gameObject, targetScale, duration, easing, destroy, isRelative));
 		}
 
 		// ---
@@ -247,7 +269,7 @@ namespace Crayon
 
 		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
 
-			Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			Debug.Log ("TweenRotation Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms
@@ -270,6 +292,38 @@ namespace Crayon
 				// set the position
 				Quaternion interpolatedRotation = Quaternion.Lerp(startRotation, endRotation, t);
 				gameObject.transform.rotation = interpolatedRotation;
+				yield return null;
+			}
+			if (destroy)
+				GameObject.Destroy (gameObject);
+
+		}
+
+		private static IEnumerator TweenScaleCoroutine(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative) {
+
+			Debug.Log ("TweenScale Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// elapsedTime
+			float elapsedTime = 0;
+			// are we moving in absolute terms
+			// or relative to current position
+			Vector3 startScale = gameObject.transform.localScale;
+			Vector3 endScale;
+			if (isRelative) {
+				// the supplied Vector3 is relative to the original scale
+				endScale = new Vector3(startScale.x * targetScale.x, startScale.y * targetScale.y, startScale.z * targetScale.z);
+			} else {
+				endScale = targetScale;
+			}
+
+			while (elapsedTime < duration) {
+				// this interpolates position
+				float t = elapsedTime / duration;
+				// shift 't' based on the easing function
+				t = Utils.GetT (t, easing);
+				elapsedTime += Time.deltaTime;
+				// set the position
+				Vector3 interpolatedScale = Vector3.Lerp(startScale, endScale, t);
+				gameObject.transform.localScale = interpolatedScale;
 				yield return null;
 			}
 			if (destroy)
