@@ -16,105 +16,69 @@ namespace Crayon
 
 		// Specify no duration - use a default
 		public static void FadeIn(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.In, duration, easing, false);
+			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false);
 		}
-//		// Specify duration only
-//		public static void FadeIn(this GameObject gameObject, float duration) {
-//			Fade (gameObject, FadeDirection.In, duration, Defaults._easing, false);
-//		}
-//		// Specify duration and easing
-//		public static void FadeIn(this GameObject gameObject, float duration, Easing easing) {
-//			Fade (gameObject, FadeDirection.In, duration, easing, false);
-//		}
-//		// Specify duration and easing as string 
-//		public static void FadeIn(this GameObject gameObject, float duration, string easing) {
-//			Fade (gameObject, FadeDirection.In, duration, Utils.GetEasing(easing), false);
-//		}
+
 
 		// Fade-Ins (New)
 
-		// Specify no duration - use a default
-		public static void FadeInNew(this GameObject gameObject) {
+		// Normal parameters
+		public static void FadeInNew(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
 			gameObject = GameObject.Instantiate (gameObject, Vector3.zero, Quaternion.identity);
-			Fade (gameObject, FadeDirection.In, Defaults._duration, Defaults._easing, false);
+			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false);
 		}
-		// Specify duration only
-		public static void FadeInNew(this GameObject gameObject, float duration) {
-			gameObject = GameObject.Instantiate (gameObject, Vector3.zero, Quaternion.identity);
-			Fade (gameObject, FadeDirection.In, duration, Defaults._easing, false);
-		}
-		// Specify duration and easing
-		public static void FadeInNew(this GameObject gameObject, float duration, Easing easing) {
-			gameObject = GameObject.Instantiate (gameObject, Vector3.zero, Quaternion.identity);
-			Fade (gameObject, FadeDirection.In, duration, easing, false);
-		}
-		// Specify all parameters
+		// Specify target transform as well
 		public static void FadeInNew(this GameObject gameobject, Transform transform, float duration, Easing easing) {
 			gameobject = GameObject.Instantiate (gameobject, transform.position, transform.rotation);
-			Fade (gameobject, FadeDirection.In, duration, easing, false);
+			Fade (gameobject, FadeDirection.In, 0.0f, duration, easing, false);
 		}
 
 		// Fade - Outs
 
-		// Specify no duration - use a default
-		public static void FadeOut(this GameObject gameObject) {
-			Fade (gameObject, FadeDirection.Out, Defaults._duration, Defaults._easing, false);
+		// Normal parameters
+		public static void FadeOut(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, false);
 		}
-		// Specify duration only
-		public static void FadeOut(this GameObject gameObject, float duration) {
-			Fade (gameObject, FadeDirection.Out, duration, Defaults._easing, false);
-		}
-		// Specify duration and easing
-		public static void FadeOut(this GameObject gameObject, float duration, Easing easing) {
-			Fade (gameObject, FadeDirection.Out, duration, easing, false);
-		}
-		// Specify duration and easing as string 
+		// Specify easing as string 
 		public static void FadeOut(this GameObject gameObject, float duration, string easing) {
-			Fade (gameObject, FadeDirection.Out, duration, Utils.GetEasing(easing), false);
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), false);
 		}
 
 
 		// Fade - Out and Destroy
 	
 		// Specify no duration - use a default
-		public static void FadeOutAndDestroy(this GameObject gameObject) {
-			Fade (gameObject, FadeDirection.Out, Defaults._duration, Defaults._easing, true);
-		}
-		// Specify duration only
-		public static void FadeOutAndDestroy(this GameObject gameObject, float duration) {
-			Fade (gameObject, FadeDirection.Out, duration, Defaults._easing, true);
-		}
-		// Specify duration and easing
-		public static void FadeOutAndDestroy(this GameObject gameObject, float duration, Easing easing) {
-			Fade (gameObject, FadeDirection.Out, duration, easing, true);
+		public static void FadeOutAndDestroy(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, Defaults._duration, Defaults._easing, true);
 		}
 		// Specify duration and easing as string 
 		public static void FadeOutAndDestroy(this GameObject gameObject, float duration, string easing) {
-			Fade (gameObject, FadeDirection.Out, duration, Utils.GetEasing(easing), true);
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), true);
 		}
 
 		// Set Color
 
-		// No parameters - use defaults
-		public static void SetColor(this GameObject gameObject, Color color) {
+		// Normal parameters
+		public static void SetColor(this GameObject gameObject, Color color, float duration = Defaults._duration, Easing easing = Defaults._easing) {
 			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
 		}
 
-		// Add duration
-		public static void SetColor(this GameObject gameObject, Color color, float duration) {
-			TweenColor (gameObject, color, duration, Defaults._easing);
-		}
-
-		// Add duration
-		public static void SetColor(this GameObject gameObject, Color color, float duration, Easing easing) {
-			TweenColor (gameObject, color, duration, easing);
-		}
-
-		// No parameters - use defaults
+		// Use hex color
 		public static void SetColor(this GameObject gameObject, string hexColor) {
+			// TODO: Add error handling here
 			Color color = Color.white;
 			ColorUtility.TryParseHtmlString (hexColor, out color);
 			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+		}
+
+		// Set Position
+		public static void SetPosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			TweenPosition (gameObject, targetPosition, duration, easing, false, false);
+		}
+
+		// Set Relative Position
+		public static void SetRelativePosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
+			TweenPosition (gameObject, targetPosition, duration, easing, false, true);
 		}
 
 		// ---
@@ -122,7 +86,7 @@ namespace Crayon
 		// ---
 
 		// Generic method to handle all fades
-		private static void Fade(GameObject gameObject, FadeDirection fadeDirection, float duration, Easing easing, bool destroy) {
+		private static void Fade(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy) {
 
 			Transform[] objectAndChildren = gameObject.GetComponentsInChildren<Transform> ();
 			// If there are child objects
@@ -130,7 +94,7 @@ namespace Crayon
 				// TODO: Provide a check to see whether the child component already has this code.
 				// I was hitting issues before where child objects were not fading in because they had their own
 				// components calling the same coroutine
-				CrayonRunner.Instance.Run (FadeCoroutine (objectAndChildren[i].gameObject, fadeDirection, duration, easing, destroy));
+				CrayonRunner.Instance.Run (FadeCoroutine (objectAndChildren[i].gameObject, fadeDirection, opacity, duration, easing, destroy));
 			}
 		}
 
@@ -142,13 +106,17 @@ namespace Crayon
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing));
 		}
 
+		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative) {
+			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative));
+		}
+
 		// ---
 		// Coroutines
 		// ---
 
 		// TODO: This will need to become more generic to handle fade ins, outs, instantiates, destroys, etc.
 		// Actually fade the material
-		private static IEnumerator FadeCoroutine(GameObject gameObject, FadeDirection fadeDirection, float duration, Easing easing, bool destroy) {
+		private static IEnumerator FadeCoroutine(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy) {
 			// Debug.Log ("Fade Called on GameObject " + gameObject.name);
 			// elapsedTime
 			float elapsedTime = 0;
@@ -162,11 +130,11 @@ namespace Crayon
 			if (fadeDirection == FadeDirection.In) {
 				// get the color instance with the right alpha value
 				endColor = Utils.GetUsableColor (r.material);
-				startColor = new Color (endColor.r, endColor.g, endColor.b, 0.0f);
+				startColor = new Color (endColor.r, endColor.g, endColor.b, opacity);
 			} else {
 				// reverse if it's fading out
 				startColor = Utils.GetUsableColor (r.material);
-				endColor = new Color (startColor.r, startColor.g, startColor.b, 0.0f);
+				endColor = new Color (startColor.r, startColor.g, startColor.b, opacity);
 			}
 
 			while (elapsedTime < duration) {
@@ -229,6 +197,37 @@ namespace Crayon
 
 		}
 
+		private static IEnumerator TweenPositionCoroutine(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative) {
+
+			Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// elapsedTime
+			float elapsedTime = 0;
+			// are we moving in absolute terms
+			// or relative to current position
+			Vector3 startPosition = gameObject.transform.position;
+			Vector3 endPosition;
+			if (isRelative) {
+				// the supplied Vector3 is relative to the original position
+				endPosition = startPosition + targetPosition;
+			} else {
+				endPosition = targetPosition;
+			}
+
+			while (elapsedTime < duration) {
+				// this interpolates position
+				float t = elapsedTime / duration;
+				// shift 't' based on the easing function
+				t = Utils.GetT (t, easing);
+				elapsedTime += Time.deltaTime;
+				// set the position
+				Vector3 interpolatedPosition = Vector3.Lerp(startPosition, endPosition, t);
+				gameObject.transform.position = interpolatedPosition;
+				yield return null;
+			}
+			if (destroy)
+				GameObject.Destroy (gameObject);
+
+		}
 
 	}		
 

@@ -62,6 +62,7 @@
      <Compile Include="Assets\Tests\Scripts\TestColorTween.cs" />
      <Compile Include="Assets\Tests\Scripts\TestFade.cs" />
      <Compile Include="Assets\Tests\TestFadeInNew.cs" />
+     <Compile Include="Assets\TestTransformTween.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity2017b/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
