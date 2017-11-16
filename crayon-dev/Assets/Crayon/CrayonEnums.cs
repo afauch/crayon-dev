@@ -29,7 +29,8 @@
 		QuarticInOut,
 		QuinticIn,
 		QuinticOut,
-		QuinticInOut
+		QuinticInOut,
+		Custom
 	}
 
 	// FadeDirection

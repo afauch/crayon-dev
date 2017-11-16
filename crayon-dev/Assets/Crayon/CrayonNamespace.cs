@@ -77,15 +77,40 @@ namespace Crayon
 			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
 		}
 
+		public static void SetColor(this GameObject gameObject, string hexColor, float opacity) {
+			// TODO: Add error handling here
+			Color color = Color.white;
+			ColorUtility.TryParseHtmlString (hexColor, out color);
+			color.a = opacity;
+			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+		}
+
+		// Set Texture
+		public static void SetTexture(this GameObject gameObject, Texture texture, float duration = Defaults._duration, Easing easing = Defaults._easing) {
+			// TODO: Texture Logic goes here
+		}
+
+		// Set Material
+		// TODO: Create a method for tweening to a specific material which might be supplied via the inspector
+
 		// Set Position
 		public static void SetPosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
 			TweenPosition (gameObject, targetPosition, duration, easing, false, false);
 		}
 
+		// TODO: Rename this and add optional parameters to fold into the SetPosition method
+		public static void SetPositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
+			TweenPosition (gameObject, targetPosition, duration, easing, false, false, cubicBezier);
+		}
+			
 		// Set Relative Position
 		public static void SetRelativePosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
 			TweenPosition (gameObject, targetPosition, duration, easing, false, true);
 		}
+		public static void SetRelativePositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
+			TweenPosition (gameObject, targetPosition, duration, easing, false, true, cubicBezier);
+		}
+
 
 		// Set Rotation
 		public static void SetRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing){
@@ -142,8 +167,8 @@ namespace Crayon
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing));
 		}
 
-		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative) {
-			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative));
+		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier = "") {
+			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative, cubicBezier));
 		}
 
 		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
@@ -198,7 +223,7 @@ namespace Crayon
 		private static IEnumerator TweenColorCoroutine(GameObject gameObject, Material startMaterial, Material endMaterial, float duration, Easing easing) {
 
 			// Debug.Log ("Fade Called on GameObject " + gameObject.name);
-			Debug.Log("original color for " + gameObject.name + " in TweenColorCoroutine: " + gameObject.GetComponent<Renderer>().material.color);
+			// Debug.Log("original color for " + gameObject.name + " in TweenColorCoroutine: " + gameObject.GetComponent<Renderer>().material.color);
 			// elapsedTime
 			float elapsedTime = 0;
 
@@ -210,18 +235,18 @@ namespace Crayon
 
 			// If start material is null, assume we're tweening FROM the current material
 			if (startMaterial == null) {
-				Debug.Log ("StartMaterial is null");
+				// Debug.Log ("StartMaterial is null");
 				startMaterial = Utils.GetUsableMaterial (r);
 			}
 
 			// If end material is null, assume we're tweening TO the current material
 			if (endMaterial == null) {
-				Debug.Log ("EndMaterial is null");				
+				// Debug.Log ("EndMaterial is null");				
 				endMaterial = Utils.GetUsableMaterial (r);
 			}
 
-			Debug.Log ("Start Material Color: " + startMaterial.color);
-			Debug.Log ("End Material Color: " + endMaterial.color);
+			// Debug.Log ("Start Material Color: " + startMaterial.color);
+			// Debug.Log ("End Material Color: " + endMaterial.color);
 
 			while (elapsedTime < duration) {
 
@@ -231,7 +256,7 @@ namespace Crayon
 				t = Utils.GetT (t, easing);
 				elapsedTime += Time.deltaTime;
 
-				Debug.Log ("Material lerping " + gameObject.name + "t" + t);
+				// Debug.Log ("Material lerping " + gameObject.name + "t" + t);
 
 				// Try this
 				m.Lerp(startMaterial, endMaterial, t);
@@ -241,9 +266,9 @@ namespace Crayon
 
 		}
 
-		private static IEnumerator TweenPositionCoroutine(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative) {
+		private static IEnumerator TweenPositionCoroutine(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier = "") {
 
-			Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms
@@ -257,11 +282,14 @@ namespace Crayon
 				endPosition = targetPosition;
 			}
 
+			// TODO: delete this debug variable
+			int debugT = 0;
+
 			while (elapsedTime < duration) {
 				// this interpolates position
 				float t = elapsedTime / duration;
 				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing);
+				t = Utils.GetT (t, easing, cubicBezier);
 				elapsedTime += Time.deltaTime;
 				// set the position
 				Vector3 interpolatedPosition = Vector3.Lerp(startPosition, endPosition, t);
@@ -275,7 +303,7 @@ namespace Crayon
 
 		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
 
-			Debug.Log ("TweenRotation Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// Debug.Log ("TweenRotation Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms
@@ -307,7 +335,7 @@ namespace Crayon
 
 		private static IEnumerator TweenScaleCoroutine(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative) {
 
-			Debug.Log ("TweenScale Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// Debug.Log ("TweenScale Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms

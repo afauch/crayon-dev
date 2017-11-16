@@ -55,15 +55,21 @@
      <Compile Include="Assets\Crayon\CrayonEnums.cs" />
      <Compile Include="Assets\Crayon\CrayonNamespace.cs" />
      <Compile Include="Assets\Crayon\CrayonRunner.cs" />
+     <Compile Include="Assets\Crayon\CrayonState.cs" />
+     <Compile Include="Assets\Crayon\CrayonStateGlobals.cs" />
+     <Compile Include="Assets\Crayon\CrayonStateManager.cs" />
      <Compile Include="Assets\Crayon\CrayonUtils.cs" />
      <Compile Include="Assets\Crayon\Plugin\Easing.cs" />
      <Compile Include="Assets\Crayon\Plugin\Singleton.cs" />
      <Compile Include="Assets\Crayon\Plugin\StandardShaderUtils.cs" />
+     <Compile Include="Assets\Tests\Scripts\TestChangeTexture.cs" />
      <Compile Include="Assets\Tests\Scripts\TestColorTween.cs" />
+     <Compile Include="Assets\Tests\Scripts\TestCubicBezier.cs" />
      <Compile Include="Assets\Tests\Scripts\TestFade.cs" />
-     <Compile Include="Assets\Tests\TestFadeInNew.cs" />
-     <Compile Include="Assets\TestTransformTween.cs" />
+     <Compile Include="Assets\Tests\Scripts\TestFadeInNew.cs" />
+     <Compile Include="Assets\Tests\Scripts\TestTransformTween.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
+     <None Include="Assets\Shaders\ChangeMaterial.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity2017b/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
