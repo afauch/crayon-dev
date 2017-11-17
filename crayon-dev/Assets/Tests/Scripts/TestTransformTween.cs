@@ -10,17 +10,17 @@ public class TestTransformTween : MonoBehaviour {
 
 		float time = 3.0f;
 
-		gameObject.SetRelativePosition (new Vector3 (0.0f, 1.0f, 0.0f), time, Easing.QuarticInOut);
-		gameObject.SetRelativeRotation (new Vector3 (0.0f, 0.0f, 10.0f), time, Easing.CubicOut);
-		gameObject.SetRelativeScale(1.2f, time, Easing.CubicOut);
-		// gameObject.SetOpacity (0.5f, time, Easing.Linear);
-		gameObject.SetColor("#FF0000", 0.8f);
-		// gameObject.FadeIn(time, Easing.CubicOut);
-		
+		//gameObject.SetRelativePosition (new Vector3 (0.0f, 1.0f, 0.0f), time, Easing.QuarticInOut);
+		//gameObject.SetRelativeRotation (new Vector3 (0.0f, 0.0f, 10.0f), time, Easing.CubicOut);
+		//gameObject.SetRelativeScale(1.2f, time, Easing.CubicOut);
+		gameObject.SetColor("#FF0000");
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
+
 	}
 }
