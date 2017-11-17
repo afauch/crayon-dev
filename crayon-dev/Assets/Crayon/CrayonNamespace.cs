@@ -79,7 +79,8 @@ namespace Crayon
 
 		public static void SetColor(this GameObject gameObject, string hexColor, float opacity) {
 			// TODO: Add error handling here
-			Color color = Color.white;
+			// Color color = Color.white;
+			Color color;
 			ColorUtility.TryParseHtmlString (hexColor, out color);
 			color.a = opacity;
 			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
@@ -244,6 +245,8 @@ namespace Crayon
 				// Debug.Log ("EndMaterial is null");				
 				endMaterial = Utils.GetUsableMaterial (r);
 			}
+
+			endMaterial = Utils.GetUsableMaterial (endMaterial);
 
 			// Debug.Log ("Start Material Color: " + startMaterial.color);
 			// Debug.Log ("End Material Color: " + endMaterial.color);

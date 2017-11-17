@@ -14,8 +14,8 @@ public class TestTransformTween : MonoBehaviour {
 		gameObject.SetRelativeRotation (new Vector3 (0.0f, 0.0f, 10.0f), time, Easing.CubicOut);
 		gameObject.SetRelativeScale(1.2f, time, Easing.CubicOut);
 		// gameObject.SetOpacity (0.5f, time, Easing.Linear);
-		// gameObject.SetColor ("#FF0000");
-		gameObject.SetColor("#FF0000", 0.2f);
+		gameObject.SetColor("#FF0000", 0.8f);
+		// gameObject.FadeIn(time, Easing.CubicOut);
 		
 	}
 	

@@ -82,6 +82,12 @@ namespace Crayon {
 			// Debug.Log ("GetUsableMaterial called on " + renderer.material.name);
 
 			Material material = renderer.material;
+			return GetUsableMaterial (material);
+
+		}
+
+		public static Material GetUsableMaterial(Material material) {
+
 			string shaderName = material.shader.name;
 
 			switch (shaderName) {
@@ -99,6 +105,7 @@ namespace Crayon {
 			material.enableInstancing = true;
 
 			return material;
+
 
 		}
 
