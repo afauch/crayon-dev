@@ -7,24 +7,50 @@ using Crayon;
 namespace Crayon {
 
 	public class CrayonStateManager : MonoBehaviour {
-		
+
+		public bool _listenToParent;
+
 		public Dictionary<string,CrayonState> _allStatesByMatchKey;
+
+		[SerializeField]
 		public List<CrayonState> _statesList;							// TODO: Create custom Editor GUI for these states
 
-		void Start() {
+		public delegate void ChangeStateDelegate (CrayonStateType stateType, string customState = "");
+		public ChangeStateDelegate OnChangeState;
+
+
+		void Awake() {
 
 			InitDictionary ();
+			if (_listenToParent) {
+				Debug.Log ("Calling SubscribeToParent");
+				SubscribeToParent ();
+			}
+
+		}
+
+		void Update() {
+
+			Debug.Log (gameObject.name + " OnChangeState is " + OnChangeState);
 
 		}
 
 		public void InitDictionary () {
-
 			_allStatesByMatchKey = new Dictionary<string, CrayonState> ();
 			foreach(CrayonState state in _statesList) {
 				_allStatesByMatchKey.Add (state._crayonMatchKey, state);
 			}
+		}
 
-
+		// Look to parent and subscribe to their Change State event
+		public void SubscribeToParent () {
+			Debug.Log ("Subscribe to Parent called on " + gameObject.name);
+			Transform[] t = gameObject.GetComponentsInParent<Transform> ();
+			Debug.Log (gameObject.name + "'s parent transform is " + t[1].gameObject.name);
+			CrayonStateManager[] parent = gameObject.GetComponentsInParent<CrayonStateManager> ();
+			Debug.Log ("Parent component = " + parent[1]);
+			parent[1].OnChangeState += ChangeState;
+			Debug.Log ("parent.OnChangeState is" + parent[1].OnChangeState);
 		}
 
 		// TODO: Troubleshoot issues when creating/managing new states
@@ -52,10 +78,17 @@ namespace Crayon {
 					_statesList.Remove (state);
 				}
 			}
-
 		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {
+
+			Debug.Log ("ChangeState called on " + gameObject.name);
+			Debug.Log (OnChangeState);
+			if (OnChangeState != null) {
+				Debug.Log ("OnChangeState != null for " + gameObject.name);
+				OnChangeState (stateType, customState);
+			}
+
 
 			Debug.Log ("Current size of dictionary: " + _allStatesByMatchKey.Count);
 
@@ -85,15 +118,21 @@ namespace Crayon {
 			gameObject.SetRelativeRotation (state._relativeRotation);
 			gameObject.SetRelativeScale (state._relativeScale);
 
-
-
 		}
 
 		// This helps us maintain match keys correctly based on editor data changes
 		// OnValidate gets called upon data changes in editor
 		void OnValidate() {
 
+			if (_allStatesByMatchKey == null) {
+				_allStatesByMatchKey = new Dictionary<string, CrayonState> ();
+			}
+
 			Debug.Log ("On Validate Called at " + Time.fixedTime);
+
+			// TODO: Optimize this for performance
+			if(!_listenToParent)
+				gameObject.GetComponentInParent<CrayonStateManager> ().OnChangeState -= ChangeState;
 
 			foreach (CrayonState state in _statesList) {
 				string oldMatchKey = state._crayonMatchKey;
@@ -104,7 +143,9 @@ namespace Crayon {
 					_allStatesByMatchKey.Remove(oldMatchKey);
 					_allStatesByMatchKey.Add(newMatchKey, state);
 				}
+
 			}
+
 		}
 
 	}

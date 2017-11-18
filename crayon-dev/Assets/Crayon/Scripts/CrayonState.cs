@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Crayon {
 
-	[System.Serializable]
+	[Serializable]
 	public enum CrayonStateType {
 		Default,
 		Hover,
@@ -14,8 +14,8 @@ namespace Crayon {
 		Custom
 	}
 
-	[System.Serializable]
-	public class CrayonState {
+	[Serializable]
+	public class CrayonState : System.Object {
 		
 		public CrayonStateType _crayonStateType;
 		public string _customStateType = "";

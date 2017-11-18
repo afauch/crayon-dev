@@ -328,7 +328,7 @@ namespace Crayon
 				t = Utils.GetT (t, easing);
 				elapsedTime += Time.deltaTime;
 				// set the position
-				Quaternion interpolatedRotation = Quaternion.Lerp(startRotation, endRotation, t);
+				Quaternion interpolatedRotation = Quaternion.Slerp(startRotation, endRotation, t);
 				gameObject.transform.rotation = interpolatedRotation;
 				yield return null;
 			}

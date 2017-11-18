@@ -71,8 +71,8 @@
      <Compile Include="Assets\Tests\Scripts\TestCubicBezier.cs" />
      <Compile Include="Assets\Tests\Scripts\TestFade.cs" />
      <Compile Include="Assets\Tests\Scripts\TestFadeInNew.cs" />
+     <Compile Include="Assets\Tests\Scripts\TestStates.cs" />
      <Compile Include="Assets\Tests\Scripts\TestTransformTween.cs" />
-     <Compile Include="Assets\Tests\TestStates.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
  <Reference Include="UnityEngine.UI">

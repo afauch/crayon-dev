@@ -293,22 +293,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f7b3157171247d98b139aac4b59052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listenToParent: 0
   _statesList:
   - _crayonStateType: 1
     _customStateType: 
     _crayonMatchKey: hover
     _material: {fileID: 0}
-    _color: {r: 1, g: 0.75862074, b: 0.125, a: 1}
-    _easing: 18
-    _duration: 0
-    _relativePosition: {x: 0, y: 1, z: 0}
-    _relativeRotation: {x: 0, y: 0, z: 0}
-    _relativeScale: {x: 1, y: 1, z: 1}
-  - _crayonStateType: 2
-    _customStateType: 
-    _crayonMatchKey: selected
-    _material: {fileID: 0}
-    _color: {r: 0, g: 0, b: 0, a: 0}
+    _color: {r: 0.81708914, g: 0, b: 0.9044118, a: 0.622}
     _easing: 0
     _duration: 0
     _relativePosition: {x: 0, y: 0, z: 0}
@@ -616,6 +607,7 @@ GameObject:
   - component: {fileID: 2128329203}
   - component: {fileID: 2128329206}
   - component: {fileID: 2128329205}
+  - component: {fileID: 2128329204}
   m_Layer: 0
   m_Name: Child
   m_TagString: Untagged
@@ -630,12 +622,35 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2128329202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.41003937, y: 0.43996963, z: -0.83913505}
+  m_LocalPosition: {x: -0.009, y: 0.01, z: -0.83913505}
   m_LocalScale: {x: 0.24756017, y: 0.7096283, z: 5.096966}
   m_Children: []
   m_Father: {fileID: 195812081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2128329204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2128329202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f7b3157171247d98b139aac4b59052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _listenToParent: 1
+  _statesList:
+  - _crayonStateType: 1
+    _customStateType: 
+    _crayonMatchKey: hover
+    _material: {fileID: 0}
+    _color: {r: 1, g: 0.97241366, b: 0, a: 1}
+    _easing: 0
+    _duration: 0
+    _relativePosition: {x: 0, y: 0, z: 0}
+    _relativeRotation: {x: 0, y: 0, z: 0}
+    _relativeScale: {x: 1.2, y: 1.2, z: 1.2}
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -647,7 +662,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 0
