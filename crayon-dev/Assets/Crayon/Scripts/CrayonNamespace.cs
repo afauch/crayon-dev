@@ -144,6 +144,14 @@ namespace Crayon
 		}
 
 		// ---
+		// State methods
+		// ---
+
+		public static void SetState(this GameObject gameObject, CrayonStateType stateType, string customState = "") {
+			gameObject.GetComponent<CrayonStateManager> ().ChangeState (stateType, customState);
+		}
+
+		// ---
 		// Generic methods
 		// ---
 
@@ -162,7 +170,10 @@ namespace Crayon
 
 		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing) {
 			// Create instance of material
-			Material targetMaterial = Object.Instantiate(gameObject.GetComponent<Renderer> ().material);
+			Renderer r = gameObject.GetComponent<Renderer>();
+			if (r == null)
+				return;
+			Material targetMaterial = Object.Instantiate(r.material);
 			targetMaterial.SetColor("_Color", targetColor);
 			// Call Coroutine
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing));

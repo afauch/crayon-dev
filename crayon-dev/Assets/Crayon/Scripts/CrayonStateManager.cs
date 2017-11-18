@@ -113,10 +113,10 @@ namespace Crayon {
 			// TODO: Add conditionals to make this more efficient
 
 			// Actually do the tween
-			gameObject.SetColor(state._color);
-			gameObject.SetRelativePosition (state._relativePosition);
-			gameObject.SetRelativeRotation (state._relativeRotation);
-			gameObject.SetRelativeScale (state._relativeScale);
+			gameObject.SetColor(state._color, state._duration, state._easing);
+			gameObject.SetRelativePosition (state._relativePosition, state._duration, state._easing);
+			gameObject.SetRelativeRotation (state._relativeRotation, state._duration, state._easing);
+			gameObject.SetRelativeScale (state._relativeScale, state._duration, state._easing);
 
 		}
 

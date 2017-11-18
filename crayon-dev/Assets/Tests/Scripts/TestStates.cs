@@ -15,10 +15,10 @@ public class TestStates : MonoBehaviour {
 
 		if (Input.GetKeyUp (KeyCode.Space)) {
 
-			gameObject.GetComponent<CrayonStateManager> ().ChangeState (CrayonStateType.Hover);
+			// TODO: Change CrayonStateType to a shorter, better term like State.Hover
+			gameObject.SetState (CrayonStateType.Custom,"A");
 
 		}
-
 
 	}
 }
