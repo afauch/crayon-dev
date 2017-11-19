@@ -14,6 +14,10 @@ public class CrayonStateManagerEditor : Editor {
 		{
 			myScript.SavePreset();
 		}
+		if (GUILayout.Button("Load Preset"))
+		{
+			myScript.LoadPreset();
+		}
 
 
 	}

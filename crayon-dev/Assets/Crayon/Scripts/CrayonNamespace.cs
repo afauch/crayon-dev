@@ -297,9 +297,6 @@ namespace Crayon
 				endPosition = targetPosition;
 			}
 
-			// TODO: delete this debug variable
-			int debugT = 0;
-
 			while (elapsedTime < duration) {
 				// this interpolates position
 				float t = elapsedTime / duration;

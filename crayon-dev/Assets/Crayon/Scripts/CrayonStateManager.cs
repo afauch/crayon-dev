@@ -52,10 +52,12 @@ namespace Crayon {
 			parent[1].OnChangeState += ChangeState;
 		}
 
+		public void LoadPreset() {
+			CrayonStateGlobals.Instance.LoadPreset (this.gameObject, _currentPresetId);
+		}
+
 		public void SavePreset() {
-
 			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _currentPresetId);
-
 		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {

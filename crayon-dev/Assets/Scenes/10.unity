@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
-  _currentPresetId: x01
+  _currentPresetId: x03
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,16 +596,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 1
-  _customStateType: 
-  _crayonMatchKey: hover
+  _crayonStateType: 4
+  _customStateType: xyz
+  _crayonMatchKey: customxyz
   _material: {fileID: 0}
-  _color: {r: 0, g: 0, b: 0, a: 0}
+  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
   _easing: 11
-  _duration: 10
+  _duration: 0
   _relativePosition: {x: 0, y: 0, z: 0}
   _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 2, y: 2, z: 2}
+  _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &1115157623
 GameObject:
   m_ObjectHideFlags: 0

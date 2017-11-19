@@ -40,5 +40,22 @@ namespace Crayon {
 
 		}
 
+		public void LoadData(GameObject g) {
+
+			CrayonState state = g.AddComponent<CrayonState> ();
+
+			state._crayonStateType = _crayonStateType;
+			state._customStateType = _customStateType;
+			state._crayonMatchKey = _crayonMatchKey;
+			state._material = _material;
+			state._color = _color;
+			state._easing = _easing;
+			state._duration = _duration;
+			state._relativePosition = _relativePosition;
+			state._relativeRotation = _relativeRotation;
+			state._relativeScale = _relativeScale;
+
+		}
+
 	}
 }
