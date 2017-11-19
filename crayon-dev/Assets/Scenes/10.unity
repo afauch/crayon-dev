@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
+  _currentPresetId: 
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crayonStateType: 1
-  _customStateType: A
+  _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
   _color: {r: 1, g: 0, b: 0, a: 1}
@@ -405,8 +406,9 @@ GameObject:
   m_Component:
   - component: {fileID: 267370562}
   - component: {fileID: 267370563}
+  - component: {fileID: 267370564}
   m_Layer: 0
-  m_Name: CrayonRunner
+  m_Name: Crayon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,6 +436,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19da6c2cd73b842209633df351ddb20c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &267370564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 267370561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1249e4fc5492841cf936683ab887bd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &786485555
@@ -571,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
+  _currentPresetId: x01
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crayonStateType: 1
-  _customStateType: A
+  _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 0}
@@ -716,6 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
+  _currentPresetId: 
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -781,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crayonStateType: 1
-  _customStateType: A
+  _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
   _color: {r: 1, g: 0, b: 0, a: 1}

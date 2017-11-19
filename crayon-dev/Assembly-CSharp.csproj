@@ -57,6 +57,7 @@
      <Compile Include="Assets\Crayon\Scripts\CrayonDefaults.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonEnums.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonNamespace.cs" />
+     <Compile Include="Assets\Crayon\Scripts\CrayonPreset.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonRunner.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonState.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonStateData.cs" />

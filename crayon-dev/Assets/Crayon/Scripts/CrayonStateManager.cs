@@ -9,6 +9,7 @@ namespace Crayon {
 	public class CrayonStateManager : MonoBehaviour {
 
 		public bool _listenToParent;
+		public string _currentPresetId;
 
 		public Dictionary<string,CrayonState> _allStatesByMatchKey;
 
@@ -51,31 +52,11 @@ namespace Crayon {
 			parent[1].OnChangeState += ChangeState;
 		}
 
-		// TODO: Troubleshoot issues when creating/managing new states
-//		public CrayonState AddState() {
-//
-//			// This creates a state and adds it to the Dictionary
-//			CrayonState c = this.gameObject.AddComponent<CrayonState>();
-//
-//			// Generate random ID
-//			// Add to dictionary
-//			_allStatesByMatchKey.Add (c._crayonMatchKey, c);
-//			// Add to list so it can visible in the editor
-//			return c;
-//
-//		}
-//
-//		public void RemoveState(string matchKey) {
-//			// Remove the state from the dictionary
-//			_allStatesByMatchKey.Remove(matchKey);
-//
-//			// Remove the state from the list
-//			foreach (CrayonState state in _allStatesByMatchKey.Values) {
-//				if (state._crayonMatchKey == matchKey) {
-//					Destroy (state);
-//				}
-//			}
-//		}
+		public void SavePreset() {
+
+			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _currentPresetId);
+
+		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {
 
