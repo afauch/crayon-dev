@@ -59,6 +59,7 @@
      <Compile Include="Assets\Crayon\Scripts\CrayonNamespace.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonRunner.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonState.cs" />
+     <Compile Include="Assets\Crayon\Scripts\CrayonStateData.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonStateGlobals.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonStateManager.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonUtils.cs" />

@@ -16,7 +16,7 @@ public class TestStates : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.Space)) {
 
 			// TODO: Change CrayonStateType to a shorter, better term like State.Hover
-			gameObject.SetState (CrayonStateType.Custom,"A");
+			gameObject.SetState (CrayonStateType.Hover);
 
 		}
 
