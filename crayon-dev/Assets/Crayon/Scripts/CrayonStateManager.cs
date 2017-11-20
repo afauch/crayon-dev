@@ -10,7 +10,7 @@ namespace Crayon {
 
 		public bool _listenToParent;
 		public string _currentPresetId;
-		public string _presetToLoad;
+		[HideInInspector] public string _presetToLoad;
 
 		public Dictionary<string,CrayonState> _allStatesByMatchKey;
 

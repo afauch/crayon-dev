@@ -14,7 +14,10 @@ public class CrayonStateGlobalsEditor : Editor {
 		{
 			myScript.InitializeInEditor();
 		}
-
+		if (GUILayout.Button("Delete All Presets"))
+		{
+			myScript.DeleteAllPresets();
+		}
 
 	}
 

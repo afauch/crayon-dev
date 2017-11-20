@@ -4,6 +4,7 @@ using UnityEditor;
 using Crayon;
 
 [CustomEditor(typeof(CrayonStateManager))]
+[CanEditMultipleObjects]
 public class CrayonStateManagerEditor : Editor {
 
 	int _choiceIndex = 0;
@@ -20,7 +21,8 @@ public class CrayonStateManagerEditor : Editor {
 			// Update the selected choice in the underlying object
 			myScript._presetToLoad = CrayonStateGlobals.Instance._presetChoices[_choiceIndex];
 		} catch(Exception e) {
-			Debug.LogWarning ("No presets to load.");
+			Debug.LogWarning ("No presets to load – reinitializing.");
+			CrayonStateGlobals.Instance.InitializeInEditor ();
 		}
 
 		if (GUILayout.Button("Save Preset"))

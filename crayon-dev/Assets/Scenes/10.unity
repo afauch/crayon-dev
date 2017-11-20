@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 195812079}
   - component: {fileID: 195812078}
   - component: {fileID: 195812082}
-  - component: {fileID: 195812084}
   - component: {fileID: 195812083}
   m_Layer: 0
   m_Name: Test UI
@@ -294,8 +293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
-  _currentPresetId: x03
-  _presetToLoad: 
+  _currentPresetId: test-1
+  _presetToLoad: test-1
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,35 +306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: abc
-  _crayonMatchKey: customabc
+  _crayonStateType: 1
+  _customStateType: 
+  _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
+  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
   _easing: 11
   _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
-  _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 1, y: 1, z: 1}
---- !u!114 &195812084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195812077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: xyz
-  _crayonMatchKey: customxyz
-  _material: {fileID: 0}
-  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
-  _easing: 11
-  _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativePosition: {x: 0.3, y: 0.3, z: 0.3}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &236407034
@@ -473,10 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presetChoices:
-  - x03
-  - x04
-  - x05
-  - x06
+  - test-1
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +541,6 @@ GameObject:
   - component: {fileID: 848800489}
   - component: {fileID: 848800491}
   - component: {fileID: 848800490}
-  - component: {fileID: 848800493}
   - component: {fileID: 848800492}
   m_Layer: 0
   m_Name: GameObject
@@ -613,8 +587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
-  _currentPresetId: x06
-  _presetToLoad: x03
+  _currentPresetId: x08
+  _presetToLoad: test-1
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,35 +600,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: abc
-  _crayonMatchKey: customabc
+  _crayonStateType: 1
+  _customStateType: 
+  _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
+  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
   _easing: 11
   _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
-  _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 1, y: 1, z: 1}
---- !u!114 &848800493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 848800488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: xyz
-  _crayonMatchKey: customxyz
-  _material: {fileID: 0}
-  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
-  _easing: 11
-  _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativePosition: {x: 2, y: 2, z: 2}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2128329202
@@ -668,7 +621,6 @@ GameObject:
   - component: {fileID: 2128329206}
   - component: {fileID: 2128329205}
   - component: {fileID: 2128329204}
-  - component: {fileID: 2128329208}
   - component: {fileID: 2128329207}
   m_Layer: 0
   m_Name: Child
@@ -703,7 +655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _currentPresetId: x03
-  _presetToLoad: 
+  _presetToLoad: test-1
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -768,34 +720,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: abc
-  _crayonMatchKey: customabc
+  _crayonStateType: 1
+  _customStateType: 
+  _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
+  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
   _easing: 11
   _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
-  _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 1, y: 1, z: 1}
---- !u!114 &2128329208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2128329202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crayonStateType: 4
-  _customStateType: xyz
-  _crayonMatchKey: customxyz
-  _material: {fileID: 0}
-  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
-  _easing: 11
-  _duration: 0
-  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativePosition: {x: 0.3, y: 0.3, z: 0.3}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}

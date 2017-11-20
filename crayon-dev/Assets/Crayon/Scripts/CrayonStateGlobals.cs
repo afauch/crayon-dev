@@ -21,21 +21,14 @@ namespace Crayon {
 			Debug.Log ("InitializeInEditor called.");
 			Instance = this;
 
-			// TODO: This really needs to be serialized and stored as a text file, otherwise it won't persist between Editor states
-			if (_presetsById == null)
-				ClearPresets ();
+			ClearPresetsCache ();
 			Debug.Log ("Current Dictionary Size is: " + _presetsById.Count);
-
 			LoadPresetFiles ();
 
 		}
 
 		void Awake() {
-			Debug.Log ("Awake called.");
-			Instance = this;
-			if (_presetsById == null)
-				ClearPresets ();
-			Debug.Log ("Current Dictionary Size is: " + _presetsById.Count);
+			InitializeInEditor ();
 		}
 
 		// TODO: I'm sure there's a better way to structure this
@@ -47,14 +40,29 @@ namespace Crayon {
 				DestroyImmediate (state);
 			}
 
-			// Add a state for every state in the preset
-			CrayonPreset preset;
-			_presetsById.TryGetValue (id, out preset);
+			if (id == null || id == "<None>") {
+				Debug.LogWarning ("No presets to load.");
+				return;
+			} else {
 
-			foreach(CrayonStateData stateData in preset._crayonStatesData) {
+				// Add a state for every state in the preset
+				CrayonPreset preset;
+				_presetsById.TryGetValue (id, out preset);
 
-				// TODO: May be better to structure this differently so the methods aren't on the StateData
-				stateData.LoadData (g);
+				if (preset == null) {
+
+					Debug.LogWarning ("Preset not found.");
+
+				} else {
+
+					foreach (CrayonStateData stateData in preset._crayonStatesData) {
+
+						// TODO: May be better to structure this differently so the methods aren't on the StateData
+						stateData.LoadData (g);
+
+					}
+
+				}
 
 			}
 
@@ -117,6 +125,10 @@ namespace Crayon {
 				File.WriteAllText (path, json);
 
 			}
+
+			// Re-Initialize with new preset
+			InitializeInEditor();
+
 		}
 
 		// Read data from the file
@@ -160,13 +172,34 @@ namespace Crayon {
 				i++;
 			}
 
+			// Populate with 'null'
+			if (_presetChoices.Length == 0) {
+				_presetChoices = new string[1];
+				_presetChoices [0] = "<None>";
+			}
+
 		}
 
 		// Resets all the presets
-		public void ClearPresets() {
+		public void ClearPresetsCache() {
 
 			_presetsById = new Dictionary<string, CrayonPreset> ();
 			_presetChoices = new string[0];
+
+		}
+
+		public void DeleteAllPresets() {
+
+			string presetsPath = Application.dataPath + "/Crayon/UserPresets/";
+
+			// Go through all the files in the UserPresets folder and add to Dictionary
+			DirectoryInfo info = new DirectoryInfo(presetsPath);
+			FileInfo[] files = info.GetFiles ();
+			foreach (FileInfo f in files) {
+				File.Delete (f.FullName);
+			}
+
+			InitializeInEditor ();
 
 		}
 
