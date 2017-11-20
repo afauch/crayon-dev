@@ -15,10 +15,12 @@ namespace Crayon {
 
 		public static CrayonStateGlobals Instance;
 		public Dictionary<string, CrayonPreset> _presetsById;			// these are presets of CrayonStateManagers (think of them like CSS classes or Sketch style presets)
+		public string[] _presetChoices;
 
 		public void InitializeInEditor() {
 			Debug.Log ("InitializeInEditor called.");
 			Instance = this;
+
 			// TODO: This really needs to be serialized and stored as a text file, otherwise it won't persist between Editor states
 			if (_presetsById == null)
 				ClearPresets ();
@@ -136,9 +138,26 @@ namespace Crayon {
 					CrayonPreset preset;
 					preset = JsonUtility.FromJson<CrayonPreset> (json);
 
+					_presetsById.Add (preset._id, preset);
+
 				}
+					
+			}
+				
 
+			PopulatePresetsDropdown ();
 
+		}
+
+		public void PopulatePresetsDropdown() {
+
+			Debug.Log ("PopulatePresetsDropdown called.");
+
+			_presetChoices = new string[_presetsById.Count];
+			int i = 0;
+			foreach (string id in _presetsById.Keys) {
+				_presetChoices [i] = id;
+				i++;
 			}
 
 		}

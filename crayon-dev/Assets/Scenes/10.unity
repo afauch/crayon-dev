@@ -471,7 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1249e4fc5492841cf936683ab887bd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testSaveFile: {fileID: 2100000, guid: 156b041c2262a4f2883e74e01888798e, type: 2}
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
-  _currentPresetId: x03
+  _currentPresetId: x05
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
