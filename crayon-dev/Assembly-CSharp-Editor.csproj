@@ -53,7 +53,10 @@
   <ItemGroup>
      <Compile Include="Assets\Crayon\Editor\CrayonStateGlobalsEditor.cs" />
      <Compile Include="Assets\Crayon\Editor\CrayonStateManagerEditor.cs" />
+     <None Include="Assets\Crayon\UserPresets\x02.txt" />
      <None Include="Assets\Shaders\3DText.shader" />
+     <None Include="Assets\Crayon\UserPresets\x01.txt" />
+     <None Include="Assets\Crayon\UserPresets\x99.txt" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
      <None Include="Assets\Crayon\UserPresets\x08.txt" />
  <Reference Include="Assembly-CSharp">

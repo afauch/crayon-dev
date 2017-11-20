@@ -451,7 +451,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presetChoices:
+  - <Choose Preset>
+  - x01
+  - x02
   - x08
+  - x99
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 0
   _newPresetId: 
-  _presetToLoad: x08
+  _presetToLoad: <Choose Preset>
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +608,7 @@ MonoBehaviour:
   _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
+  _color: {r: 1, g: 0.64137936, b: 0, a: 1}
   _easing: 11
   _duration: 0
   _relativePosition: {x: 2, y: 2, z: 2}

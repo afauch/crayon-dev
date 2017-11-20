@@ -58,7 +58,7 @@ namespace Crayon {
 		}
 
 		public void SavePreset() {
-			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _newPresetId);
+			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _newPresetId, this);
 		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {
@@ -97,6 +97,7 @@ namespace Crayon {
 			Debug.Log ("_listenToParent is " + _listenToParent);
 
 		}
+
 
 	}
 

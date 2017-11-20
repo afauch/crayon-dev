@@ -43,6 +43,10 @@ namespace Crayon {
 			if (id == null || id == "<None>") {
 				Debug.LogWarning ("No presets to load.");
 				return;
+			} else if (id == "<Choose Preset>") {
+
+				Debug.LogWarning ("Choose a preset to load it.");
+
 			} else {
 
 				// Add a state for every state in the preset
@@ -68,7 +72,7 @@ namespace Crayon {
 
 		}
 
-		public void SavePreset(GameObject g, string id) {
+		public void SavePreset(GameObject g, string id, CrayonStateManager sentBy) {
 
 			CrayonState[] states = g.GetComponents<CrayonState> ();
 
@@ -94,9 +98,10 @@ namespace Crayon {
 				_presetsById.Remove (preset._id);
 
 			_presetsById.Add(preset._id, preset);
-			Debug.Log ("Crayon Preset Saved");
-
+			Debug.Log ("Crayon Preset " + preset._id + " Saved");
 			Debug.Log ("Number of items in preset dict: " + _presetsById.Count);
+
+			sentBy._newPresetId = null;
 
 			SavePresetFiles ();
 
@@ -165,8 +170,9 @@ namespace Crayon {
 
 			Debug.Log ("PopulatePresetsDropdown called.");
 
-			_presetChoices = new string[_presetsById.Count];
-			int i = 0;
+			_presetChoices = new string[_presetsById.Count + 1];
+			_presetChoices [0] = "<Choose Preset>";
+			int i = 1;
 			foreach (string id in _presetsById.Keys) {
 				_presetChoices [i] = id;
 				i++;
@@ -187,6 +193,16 @@ namespace Crayon {
 			_presetChoices = new string[0];
 
 		}
+//
+//		public int GetIntFromString(string choice) {
+//
+//			for (int i = 0; i < _presetChoices.Length; i++) {
+//				if (choice == _presetChoices [i]) {
+//					return i;
+//				}
+//			}
+//
+//		}
 
 		public void DeleteAllPresets() {
 
