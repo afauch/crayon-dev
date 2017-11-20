@@ -23,6 +23,9 @@ namespace Crayon {
 			if (_presetsById == null)
 				ClearPresets ();
 			Debug.Log ("Current Dictionary Size is: " + _presetsById.Count);
+
+			LoadPresetFiles ();
+
 		}
 
 		void Awake() {
@@ -112,6 +115,32 @@ namespace Crayon {
 				File.WriteAllText (path, json);
 
 			}
+		}
+
+		// Read data from the file
+		private void LoadPresetFiles() {
+
+			string presetsPath = Application.dataPath + "/Crayon/UserPresets/";
+
+			// Go through all the files in the UserPresets folder and add to Dictionary
+			DirectoryInfo info = new DirectoryInfo(presetsPath);
+			FileInfo[] files = info.GetFiles ();
+			foreach (FileInfo f in files) {
+
+				// is this a text file (i.e. not a meta file)
+				if (f.Extension == ".txt") {
+					Debug.Log (f);
+					string json = File.ReadAllText (f.FullName);
+					Debug.Log (json);
+
+					CrayonPreset preset;
+					preset = JsonUtility.FromJson<CrayonPreset> (json);
+
+				}
+
+
+			}
+
 		}
 
 		// Resets all the presets
