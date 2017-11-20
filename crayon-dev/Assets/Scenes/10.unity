@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 195812079}
   - component: {fileID: 195812078}
   - component: {fileID: 195812082}
+  - component: {fileID: 195812084}
   - component: {fileID: 195812083}
   m_Layer: 0
   m_Name: Test UI
@@ -293,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
-  _currentPresetId: 
+  _currentPresetId: x03
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,13 +306,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 1
-  _customStateType: 
-  _crayonMatchKey: hover
+  _crayonStateType: 4
+  _customStateType: abc
+  _crayonMatchKey: customabc
   _material: {fileID: 0}
-  _color: {r: 1, g: 0, b: 0, a: 1}
+  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
   _easing: 11
-  _duration: 10
+  _duration: 0
+  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativeRotation: {x: 0, y: 0, z: 0}
+  _relativeScale: {x: 1, y: 1, z: 1}
+--- !u!114 &195812084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 195812077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crayonStateType: 4
+  _customStateType: xyz
+  _crayonMatchKey: customxyz
+  _material: {fileID: 0}
+  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
+  _easing: 11
+  _duration: 0
   _relativePosition: {x: 0, y: 0, z: 0}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
@@ -395,7 +417,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &267370561
 GameObject:
@@ -449,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1249e4fc5492841cf936683ab887bd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _testSaveFile: {fileID: 2100000, guid: 156b041c2262a4f2883e74e01888798e, type: 2}
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,6 +561,7 @@ GameObject:
   - component: {fileID: 848800489}
   - component: {fileID: 848800491}
   - component: {fileID: 848800490}
+  - component: {fileID: 848800493}
   - component: {fileID: 848800492}
   m_Layer: 0
   m_Name: GameObject
@@ -559,7 +583,7 @@ Transform:
   - {fileID: 2128329203}
   - {fileID: 195812081}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &848800490
 MonoBehaviour:
@@ -597,6 +621,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crayonStateType: 4
+  _customStateType: abc
+  _crayonMatchKey: customabc
+  _material: {fileID: 0}
+  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
+  _easing: 11
+  _duration: 0
+  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativeRotation: {x: 0, y: 0, z: 0}
+  _relativeScale: {x: 1, y: 1, z: 1}
+--- !u!114 &848800493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848800488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crayonStateType: 4
   _customStateType: xyz
   _crayonMatchKey: customxyz
   _material: {fileID: 0}
@@ -606,86 +651,6 @@ MonoBehaviour:
   _relativePosition: {x: 0, y: 0, z: 0}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
---- !u!1 &1115157623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1115157625}
-  - component: {fileID: 1115157624}
-  m_Layer: 0
-  m_Name: ExampleDrawer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1115157624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1115157623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 040d4b23ad6a04fb4a5846cc5c426368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaledCurve01:
-    scale: 1
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  scaledCurve02:
-    scale: 1
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
---- !u!4 &1115157625
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1115157623}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.59, y: -0.53, z: 1.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2128329202
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +662,7 @@ GameObject:
   - component: {fileID: 2128329206}
   - component: {fileID: 2128329205}
   - component: {fileID: 2128329204}
+  - component: {fileID: 2128329208}
   - component: {fileID: 2128329207}
   m_Layer: 0
   m_Name: Child
@@ -730,7 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
-  _currentPresetId: 
+  _currentPresetId: x03
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -795,13 +761,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _crayonStateType: 1
-  _customStateType: 
-  _crayonMatchKey: hover
+  _crayonStateType: 4
+  _customStateType: abc
+  _crayonMatchKey: customabc
   _material: {fileID: 0}
-  _color: {r: 1, g: 0, b: 0, a: 1}
+  _color: {r: 1, g: 0.49264705, b: 0.49264705, a: 0.797}
   _easing: 11
-  _duration: 10
+  _duration: 0
+  _relativePosition: {x: 0, y: 0, z: 0}
+  _relativeRotation: {x: 0, y: 0, z: 0}
+  _relativeScale: {x: 1, y: 1, z: 1}
+--- !u!114 &2128329208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2128329202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crayonStateType: 4
+  _customStateType: xyz
+  _crayonMatchKey: customxyz
+  _material: {fileID: 0}
+  _color: {r: 1, g: 0.76551723, b: 0, a: 1}
+  _easing: 11
+  _duration: 0
   _relativePosition: {x: 0, y: 0, z: 0}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}

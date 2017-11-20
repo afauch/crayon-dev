@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
 
 namespace Crayon {
 
@@ -8,7 +10,8 @@ namespace Crayon {
 	// and the list of custom states used across the application
 
 	[ExecuteInEditMode]
-	public class CrayonStateGlobals : Singleton<CrayonStateGlobals> {
+	[System.Serializable]
+	public class CrayonStateGlobals : CrayonSingleton<CrayonStateGlobals> {
 
 		public static CrayonStateGlobals Instance;
 		public Dictionary<string, CrayonPreset> _presetsById;			// these are presets of CrayonStateManagers (think of them like CSS classes or Sketch style presets)
@@ -81,7 +84,34 @@ namespace Crayon {
 			Debug.Log ("Crayon Preset Saved");
 
 			Debug.Log ("Number of items in preset dict: " + _presetsById.Count);
+
+			SavePresetFiles ();
+
 				
+		}
+
+		private void SavePresetFiles() {
+
+			// Can it serialize a single state?
+
+			foreach (CrayonPreset preset in _presetsById.Values) {
+
+				string json = JsonUtility.ToJson(preset, true);
+				Debug.Log (json);
+
+				string fileName = preset._id + ".txt";
+
+				if(AssetDatabase.IsValidFolder("Assets/Crayon/UserPresets")) {
+					Debug.Log("Folder Exists");
+				} else {
+					Debug.Log("Folder does not exist -- creating now.");
+					AssetDatabase.CreateFolder ("Assets/Crayon", "UserPresets");
+				}
+
+				string path = Application.dataPath + "/Crayon/UserPresets/" + preset._id + ".txt";
+				File.WriteAllText (path, json);
+
+			}
 		}
 
 		// Resets all the presets

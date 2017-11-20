@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Crayon {
-	
+
+	[System.Serializable]
 	public class CrayonStateData {
 
 		public CrayonStateType _crayonStateType;

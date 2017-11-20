@@ -5,6 +5,7 @@ using Crayon;
 
 namespace Crayon {
 
+	[System.Serializable]
 	public class CrayonPreset {
 
 		public string _id;

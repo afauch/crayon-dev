@@ -79,12 +79,15 @@ namespace Crayon {
 			_allStatesByMatchKey.TryGetValue (matchKey, out state);
 
 			// TODO: Add conditionals to make this more efficient
-
-			// Actually do the tween
-			gameObject.SetColor(state._color, state._duration, state._easing);
-			gameObject.SetRelativePosition (state._relativePosition, state._duration, state._easing);
-			gameObject.SetRelativeRotation (state._relativeRotation, state._duration, state._easing);
-			gameObject.SetRelativeScale (state._relativeScale, state._duration, state._easing);
+			if (state != null) {
+				// Actually do the tween
+				gameObject.SetColor (state._color, state._duration, state._easing);
+				gameObject.SetRelativePosition (state._relativePosition, state._duration, state._easing);
+				gameObject.SetRelativeRotation (state._relativeRotation, state._duration, state._easing);
+				gameObject.SetRelativeScale (state._relativeScale, state._duration, state._easing);
+			} else {
+				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);
+			}
 
 		}
 
