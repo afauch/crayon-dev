@@ -77,6 +77,7 @@
      <Compile Include="Assets\Tests\Scripts\TestTransformTween.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
+     <None Include="Assets\Crayon\UserPresets\x08.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity2017b/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

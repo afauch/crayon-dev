@@ -9,7 +9,7 @@ namespace Crayon {
 	public class CrayonStateManager : MonoBehaviour {
 
 		public bool _listenToParent;
-		public string _currentPresetId;
+		public string _newPresetId = "<Enter A Preset Name>";
 		[HideInInspector] public string _presetToLoad;
 
 		public Dictionary<string,CrayonState> _allStatesByMatchKey;
@@ -58,7 +58,7 @@ namespace Crayon {
 		}
 
 		public void SavePreset() {
-			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _currentPresetId);
+			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _newPresetId);
 		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {
@@ -89,6 +89,12 @@ namespace Crayon {
 			} else {
 				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);
 			}
+
+		}
+
+		void OnValidate() {
+
+			Debug.Log ("_listenToParent is " + _listenToParent);
 
 		}
 

@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
-  _currentPresetId: test-1
+  _newPresetId: 
   _presetToLoad: test-1
 --- !u!114 &195812083
 MonoBehaviour:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _presetChoices:
-  - test-1
+  - x08
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
-  _currentPresetId: x08
-  _presetToLoad: test-1
+  _newPresetId: 
+  _presetToLoad: x08
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 1
-  _currentPresetId: x03
+  _newPresetId: 
   _presetToLoad: test-1
 --- !u!102 &2128329205
 TextMesh:
