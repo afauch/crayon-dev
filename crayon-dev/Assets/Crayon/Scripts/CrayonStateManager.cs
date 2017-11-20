@@ -54,7 +54,7 @@ namespace Crayon {
 		}
 
 		public void LoadPreset() {
-			CrayonStateGlobals.Instance.LoadPreset (this.gameObject, _currentPresetId);
+			CrayonStateGlobals.Instance.LoadPreset (this.gameObject, _presetToLoad);
 		}
 
 		public void SavePreset() {

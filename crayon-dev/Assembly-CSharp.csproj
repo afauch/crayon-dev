@@ -75,9 +75,11 @@
      <Compile Include="Assets\Tests\Scripts\TestFadeInNew.cs" />
      <Compile Include="Assets\Tests\Scripts\TestStates.cs" />
      <Compile Include="Assets\Tests\Scripts\TestTransformTween.cs" />
+     <None Include="Assets\Crayon\UserPresets\x05.txt" />
      <None Include="Assets\Crayon\UserPresets\x03.txt" />
      <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Crayon\UserPresets\x04.txt" />
+     <None Include="Assets\Crayon\UserPresets\x06.txt" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity2017b/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

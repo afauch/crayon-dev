@@ -295,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _currentPresetId: x03
+  _presetToLoad: 
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1249e4fc5492841cf936683ab887bd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _presetChoices:
+  - x03
+  - x04
+  - x05
+  - x06
 --- !u!1 &786485555
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _listenToParent: 0
-  _currentPresetId: x05
+  _currentPresetId: x06
+  _presetToLoad: x03
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _currentPresetId: x03
+  _presetToLoad: 
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3

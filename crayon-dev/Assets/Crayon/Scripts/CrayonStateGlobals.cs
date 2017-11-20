@@ -166,6 +166,7 @@ namespace Crayon {
 		public void ClearPresets() {
 
 			_presetsById = new Dictionary<string, CrayonPreset> ();
+			_presetChoices = new string[0];
 
 		}
 
