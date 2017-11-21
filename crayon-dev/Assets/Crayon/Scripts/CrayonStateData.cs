@@ -10,12 +10,22 @@ namespace Crayon {
 		public CrayonStateType _crayonStateType;
 		public string _customStateType = "";
 		public string _crayonMatchKey; // A match key for finding custom states
+
+		public Easing _easing = Easing.CubicInOut;
+		public string _customEasing;
+		public float _duration;
+
+		public bool _tweenColor = true;
 		public Material _material;
 		public Color _color;
-		public Easing _easing = Easing.CubicInOut;
-		public float _duration;
+
+		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
+
+		public bool _tweenRotation = true;
 		public Vector3 _relativeRotation;
+
+		public bool _tweenScale = true;
 		public Vector3 _relativeScale = new Vector3(1.0f, 1.0f, 1.0f);
 
 
@@ -31,12 +41,22 @@ namespace Crayon {
 			_crayonStateType = state._crayonStateType;
 			_customStateType = state._customStateType;
 			_crayonMatchKey = state._crayonMatchKey;
+
+			_duration = state._duration;
+			_easing = state._easing;
+			_customEasing = state._customEasing;
+
+			_tweenColor = state._tweenColor;
 			_material = state._material;
 			_color = state._color;
-			_easing = state._easing;
-			_duration = state._duration;
+
+			_tweenPosition = state._tweenPosition;
 			_relativePosition = state._relativePosition;
+
+			_tweenRotation = state._tweenRotation;
 			_relativeRotation = state._relativeRotation;
+
+			_tweenScale = state._tweenScale;
 			_relativeScale = state._relativeScale;
 
 		}
@@ -48,12 +68,22 @@ namespace Crayon {
 			state._crayonStateType = _crayonStateType;
 			state._customStateType = _customStateType;
 			state._crayonMatchKey = _crayonMatchKey;
+
+			state._duration = _duration;
+			state._easing = _easing;
+			state._customEasing = _customEasing;
+
+			state._tweenColor = _tweenColor;
 			state._material = _material;
 			state._color = _color;
-			state._easing = _easing;
-			state._duration = _duration;
+
+			state._tweenPosition = _tweenPosition;
 			state._relativePosition = _relativePosition;
+
+			state._tweenRotation = _tweenRotation;
 			state._relativeRotation = _relativeRotation;
+
+			state._tweenScale = _tweenScale;
 			state._relativeScale = _relativeScale;
 
 		}

@@ -555,12 +555,17 @@ MonoBehaviour:
   _crayonStateType: 1
   _customStateType: 
   _crayonMatchKey: hover
+  _easing: 11
+  _customEasing: 
+  _duration: 2
+  _tweenColor: 1
   _material: {fileID: 0}
   _color: {r: 1, g: 0, b: 0.84827614, a: 1}
-  _easing: 11
-  _duration: 2
+  _tweenPosition: 1
   _relativePosition: {x: 2, y: 2, z: 2}
+  _tweenRotation: 1
   _relativeRotation: {x: 0, y: -90, z: 0}
+  _tweenScale: 1
   _relativeScale: {x: 1.2, y: 1.2, z: 1.2}
 --- !u!114 &848800493
 MonoBehaviour:
@@ -576,12 +581,17 @@ MonoBehaviour:
   _crayonStateType: 0
   _customStateType: 
   _crayonMatchKey: default
+  _easing: 11
+  _customEasing: 
+  _duration: 2
+  _tweenColor: 1
   _material: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 0}
-  _easing: 11
-  _duration: 2
+  _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
+  _tweenRotation: 1
   _relativeRotation: {x: 0, y: 0, z: 0}
+  _tweenScale: 1
   _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2128329202
 GameObject:

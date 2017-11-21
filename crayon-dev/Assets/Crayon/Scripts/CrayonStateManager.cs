@@ -16,6 +16,8 @@ namespace Crayon {
 
 		public delegate void ChangeStateDelegate (CrayonStateType stateType, string customState = "");
 		public ChangeStateDelegate OnChangeState;
+		public delegate void FreezeTransformDelegate ();
+		public FreezeTransformDelegate OnFreezeTransform;
 
 		private string _currentState = null;
 		private Vector3 _originalPosition;
@@ -27,10 +29,10 @@ namespace Crayon {
 			InitDictionary ();
 			if (_listenToParent) {
 				Debug.Log ("Calling SubscribeToParent");
-				SubscribeToParent ();
+				SubscribeToParent (true);
 			}
 
-			SetOriginalTransform ();
+			FreezeTransform ();
 
 		}
 
@@ -38,11 +40,14 @@ namespace Crayon {
 
 		}
 
-		private void SetOriginalTransform () {
+		public void FreezeTransform () {
 
 			_originalPosition = gameObject.transform.localPosition;
 			_originalRotation = gameObject.transform.localRotation;
 			_originalScale = gameObject.transform.localScale;
+
+			if (OnFreezeTransform != null)
+				OnFreezeTransform ();
 
 		}
 
@@ -61,10 +66,17 @@ namespace Crayon {
 		}
 
 		// Look to parent and subscribe to their Change State event
-		public void SubscribeToParent () {
+		public void SubscribeToParent (bool subscribe) {
 			// Transform[] t = gameObject.GetComponentsInParent<Transform> ();
 			CrayonStateManager[] parent = gameObject.GetComponentsInParent<CrayonStateManager> ();
-			parent[1].OnChangeState += ChangeState;
+
+			if (subscribe) { // If true, subscribe
+				parent [1].OnChangeState += ChangeState;
+				parent [1].OnFreezeTransform += FreezeTransform;
+			} else { // Otherwise, unsubscribe
+				parent [1].OnChangeState -= ChangeState;
+				parent [1].OnFreezeTransform -= FreezeTransform;
+			}
 		}
 
 		public void LoadPreset() {
@@ -98,16 +110,29 @@ namespace Crayon {
 			// TODO: Add conditionals to make this more efficient
 			if (state != null) {
 				// Actually do the tween
-				gameObject.SetColor (state._color, state._duration, state._easing);
 
-				Vector3 relativePosition = new Vector3 (_originalPosition.x + state._relativePosition.x, _originalPosition.y + state._relativePosition.y, _originalPosition.z + state._relativePosition.z);
-				gameObject.SetPosition (relativePosition, state._duration, state._easing);
+				if (state._tweenColor) {
+					// Debug.Log ("TweenColor is true");
+					gameObject.SetColor (state._color, state._duration, state._easing);
+				}
 
-				Vector3 relativeRotation = new Vector3 (_originalRotation.eulerAngles.x + state._relativeRotation.x, _originalRotation.eulerAngles.y + state._relativeRotation.y, _originalRotation.eulerAngles.z + state._relativeRotation.z);
-				gameObject.SetRotation (relativeRotation, state._duration, state._easing);
+				if (state._tweenPosition) {
+					// Debug.Log ("TweenPosition is true");					
+					Vector3 relativePosition = new Vector3 (_originalPosition.x + state._relativePosition.x, _originalPosition.y + state._relativePosition.y, _originalPosition.z + state._relativePosition.z);
+					gameObject.SetPosition (relativePosition, state._duration, state._easing);
+				}
 
-				Vector3 relativeScale = new Vector3 (_originalScale.x * state._relativeScale.x, _originalScale.y * state._relativeScale.y, _originalScale.z * state._relativeScale.z);
-				gameObject.SetScale (relativeScale, state._duration, state._easing);
+				if (state._tweenRotation) {
+					// Debug.Log ("TweenRotation is true");					
+					Vector3 relativeRotation = new Vector3 (_originalRotation.eulerAngles.x + state._relativeRotation.x, _originalRotation.eulerAngles.y + state._relativeRotation.y, _originalRotation.eulerAngles.z + state._relativeRotation.z);
+					gameObject.SetRotation (relativeRotation, state._duration, state._easing);
+				}
+
+				if (state._tweenScale) {
+					// Debug.Log ("TweenScale is true");					
+					Vector3 relativeScale = new Vector3 (_originalScale.x * state._relativeScale.x, _originalScale.y * state._relativeScale.y, _originalScale.z * state._relativeScale.z);
+					gameObject.SetScale (relativeScale, state._duration, state._easing);
+				}
 
 				_currentState = matchKey;
 
@@ -120,6 +145,12 @@ namespace Crayon {
 		void OnValidate() {
 
 			// Debug.Log ("_listenToParent is " + _listenToParent);
+
+		}
+
+		void Destroy () {
+
+			SubscribeToParent (false);
 
 		}
 
