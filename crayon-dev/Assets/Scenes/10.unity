@@ -208,8 +208,6 @@ GameObject:
   - component: {fileID: 195812080}
   - component: {fileID: 195812079}
   - component: {fileID: 195812078}
-  - component: {fileID: 195812082}
-  - component: {fileID: 195812083}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -281,41 +279,6 @@ Transform:
   m_Father: {fileID: 848800489}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &195812082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195812077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f7b3157171247d98b139aac4b59052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _listenToParent: 1
-  _newPresetId: 
-  _presetToLoad: <Choose Preset>
---- !u!114 &195812083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 195812077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crayonStateType: 1
-  _customStateType: 
-  _crayonMatchKey: hover
-  _material: {fileID: 0}
-  _color: {r: 1, g: 0, b: 0.84827614, a: 1}
-  _easing: 11
-  _duration: 0
-  _relativePosition: {x: 2, y: 2, z: 2}
-  _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &236407034
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +492,7 @@ GameObject:
   - component: {fileID: 848800489}
   - component: {fileID: 848800491}
   - component: {fileID: 848800490}
+  - component: {fileID: 848800493}
   - component: {fileID: 848800492}
   m_Layer: 0
   m_Name: GameObject
@@ -544,7 +508,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 848800488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.23, y: -2.46, z: 1.68}
+  m_LocalPosition: {x: -3.2301, y: -2.46, z: 1.68}
   m_LocalScale: {x: 4.039422, y: 1.4091885, z: 0.19619516}
   m_Children:
   - {fileID: 2128329203}
@@ -594,8 +558,29 @@ MonoBehaviour:
   _material: {fileID: 0}
   _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _easing: 11
-  _duration: 0
+  _duration: 2
   _relativePosition: {x: 2, y: 2, z: 2}
+  _relativeRotation: {x: 0, y: -90, z: 0}
+  _relativeScale: {x: 1.2, y: 1.2, z: 1.2}
+--- !u!114 &848800493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 848800488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _crayonStateType: 0
+  _customStateType: 
+  _crayonMatchKey: default
+  _material: {fileID: 0}
+  _color: {r: 0, g: 0, b: 0, a: 0}
+  _easing: 11
+  _duration: 2
+  _relativePosition: {x: 0, y: 0, z: 0}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &2128329202
@@ -608,8 +593,6 @@ GameObject:
   - component: {fileID: 2128329203}
   - component: {fileID: 2128329206}
   - component: {fileID: 2128329205}
-  - component: {fileID: 2128329204}
-  - component: {fileID: 2128329207}
   m_Layer: 0
   m_Name: TextMesh
   m_TagString: Untagged
@@ -630,20 +613,6 @@ Transform:
   m_Father: {fileID: 848800489}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2128329204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2128329202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f7b3157171247d98b139aac4b59052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _listenToParent: 1
-  _newPresetId: 
-  _presetToLoad: <Choose Preset>
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -697,24 +666,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2128329207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2128329202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d728effe965794d9799cbc3ad4dbd474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _crayonStateType: 1
-  _customStateType: 
-  _crayonMatchKey: hover
-  _material: {fileID: 0}
-  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
-  _easing: 11
-  _duration: 0
-  _relativePosition: {x: 0.3, y: 0.3, z: 0.3}
-  _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 2, y: 2, z: 2}

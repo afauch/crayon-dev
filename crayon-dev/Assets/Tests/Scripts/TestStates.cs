@@ -13,12 +13,12 @@ public class TestStates : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.Alpha1))
+			gameObject.SetState (CrayonStateType.Default);
 
-			// TODO: Change CrayonStateType to a shorter, better term like State.Hover
+		if (Input.GetKeyUp (KeyCode.Alpha2))
 			gameObject.SetState (CrayonStateType.Hover);
 
-		}
 
 	}
 }

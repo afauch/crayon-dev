@@ -232,6 +232,7 @@ namespace Crayon
 					m.SetColor ("_Color", currentColor);
 					yield return null;
 				}
+				m.SetColor ("_Color", endColor);
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
@@ -282,14 +283,10 @@ namespace Crayon
 					// shift 't' based on the easing function
 					t = Utils.GetT (t, easing);
 					elapsedTime += Time.deltaTime;
-
-					// Debug.Log ("Material lerping " + gameObject.name + "t" + t);
-
-					// Try this
 					m.Lerp (startMaterial, endMaterial, t);
-
 					yield return null;
 				}
+				m.CopyPropertiesFromMaterial(endMaterial);
 			}
 
 		}
@@ -325,6 +322,7 @@ namespace Crayon
 					gameObject.transform.position = interpolatedPosition;
 					yield return null;
 				}
+				gameObject.transform.position = endPosition;
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
@@ -361,7 +359,7 @@ namespace Crayon
 					gameObject.transform.rotation = interpolatedRotation;
 					yield return null;
 				}
-
+				gameObject.transform.rotation = endRotation;
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
@@ -399,7 +397,7 @@ namespace Crayon
 					gameObject.transform.localScale = interpolatedScale;
 					yield return null;
 				}
-
+				gameObject.transform.localScale = endScale;
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);

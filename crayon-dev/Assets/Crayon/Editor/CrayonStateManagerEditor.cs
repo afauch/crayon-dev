@@ -33,7 +33,7 @@ public class CrayonStateManagerEditor : Editor {
 
 		// Load Fields
 		EditorGUILayout.LabelField("Load a Preset", EditorStyles.boldLabel);
-		Rect load = EditorGUILayout.BeginHorizontal ();
+		EditorGUILayout.BeginHorizontal ();
 		try
 		{
 			_choiceIndex = EditorGUILayout.Popup(_choiceIndex, CrayonStateGlobals.Instance._presetChoices, GUILayout.Width(100.0f));
@@ -51,7 +51,7 @@ public class CrayonStateManagerEditor : Editor {
 
 		// Save Fields
 		EditorGUILayout.LabelField("Save a Preset", EditorStyles.boldLabel);
-		Rect save = EditorGUILayout.BeginHorizontal ();
+		EditorGUILayout.BeginHorizontal ();
 		// New Preset Id field
 		EditorGUILayout.PropertyField (_newPresetId, GUIContent.none, GUILayout.Width(100.0f));
 

@@ -133,8 +133,6 @@ namespace Crayon {
 				string json = JsonUtility.ToJson(preset, true);
 				// Debug.Log (json);
 
-				string fileName = preset._id + ".txt";
-
 				string path = Application.dataPath + "/Crayon/UserPresets/" + preset._id + ".txt";
 				File.WriteAllText (path, json);
 

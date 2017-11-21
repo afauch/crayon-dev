@@ -18,6 +18,9 @@ namespace Crayon {
 		public ChangeStateDelegate OnChangeState;
 
 		private string _currentState = null;
+		private Vector3 _originalPosition;
+		private Quaternion _originalRotation;
+		private Vector3 _originalScale;
 
 		void Awake() {
 
@@ -27,9 +30,19 @@ namespace Crayon {
 				SubscribeToParent ();
 			}
 
+			SetOriginalTransform ();
+
 		}
 
 		void Update() {
+
+		}
+
+		private void SetOriginalTransform () {
+
+			_originalPosition = gameObject.transform.localPosition;
+			_originalRotation = gameObject.transform.localRotation;
+			_originalScale = gameObject.transform.localScale;
 
 		}
 
@@ -86,9 +99,15 @@ namespace Crayon {
 			if (state != null) {
 				// Actually do the tween
 				gameObject.SetColor (state._color, state._duration, state._easing);
-				gameObject.SetRelativePosition (state._relativePosition, state._duration, state._easing);
-				gameObject.SetRelativeRotation (state._relativeRotation, state._duration, state._easing);
-				gameObject.SetRelativeScale (state._relativeScale, state._duration, state._easing);
+
+				Vector3 relativePosition = new Vector3 (_originalPosition.x + state._relativePosition.x, _originalPosition.y + state._relativePosition.y, _originalPosition.z + state._relativePosition.z);
+				gameObject.SetPosition (relativePosition, state._duration, state._easing);
+
+				Vector3 relativeRotation = new Vector3 (_originalRotation.eulerAngles.x + state._relativeRotation.x, _originalRotation.eulerAngles.y + state._relativeRotation.y, _originalRotation.eulerAngles.z + state._relativeRotation.z);
+				gameObject.SetRotation (relativeRotation, state._duration, state._easing);
+
+				Vector3 relativeScale = new Vector3 (_originalScale.x * state._relativeScale.x, _originalScale.y * state._relativeScale.y, _originalScale.z * state._relativeScale.z);
+				gameObject.SetScale (relativeScale, state._duration, state._easing);
 
 				_currentState = matchKey;
 
