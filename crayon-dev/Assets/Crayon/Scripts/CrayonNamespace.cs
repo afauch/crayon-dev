@@ -49,7 +49,7 @@ namespace Crayon
 	
 		// Specify no duration - use a default
 		public static void FadeOutAndDestroy(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.Out, 0.0f, Defaults._duration, Defaults._easing, true);
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, true);
 		}
 		// Specify duration and easing as string 
 		public static void FadeOutAndDestroy(this GameObject gameObject, float duration, string easing) {
@@ -66,7 +66,7 @@ namespace Crayon
 
 		// Normal parameters
 		public static void SetColor(this GameObject gameObject, Color color, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+			TweenColor (gameObject, color, duration, easing);
 		}
 
 		// Use hex color
@@ -218,21 +218,28 @@ namespace Crayon
 				endColor = new Color (startColor.r, startColor.g, startColor.b, opacity);
 			}
 
-			while (elapsedTime < duration) {
-				// this interpolates color
-				float t = elapsedTime / duration;
-				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing);
-				elapsedTime += Time.deltaTime;
-				Color currentColor = Color.Lerp (startColor, endColor, t);
-				m.SetColor ("_Color", currentColor);
-				yield return null;
+			if (duration < 0.0001f) {
+				m.SetColor ("_Color", endColor);
+			} else {
+
+				while (elapsedTime < duration) {
+					// this interpolates color
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing);
+					elapsedTime += Time.deltaTime;
+					Color currentColor = Color.Lerp (startColor, endColor, t);
+					m.SetColor ("_Color", currentColor);
+					yield return null;
+				}
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
 		}
 
+
 		private static IEnumerator TweenColorCoroutine(GameObject gameObject, Material startMaterial, Material endMaterial, float duration, Easing easing) {
+
 
 			// Debug.Log ("Fade Called on GameObject " + gameObject.name);
 			// Debug.Log("original color for " + gameObject.name + " in TweenColorCoroutine: " + gameObject.GetComponent<Renderer>().material.color);
@@ -258,25 +265,31 @@ namespace Crayon
 				endMaterial = Utils.GetUsableMaterial (r);
 			}
 
-			// TODO: Optimize this for performance. No need to switch to 'Fade'
-			// mode if you're tweening between two Opaque Materials
-			startMaterial = Utils.GetUsableMaterial (startMaterial);
-			endMaterial = Utils.GetUsableMaterial (endMaterial);
+			// Shortcut: Don't Lerp if not necessary
+			if (duration < 0.0001f) {
+				m.CopyPropertiesFromMaterial(endMaterial);
+			} else {
 
-			while (elapsedTime < duration) {
+				// TODO: Optimize this for performance. No need to switch to 'Fade'
+				// mode if you're tweening between two Opaque Materials
+				startMaterial = Utils.GetUsableMaterial (startMaterial);
+				endMaterial = Utils.GetUsableMaterial (endMaterial);
 
-				// this interpolates color
-				float t = elapsedTime / duration;
-				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing);
-				elapsedTime += Time.deltaTime;
+				while (elapsedTime < duration) {
 
-				// Debug.Log ("Material lerping " + gameObject.name + "t" + t);
+					// this interpolates color
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing);
+					elapsedTime += Time.deltaTime;
 
-				// Try this
-				m.Lerp(startMaterial, endMaterial, t);
+					// Debug.Log ("Material lerping " + gameObject.name + "t" + t);
 
-				yield return null;
+					// Try this
+					m.Lerp (startMaterial, endMaterial, t);
+
+					yield return null;
+				}
 			}
 
 		}
@@ -297,16 +310,21 @@ namespace Crayon
 				endPosition = targetPosition;
 			}
 
-			while (elapsedTime < duration) {
-				// this interpolates position
-				float t = elapsedTime / duration;
-				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing, cubicBezier);
-				elapsedTime += Time.deltaTime;
-				// set the position
-				Vector3 interpolatedPosition = Vector3.Lerp(startPosition, endPosition, t);
-				gameObject.transform.position = interpolatedPosition;
-				yield return null;
+			if (duration < 0.0001f) {
+				gameObject.transform.position = endPosition;
+			} else {
+
+				while (elapsedTime < duration) {
+					// this interpolates position
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing, cubicBezier);
+					elapsedTime += Time.deltaTime;
+					// set the position
+					Vector3 interpolatedPosition = Vector3.Lerp (startPosition, endPosition, t);
+					gameObject.transform.position = interpolatedPosition;
+					yield return null;
+				}
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
@@ -329,16 +347,21 @@ namespace Crayon
 				endRotation = targetRotation;
 			}
 
-			while (elapsedTime < duration) {
-				// this interpolates position
-				float t = elapsedTime / duration;
-				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing);
-				elapsedTime += Time.deltaTime;
-				// set the position
-				Quaternion interpolatedRotation = Quaternion.Slerp(startRotation, endRotation, t);
-				gameObject.transform.rotation = interpolatedRotation;
-				yield return null;
+			if (duration < 0.0001f) {
+				gameObject.transform.rotation = endRotation;
+			} else {
+				while (elapsedTime < duration) {
+					// this interpolates position
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing);
+					elapsedTime += Time.deltaTime;
+					// set the position
+					Quaternion interpolatedRotation = Quaternion.Slerp (startRotation, endRotation, t);
+					gameObject.transform.rotation = interpolatedRotation;
+					yield return null;
+				}
+
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
@@ -361,16 +384,22 @@ namespace Crayon
 				endScale = targetScale;
 			}
 
-			while (elapsedTime < duration) {
-				// this interpolates position
-				float t = elapsedTime / duration;
-				// shift 't' based on the easing function
-				t = Utils.GetT (t, easing);
-				elapsedTime += Time.deltaTime;
-				// set the position
-				Vector3 interpolatedScale = Vector3.Lerp(startScale, endScale, t);
-				gameObject.transform.localScale = interpolatedScale;
-				yield return null;
+			if (duration < 0.0001f) {
+				gameObject.transform.localScale = endScale;
+			} else {
+
+				while (elapsedTime < duration) {
+					// this interpolates position
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing);
+					elapsedTime += Time.deltaTime;
+					// set the position
+					Vector3 interpolatedScale = Vector3.Lerp (startScale, endScale, t);
+					gameObject.transform.localScale = interpolatedScale;
+					yield return null;
+				}
+
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);

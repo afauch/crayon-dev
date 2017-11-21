@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 195812082}
   - component: {fileID: 195812083}
   m_Layer: 0
-  m_Name: Test UI
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _newPresetId: 
-  _presetToLoad: test-1
+  _presetToLoad: <Choose Preset>
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,10 +310,10 @@ MonoBehaviour:
   _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 0, g: 1, b: 0.6275861, a: 1}
+  _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _easing: 11
   _duration: 0
-  _relativePosition: {x: 0.3, y: 0.3, z: 0.3}
+  _relativePosition: {x: 2, y: 2, z: 2}
   _relativeRotation: {x: 0, y: 0, z: 0}
   _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!1 &236407034
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 267370563}
   - component: {fileID: 267370564}
   m_Layer: 0
-  m_Name: Crayon
+  m_Name: '[Crayon]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   _customStateType: 
   _crayonMatchKey: hover
   _material: {fileID: 0}
-  _color: {r: 1, g: 0.64137936, b: 0, a: 1}
+  _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _easing: 11
   _duration: 0
   _relativePosition: {x: 2, y: 2, z: 2}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 2128329204}
   - component: {fileID: 2128329207}
   m_Layer: 0
-  m_Name: Child
+  m_Name: TextMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _newPresetId: 
-  _presetToLoad: test-1
+  _presetToLoad: <Choose Preset>
 --- !u!102 &2128329205
 TextMesh:
   serializedVersion: 3
@@ -733,4 +733,4 @@ MonoBehaviour:
   _duration: 0
   _relativePosition: {x: 0.3, y: 0.3, z: 0.3}
   _relativeRotation: {x: 0, y: 0, z: 0}
-  _relativeScale: {x: 1, y: 1, z: 1}
+  _relativeScale: {x: 2, y: 2, z: 2}

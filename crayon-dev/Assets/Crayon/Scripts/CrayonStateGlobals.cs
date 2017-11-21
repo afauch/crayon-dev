@@ -18,11 +18,11 @@ namespace Crayon {
 		public string[] _presetChoices;
 
 		public void InitializeInEditor() {
-			Debug.Log ("InitializeInEditor called.");
+			Debug.Log ("Initializing CrayonStateGlobals.");
 			Instance = this;
 
 			ClearPresetsCache ();
-			Debug.Log ("Current Dictionary Size is: " + _presetsById.Count);
+			// Debug.Log ("Current Dictionary Size is: " + _presetsById.Count);
 			LoadPresetFiles ();
 
 		}
@@ -31,14 +31,17 @@ namespace Crayon {
 			InitializeInEditor ();
 		}
 
+		// Double-check to make sure we're initialized
+		void OnSceneGUI() {
+			if (!Instance)
+				Instance = this;
+		}
+
 		// TODO: I'm sure there's a better way to structure this
 		public void LoadPreset(GameObject g, string id) {
 
 			// Delete all existing states on the gameObject
 			CrayonState[] existingStates = g.GetComponents<CrayonState>();
-			foreach (CrayonState state in existingStates) {
-				DestroyImmediate (state);
-			}
 
 			if (id == null || id == "<None>") {
 				Debug.LogWarning ("No presets to load.");
@@ -46,6 +49,7 @@ namespace Crayon {
 			} else if (id == "<Choose Preset>") {
 
 				Debug.LogWarning ("Choose a preset to load it.");
+				return;
 
 			} else {
 
@@ -56,8 +60,13 @@ namespace Crayon {
 				if (preset == null) {
 
 					Debug.LogWarning ("Preset not found.");
+					return;
 
 				} else {
+
+					foreach (CrayonState state in existingStates) {
+						DestroyImmediate (state);
+					}
 
 					foreach (CrayonStateData stateData in preset._crayonStatesData) {
 
@@ -148,9 +157,9 @@ namespace Crayon {
 
 				// is this a text file (i.e. not a meta file)
 				if (f.Extension == ".txt") {
-					Debug.Log (f);
+					// Debug.Log (f);
 					string json = File.ReadAllText (f.FullName);
-					Debug.Log (json);
+					// Debug.Log (json);
 
 					CrayonPreset preset;
 					preset = JsonUtility.FromJson<CrayonPreset> (json);
@@ -168,7 +177,7 @@ namespace Crayon {
 
 		public void PopulatePresetsDropdown() {
 
-			Debug.Log ("PopulatePresetsDropdown called.");
+			// Debug.Log ("PopulatePresetsDropdown called.");
 
 			_presetChoices = new string[_presetsById.Count + 1];
 			_presetChoices [0] = "<Choose Preset>";

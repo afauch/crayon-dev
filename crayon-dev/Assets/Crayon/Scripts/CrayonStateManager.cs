@@ -74,7 +74,7 @@ namespace Crayon {
 			// TODO: Add error handling for nonexistent states
 			string matchKey = stateType.ToString().ToLower() + customState;
 
-			Debug.Log ("Looking for Match key " + matchKey);
+			// Debug.Log ("Looking for Match key " + matchKey);
 
 			CrayonState state;
 			_allStatesByMatchKey.TryGetValue (matchKey, out state);
@@ -94,7 +94,7 @@ namespace Crayon {
 
 		void OnValidate() {
 
-			Debug.Log ("_listenToParent is " + _listenToParent);
+			// Debug.Log ("_listenToParent is " + _listenToParent);
 
 		}
 

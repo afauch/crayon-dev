@@ -22,6 +22,7 @@ public class CrayonStateManagerEditor : Editor {
 	public override void OnInspectorGUI()
 	{
 
+
 		CrayonStateManager myScript = (CrayonStateManager)target;
 
 		// DrawDefaultInspector();
