@@ -17,6 +17,7 @@ namespace Crayon {
 		public delegate void ChangeStateDelegate (CrayonStateType stateType, string customState = "");
 		public ChangeStateDelegate OnChangeState;
 
+		private string _currentState = null;
 
 		void Awake() {
 
@@ -48,7 +49,7 @@ namespace Crayon {
 
 		// Look to parent and subscribe to their Change State event
 		public void SubscribeToParent () {
-			Transform[] t = gameObject.GetComponentsInParent<Transform> ();
+			// Transform[] t = gameObject.GetComponentsInParent<Transform> ();
 			CrayonStateManager[] parent = gameObject.GetComponentsInParent<CrayonStateManager> ();
 			parent[1].OnChangeState += ChangeState;
 		}
@@ -74,7 +75,9 @@ namespace Crayon {
 			// TODO: Add error handling for nonexistent states
 			string matchKey = stateType.ToString().ToLower() + customState;
 
-			// Debug.Log ("Looking for Match key " + matchKey);
+			// Don't do anything if we're already on the right state
+			if (matchKey == _currentState)
+				return;
 
 			CrayonState state;
 			_allStatesByMatchKey.TryGetValue (matchKey, out state);
@@ -86,6 +89,9 @@ namespace Crayon {
 				gameObject.SetRelativePosition (state._relativePosition, state._duration, state._easing);
 				gameObject.SetRelativeRotation (state._relativeRotation, state._duration, state._easing);
 				gameObject.SetRelativeScale (state._relativeScale, state._duration, state._easing);
+
+				_currentState = matchKey;
+
 			} else {
 				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);
 			}

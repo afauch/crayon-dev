@@ -124,12 +124,12 @@ namespace Crayon {
 			foreach (CrayonPreset preset in _presetsById.Values) {
 
 				string json = JsonUtility.ToJson(preset, true);
-				Debug.Log (json);
+				// Debug.Log (json);
 
 				string fileName = preset._id + ".txt";
 
 				if(AssetDatabase.IsValidFolder("Assets/Crayon/UserPresets")) {
-					Debug.Log("Folder Exists");
+					// Debug.Log("Folder Exists");
 				} else {
 					Debug.Log("Folder does not exist -- creating now.");
 					AssetDatabase.CreateFolder ("Assets/Crayon", "UserPresets");
