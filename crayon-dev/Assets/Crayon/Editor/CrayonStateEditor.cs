@@ -7,6 +7,12 @@ using Crayon;
 [CanEditMultipleObjects]
 public class CrayonStateEditor : Editor {
 
+	// Layout Variables
+	float _checkboxWidth = 24.0f;
+	float _labelsWidth = 112.0f;
+	bool _showTransition = false;
+	bool _showProperties = false;
+
 	// State Id
 
 	SerializedProperty crayonStateType;
@@ -76,42 +82,66 @@ public class CrayonStateEditor : Editor {
 		EditorGUILayout.LabelField("State", EditorStyles.boldLabel);
 
 		EditorGUILayout.PropertyField (crayonStateType);
-		EditorGUILayout.PropertyField (customStateType);
+		if (crayonStateType.enumValueIndex == (crayonStateType.enumNames.Length - 1)) {
+			EditorGUILayout.PropertyField (customStateType, new GUIContent("Custom State Name"));
+		}
 
 
 		// State Easing
 
-		EditorGUILayout.LabelField("Easing", EditorStyles.boldLabel);
+		_showTransition = EditorGUILayout.Foldout (_showTransition, "Transition");
 
-		EditorGUILayout.PropertyField (duration);
-		EditorGUILayout.PropertyField (easing);
-		if (easing.enumValueIndex == (easing.enumNames.Length - 1)) {
-			EditorGUILayout.PropertyField (customEasing);
+		// EditorGUILayout.LabelField("Easing", EditorStyles.boldLabel);
+
+		if (_showTransition) {
+
+			EditorGUILayout.PropertyField (duration);
+			EditorGUILayout.PropertyField (easing);
+			if (easing.enumValueIndex == (easing.enumNames.Length - 1)) {
+				EditorGUILayout.PropertyField (customEasing);
+			}
+
 		}
 
 		// State Properties
 
-		EditorGUILayout.LabelField("Properties", EditorStyles.boldLabel);
+		_showProperties = EditorGUILayout.Foldout (_showProperties, "Properties");
 
-		EditorGUILayout.BeginHorizontal ();
-		EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width(30.0f));
-		EditorGUILayout.PropertyField (color);
-		EditorGUILayout.EndHorizontal ();
+		if (_showProperties) {
 
-		EditorGUILayout.BeginHorizontal ();
-		EditorGUILayout.PropertyField (tweenPosition, GUIContent.none, GUILayout.Width(30.0f));
-		EditorGUILayout.PropertyField (relativePosition);
-		EditorGUILayout.EndHorizontal ();
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
+			if (tweenColor.boolValue) {
+				EditorGUILayout.PropertyField (color, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
 
-		EditorGUILayout.BeginHorizontal ();
-		EditorGUILayout.PropertyField (tweenRotation, GUIContent.none, GUILayout.Width(30.0f));
-		EditorGUILayout.PropertyField (relativeRotation);
-		EditorGUILayout.EndHorizontal ();
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenPosition, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Position", GUILayout.Width (_labelsWidth));
+			if (tweenPosition.boolValue) {
+				EditorGUILayout.PropertyField (relativePosition, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
 
-		EditorGUILayout.BeginHorizontal ();
-		EditorGUILayout.PropertyField (tweenScale, GUIContent.none, GUILayout.Width(30.0f));
-		EditorGUILayout.PropertyField (relativeScale);
-		EditorGUILayout.EndHorizontal ();
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenRotation, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Rotation", GUILayout.Width (_labelsWidth));
+			if (tweenRotation.boolValue) {
+				EditorGUILayout.PropertyField (relativeRotation, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
+
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenScale, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Scale", GUILayout.Width (_labelsWidth));
+			if (tweenScale.boolValue) {
+				EditorGUILayout.PropertyField (relativeScale, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
+
+		}
 
 		// Save the changes back to the object
 		EditorUtility.SetDirty(target);

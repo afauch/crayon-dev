@@ -57,8 +57,6 @@ namespace Crayon {
 
 			CrayonState[] states = GetComponents<CrayonState> ();
 
-			Debug.Log ("# of CrayonStates found on " + gameObject.name + " is " + states.Length);
-
 			foreach(CrayonState state in states) {
 				_allStatesByMatchKey.Add (state._crayonMatchKey, state);
 			}
