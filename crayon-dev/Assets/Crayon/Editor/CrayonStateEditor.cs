@@ -85,7 +85,9 @@ public class CrayonStateEditor : Editor {
 
 		EditorGUILayout.PropertyField (duration);
 		EditorGUILayout.PropertyField (easing);
-		EditorGUILayout.PropertyField (customEasing);
+		if (easing.enumValueIndex == (easing.enumNames.Length - 1)) {
+			EditorGUILayout.PropertyField (customEasing);
+		}
 
 		// State Properties
 

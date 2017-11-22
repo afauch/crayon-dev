@@ -581,7 +581,7 @@ MonoBehaviour:
   _crayonStateType: 0
   _customStateType: 
   _crayonMatchKey: default
-  _easing: 11
+  _easing: 9
   _customEasing: 
   _duration: 2
   _tweenColor: 1
