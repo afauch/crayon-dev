@@ -491,9 +491,9 @@ GameObject:
   m_Component:
   - component: {fileID: 848800489}
   - component: {fileID: 848800491}
-  - component: {fileID: 848800490}
   - component: {fileID: 848800493}
   - component: {fileID: 848800492}
+  - component: {fileID: 848800490}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 0
   _newPresetId: 
-  _presetToLoad: <Choose Preset>
+  _presetToLoad: test-1
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +558,7 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 
   _duration: 0.6
-  _tweenColor: 1
+  _tweenColor: 0
   _material: {fileID: 0}
   _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _tweenPosition: 1
@@ -566,7 +566,7 @@ MonoBehaviour:
   _tweenRotation: 1
   _relativeRotation: {x: 0, y: -90, z: 0}
   _tweenScale: 1
-  _relativeScale: {x: 1.2, y: 1.2, z: 1.2}
+  _relativeScale: {x: 2, y: 2, z: 2}
 --- !u!114 &848800493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -583,13 +583,13 @@ MonoBehaviour:
   _crayonMatchKey: default
   _easing: 9
   _customEasing: 
-  _duration: 2
+  _duration: 0.6
   _tweenColor: 0
   _material: {fileID: 0}
   _color: {r: 0, g: 0, b: 0, a: 0}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
-  _tweenRotation: 0
+  _tweenRotation: 1
   _relativeRotation: {x: 0, y: 0, z: 0}
   _tweenScale: 1
   _relativeScale: {x: 1, y: 1, z: 1}

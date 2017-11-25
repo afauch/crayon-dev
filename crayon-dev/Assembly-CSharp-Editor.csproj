@@ -55,6 +55,7 @@
      <Compile Include="Assets\Crayon\Editor\CrayonStateGlobalsEditor.cs" />
      <Compile Include="Assets\Crayon\Editor\CrayonStateManagerEditor.cs" />
      <None Include="Assets\Shaders\3DText.shader" />
+     <None Include="Assets\Crayon\UserPresets\test-1.txt" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
  <Reference Include="Assembly-CSharp">
  <HintPath>/Users/afaucher/Documents/Github/crayon-dev/crayon-dev/Library/ScriptAssemblies/Assembly-CSharp.dll</HintPath>

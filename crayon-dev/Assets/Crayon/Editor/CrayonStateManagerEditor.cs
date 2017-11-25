@@ -12,6 +12,8 @@ public class CrayonStateManagerEditor : Editor {
 	SerializedProperty _listenToParent;
 	SerializedProperty _newPresetId;
 
+	bool _showPresets;
+
 	void OnEnable() {
 
 		_listenToParent = serializedObject.FindProperty ("_listenToParent");
@@ -28,39 +30,44 @@ public class CrayonStateManagerEditor : Editor {
 		// DrawDefaultInspector();
 	
 		// Listen to Parent field
-		EditorGUILayout.LabelField("Parenting", EditorStyles.boldLabel);
-		EditorGUILayout.PropertyField (_listenToParent, new GUIContent ("Listen to Parent"));
-
-		// Load Fields
-		EditorGUILayout.LabelField("Load a Preset", EditorStyles.boldLabel);
 		EditorGUILayout.BeginHorizontal ();
-		try
-		{
-			_choiceIndex = EditorGUILayout.Popup(_choiceIndex, CrayonStateGlobals.Instance._presetChoices, GUILayout.Width(100.0f));
-			// Update the selected choice in the underlying object
-			myScript._presetToLoad = CrayonStateGlobals.Instance._presetChoices[_choiceIndex];
-		} catch(Exception e) {
-			Debug.LogWarning ("No presets to load – reinitializing.");
-			CrayonStateGlobals.Instance.InitializeInEditor ();
-		}
-		if (GUILayout.Button("Load",GUILayout.Width(100.0f)))
-		{
-			myScript.LoadPreset();
-		}
+		EditorGUILayout.PropertyField (_listenToParent, GUIContent.none, GUILayout.Width (24.0f));
+		EditorGUILayout.LabelField ("Listen to Parent", GUILayout.Width (112.0f));
 		EditorGUILayout.EndHorizontal ();
 
-		// Save Fields
-		EditorGUILayout.LabelField("Save a Preset", EditorStyles.boldLabel);
-		EditorGUILayout.BeginHorizontal ();
-		// New Preset Id field
-		EditorGUILayout.PropertyField (_newPresetId, GUIContent.none, GUILayout.Width(100.0f));
+		_showPresets = EditorGUILayout.Foldout (_showPresets, "Presets");
 
-		if (GUILayout.Button("Save",GUILayout.Width(100.0f)))
-		{
-			myScript.SavePreset();
+		if (_showPresets) {
+
+			// Load Fields
+			EditorGUILayout.LabelField ("Load a Preset", EditorStyles.boldLabel);
+			EditorGUILayout.BeginHorizontal ();
+			try {
+				_choiceIndex = EditorGUILayout.Popup (_choiceIndex, CrayonStateGlobals.Instance._presetChoices, GUILayout.Width (100.0f));
+				// Update the selected choice in the underlying object
+				myScript._presetToLoad = CrayonStateGlobals.Instance._presetChoices [_choiceIndex];
+			} catch (Exception e) {
+				Debug.LogWarning ("No presets to load – reinitializing.");
+				CrayonStateGlobals.Instance.InitializeInEditor ();
+			}
+			if (GUILayout.Button ("Load", GUILayout.Width (100.0f))) {
+				myScript.LoadPreset ();
+			}
+			EditorGUILayout.EndHorizontal ();
+
+			// Save Fields
+			EditorGUILayout.LabelField ("Save a Preset", EditorStyles.boldLabel);
+			EditorGUILayout.BeginHorizontal ();
+			// New Preset Id field
+			EditorGUILayout.PropertyField (_newPresetId, GUIContent.none, GUILayout.Width (100.0f));
+
+			if (GUILayout.Button ("Save", GUILayout.Width (100.0f))) {
+				myScript.SavePreset ();
+			}
+
+			EditorGUILayout.EndHorizontal ();
+
 		}
-
-		EditorGUILayout.EndHorizontal ();
 
 		// Save the changes back to the object
 		EditorUtility.SetDirty(target);

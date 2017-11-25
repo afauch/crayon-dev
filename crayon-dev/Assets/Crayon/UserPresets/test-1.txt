@@ -1,0 +1,77 @@
+{
+    "_id": "test-1",
+    "_crayonStatesData": [
+        {
+            "_crayonStateType": 0,
+            "_customStateType": "",
+            "_crayonMatchKey": "default",
+            "_easing": 9,
+            "_customEasing": "",
+            "_duration": 0.6000000238418579,
+            "_tweenColor": true,
+            "_material": {
+                "instanceID": 0
+            },
+            "_color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 0.0
+            },
+            "_tweenPosition": true,
+            "_relativePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenRotation": true,
+            "_relativeRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenScale": true,
+            "_relativeScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_crayonStateType": 1,
+            "_customStateType": "",
+            "_crayonMatchKey": "hover",
+            "_easing": 11,
+            "_customEasing": "",
+            "_duration": 0.6000000238418579,
+            "_tweenColor": false,
+            "_material": {
+                "instanceID": 0
+            },
+            "_color": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.8482761383056641,
+                "a": 1.0
+            },
+            "_tweenPosition": true,
+            "_relativePosition": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            },
+            "_tweenRotation": true,
+            "_relativeRotation": {
+                "x": 0.0,
+                "y": -90.0,
+                "z": 0.0
+            },
+            "_tweenScale": true,
+            "_relativeScale": {
+                "x": 2.0,
+                "y": 2.0,
+                "z": 2.0
+            }
+        }
+    ]
+}
