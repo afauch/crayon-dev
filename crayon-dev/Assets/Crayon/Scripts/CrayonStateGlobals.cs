@@ -11,15 +11,43 @@ namespace Crayon {
 
 	[ExecuteInEditMode]
 	[System.Serializable]
-	public class CrayonStateGlobals : CrayonSingleton<CrayonStateGlobals> {
+	public class CrayonStateGlobals : MonoBehaviour {
 
-		public static CrayonStateGlobals Instance;
+		private static CrayonStateGlobals instance;
+		public static CrayonStateGlobals Instance {
+
+			get { 
+			
+				if (instance == null) {
+					CrayonStateGlobals i = GameObject.FindObjectOfType<CrayonStateGlobals> ();
+					if (i == null) {
+						Debug.Log ("No CrayonStateGlobals found - creating a new GameObject");
+						GameObject g = GameObject.Instantiate (new GameObject ("[CrayonStateGlobals]"));
+						CrayonStateGlobals c = g.AddComponent<CrayonStateGlobals> ();
+						instance = c;
+						instance.InitializeInEditor ();
+						return c;
+					} else {
+						Debug.Log ("instance was null but found an instance of CrayonStateGlobals.");
+						instance = i;
+						instance.InitializeInEditor ();
+						return i;
+					}
+				} else {
+					Debug.Log ("instance is not null - returning instance.");
+					return instance;
+				}
+			}
+
+			set { }
+
+		}
+
 		public Dictionary<string, CrayonPreset> _presetsById;			// these are presets of CrayonStateManagers (think of them like CSS classes or Sketch style presets)
 		public string[] _presetChoices;
 
 		public void InitializeInEditor() {
 			Debug.Log ("Initializing CrayonStateGlobals.");
-			Instance = this;
 
 			ClearPresetsCache ();
 			CheckUserPresetFolder ();
@@ -27,14 +55,14 @@ namespace Crayon {
 
 		}
 
-		void Awake() {
-			InitializeInEditor ();
-		}
+//		void Awake() {
+//			InitializeInEditor ();
+//		}
 
 		// Double-check to make sure we're initialized
 		void OnSceneGUI() {
-			if (!Instance)
-				Instance = this;
+			if (!instance)
+				instance = this;
 		}
 
 		// TODO: I'm sure there's a better way to structure this

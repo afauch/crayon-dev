@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 133
+  controlID: 25
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 97
+  controlID: 74
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -317,14 +317,14 @@ MonoBehaviour:
     width: 433
     height: 317
   m_SceneLighting: 0
-  lastFramingTime: 477.03485000133514
+  lastFramingTime: 1118.4469119906425
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.2301, y: -2.46, z: 1.68}
+    m_Target: {x: -3.2301002, y: -2.46, z: 1.6467316}
     speed: 2
-    m_Value: {x: -3.2301, y: -2.46, z: 1.68}
+    m_Value: {x: -3.2301002, y: -2.46, z: 1.6467316}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -601,23 +601,23 @@ MonoBehaviour:
     height: 200
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 72050000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 1cfcffff00000000
+    m_ExpandedIDs: 1cfcffff00000000b2260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: TextMesh
+      m_OriginalName: TextMesh
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 9918
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -675,7 +675,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: d6320000
     m_LastClickedID: 13014
-    m_ExpandedIDs: 00000000142600001c2600002026000054260000642600000427000006270000
+    m_ExpandedIDs: 00000000142600001c260000202600005026000054260000642600000427000006270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

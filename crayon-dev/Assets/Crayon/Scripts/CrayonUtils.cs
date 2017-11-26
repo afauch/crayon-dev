@@ -30,6 +30,9 @@ namespace Crayon {
 
 		// Returns t based on easing
 		public static float GetT(float t, Easing easing, string cubicBezier = "") {
+
+			Debug.Log (cubicBezier);
+
 			switch (easing) {
 
 			case Easing.BackIn: return EasingTypes.Back.In (t);
@@ -117,6 +120,8 @@ namespace Crayon {
 			// Debug.Log("GetCustomT called");
 
 			// TODO: Add error handling for bad inputs
+
+			Debug.Log (cubicBezier);
 
 			// Parse string
 			string[] numArray = cubicBezier.Split (',');

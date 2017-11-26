@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 0
   _newPresetId: 
-  _presetToLoad: test-1
+  _presetToLoad: <Choose Preset>
 --- !u!114 &848800492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,8 +555,8 @@ MonoBehaviour:
   _crayonStateType: 1
   _customStateType: 
   _crayonMatchKey: hover
-  _easing: 11
-  _customEasing: 
+  _easing: 28
+  _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.6
   _tweenColor: 0
   _material: {fileID: 0}

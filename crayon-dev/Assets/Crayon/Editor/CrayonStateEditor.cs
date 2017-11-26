@@ -78,7 +78,7 @@ public class CrayonStateEditor : Editor {
 
 
 		// State Id
-
+		EditorGUILayout.LabelField ("State", EditorStyles.boldLabel);
 		EditorGUILayout.PropertyField (crayonStateType, GUIContent.none);
 		if (crayonStateType.enumValueIndex == (crayonStateType.enumNames.Length - 1)) {
 			EditorGUILayout.PropertyField (customStateType, new GUIContent("Custom State Name"));

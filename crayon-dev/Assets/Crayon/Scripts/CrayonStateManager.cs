@@ -78,7 +78,7 @@ namespace Crayon {
 		}
 
 		public void LoadPreset() {
-			CrayonStateGlobals.Instance.LoadPreset (this.gameObject, _presetToLoad);
+ 			CrayonStateGlobals.Instance.LoadPreset (this.gameObject, _presetToLoad);
 		}
 
 		public void SavePreset() {
@@ -107,6 +107,8 @@ namespace Crayon {
 
 			// TODO: Add conditionals to make this more efficient
 			if (state != null) {
+
+
 				// Actually do the tween
 
 				if (state._tweenColor) {

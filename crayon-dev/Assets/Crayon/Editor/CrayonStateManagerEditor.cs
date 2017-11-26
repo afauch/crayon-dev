@@ -26,10 +26,9 @@ public class CrayonStateManagerEditor : Editor {
 
 
 		CrayonStateManager myScript = (CrayonStateManager)target;
-
-		// DrawDefaultInspector();
-	
+			
 		// Listen to Parent field
+		EditorGUILayout.LabelField ("Parenting", EditorStyles.boldLabel);
 		EditorGUILayout.BeginHorizontal ();
 		EditorGUILayout.PropertyField (_listenToParent, GUIContent.none, GUILayout.Width (24.0f));
 		EditorGUILayout.LabelField ("Listen to Parent", GUILayout.Width (112.0f));
@@ -46,7 +45,7 @@ public class CrayonStateManagerEditor : Editor {
 				_choiceIndex = EditorGUILayout.Popup (_choiceIndex, CrayonStateGlobals.Instance._presetChoices, GUILayout.Width (100.0f));
 				// Update the selected choice in the underlying object
 				myScript._presetToLoad = CrayonStateGlobals.Instance._presetChoices [_choiceIndex];
-			} catch (Exception e) {
+			} catch {
 				Debug.LogWarning ("No presets to load – reinitializing.");
 				CrayonStateGlobals.Instance.InitializeInEditor ();
 			}
