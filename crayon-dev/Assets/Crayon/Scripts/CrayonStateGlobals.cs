@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System.IO;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 
 namespace Crayon {
 
@@ -110,10 +114,12 @@ namespace Crayon {
 		}
 
 		private void CheckUserPresetFolder() {
+			#if UNITY_EDITOR			
 			if(!AssetDatabase.IsValidFolder("Assets/Crayon/UserPresets")) {
 				Debug.Log("Creating Crayon/UserPresets directory");
 				AssetDatabase.CreateFolder ("Assets/Crayon", "UserPresets");
 			}
+			#endif
 		}
 
 		public void SavePreset(GameObject g, string id, CrayonStateManager sentBy) {
