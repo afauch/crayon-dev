@@ -15,58 +15,58 @@ namespace Crayon
 		// Fade - Ins
 
 		// Specify no duration - use a default
-		public static void FadeIn(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false);
+		public static void FadeIn(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false, cubicBezier);
 		}
 
 
 		// Fade-Ins (New)
 
 		// Normal parameters
-		public static void FadeInNew(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
+		public static void FadeInNew(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
 			gameObject = GameObject.Instantiate (gameObject, Vector3.zero, Quaternion.identity);
-			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false);
+			Fade (gameObject, FadeDirection.In, 0.0f, duration, easing, false, cubicBezier);
 		}
 		// Specify target transform as well
-		public static void FadeInNew(this GameObject gameobject, Transform transform, float duration, Easing easing) {
+		public static void FadeInNew(this GameObject gameobject, Transform transform, float duration, Easing easing, string cubicBezier = Defaults._cubicBezier) {
 			gameobject = GameObject.Instantiate (gameobject, transform.position, transform.rotation);
-			Fade (gameobject, FadeDirection.In, 0.0f, duration, easing, false);
+			Fade (gameobject, FadeDirection.In, 0.0f, duration, easing, false, cubicBezier);
 		}
 
 		// Fade - Outs
 
 		// Normal parameters
-		public static void FadeOut(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, false);
+		public static void FadeOut(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, false, cubicBezier);
 		}
 		// Specify easing as string 
-		public static void FadeOut(this GameObject gameObject, float duration, string easing) {
-			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), false);
+		public static void FadeOut(this GameObject gameObject, float duration, string easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), false, cubicBezier);
 		}
 
 
 		// Fade - Out and Destroy
 	
 		// Specify no duration - use a default
-		public static void FadeOutAndDestroy(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, true);
+		public static void FadeOutAndDestroy(this GameObject gameObject, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, easing, true, cubicBezier);
 		}
 		// Specify duration and easing as string 
-		public static void FadeOutAndDestroy(this GameObject gameObject, float duration, string easing) {
-			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), true);
+		public static void FadeOutAndDestroy(this GameObject gameObject, float duration, string easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.Out, 0.0f, duration, Utils.GetEasing(easing), true, cubicBezier);
 		}
 
 		// Set Opacity
 		// Normal parameters
-		public static void SetOpacity(this GameObject gameObject, float opacity, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			Fade (gameObject, FadeDirection.Out, opacity, duration, easing, false);
+		public static void SetOpacity(this GameObject gameObject, float opacity, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			Fade (gameObject, FadeDirection.Out, opacity, duration, easing, false, cubicBezier);
 		}
 
 		// Set Color
 
 		// Normal parameters
-		public static void SetColor(this GameObject gameObject, Color color, float duration = Defaults._duration, Easing easing = Defaults._easing) {
-			TweenColor (gameObject, color, duration, easing);
+		public static void SetColor(this GameObject gameObject, Color color, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			TweenColor (gameObject, color, duration, easing, cubicBezier);
 		}
 
 		// Use hex color
@@ -74,7 +74,7 @@ namespace Crayon
 			// TODO: Add error handling here
 			Color color;
 			ColorUtility.TryParseHtmlString (hexColor, out color);
-			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+			TweenColor (gameObject, color, Defaults._duration, Defaults._easing, Defaults._cubicBezier);
 		}
 
 		public static void SetColor(this GameObject gameObject, string hexColor, float opacity) {
@@ -83,7 +83,7 @@ namespace Crayon
 			Color color;
 			ColorUtility.TryParseHtmlString (hexColor, out color);
 			color.a = opacity;
-			TweenColor (gameObject, color, Defaults._duration, Defaults._easing);
+			TweenColor (gameObject, color, Defaults._duration, Defaults._easing, Defaults._cubicBezier);
 		}
 
 		// Set Texture
@@ -95,52 +95,52 @@ namespace Crayon
 		// TODO: Create a method for tweening to a specific material which might be supplied via the inspector
 
 		// Set Position
-		public static void SetPosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
-			TweenPosition (gameObject, targetPosition, duration, easing, false, false);
+		public static void SetPosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
+			TweenPosition (gameObject, targetPosition, duration, easing, false, false, cubicBezier);
 		}
 
 		// TODO: Rename this and add optional parameters to fold into the SetPosition method
-		public static void SetPositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
-			TweenPosition (gameObject, targetPosition, duration, easing, false, false, cubicBezier);
-		}
+//		public static void SetPositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
+//			TweenPosition (gameObject, targetPosition, duration, easing, false, false, cubicBezier);
+//		}
 			
 		// Set Relative Position
-		public static void SetRelativePosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing){
-			TweenPosition (gameObject, targetPosition, duration, easing, false, true);
-		}
-		public static void SetRelativePositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
+		public static void SetRelativePosition(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
 			TweenPosition (gameObject, targetPosition, duration, easing, false, true, cubicBezier);
 		}
+//		public static void SetRelativePositionCB(this GameObject gameObject, Vector3 targetPosition, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = ""){
+//			TweenPosition (gameObject, targetPosition, duration, easing, false, true, cubicBezier);
+//		}
 
 
 		// Set Rotation
-		public static void SetRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing){
+		public static void SetRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
 			Quaternion targetQuaternionRotation = Quaternion.Euler (targetRotation);
-			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, false);
+			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, false, cubicBezier);
 		}
 
 		// Set Relative Rotation
-		public static void SetRelativeRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing){
+		public static void SetRelativeRotation(this GameObject gameObject, Vector3 targetRotation, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
 			Quaternion targetQuaternionRotation = Quaternion.Euler (targetRotation);
-			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, true);
+			TweenRotation (gameObject, targetQuaternionRotation, duration, easing, false, true, cubicBezier);
 		}
 
 		// Set Scale
-		public static void SetScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
-			TweenScale (gameObject, targetScale, duration, easing, false, false);
+		public static void SetScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
+			TweenScale (gameObject, targetScale, duration, easing, false, false, cubicBezier);
 		}
-		public static void SetScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+		public static void SetScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
 			Vector3 targetVector3Scale = new Vector3 (targetScale, targetScale, targetScale);
-			TweenScale (gameObject, targetVector3Scale, duration, easing, false, false);
+			TweenScale (gameObject, targetVector3Scale, duration, easing, false, false, cubicBezier);
 		}
 
 		// Set Relative Scale
-		public static void SetRelativeScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
-			TweenScale (gameObject, targetScale, duration, easing, false, true);
+		public static void SetRelativeScale(this GameObject gameObject, Vector3 targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
+			TweenScale (gameObject, targetScale, duration, easing, false, true, cubicBezier);
 		}
-		public static void SetRelativeScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing){
+		public static void SetRelativeScale(this GameObject gameObject, float targetScale, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier){
 			Vector3 targetVector3Scale = new Vector3 (targetScale, targetScale, targetScale);
-			TweenScale (gameObject, targetVector3Scale, duration, easing, false, true);
+			TweenScale (gameObject, targetVector3Scale, duration, easing, false, true, cubicBezier);
 		}
 
 		// ---
@@ -156,7 +156,7 @@ namespace Crayon
 		// ---
 
 		// Generic method to handle all fades
-		private static void Fade(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy) {
+		private static void Fade(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy, string cubicBezier) {
 
 			Transform[] objectAndChildren = gameObject.GetComponentsInChildren<Transform> ();
 			// If there are child objects
@@ -164,11 +164,11 @@ namespace Crayon
 				// TODO: Provide a check to see whether the child component already has this code.
 				// I was hitting issues before where child objects were not fading in because they had their own
 				// components calling the same coroutine
-				CrayonRunner.Instance.Run (FadeCoroutine (objectAndChildren[i].gameObject, fadeDirection, opacity, duration, easing, destroy));
+				CrayonRunner.Instance.Run (FadeCoroutine (objectAndChildren[i].gameObject, fadeDirection, opacity, duration, easing, destroy, cubicBezier));
 			}
 		}
 
-		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing) {
+		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing, string cubicBezier) {
 			// Create instance of material
 			Renderer r = gameObject.GetComponent<Renderer>();
 			if (r == null)
@@ -176,19 +176,19 @@ namespace Crayon
 			Material targetMaterial = Object.Instantiate(r.material);
 			targetMaterial.SetColor("_Color", targetColor);
 			// Call Coroutine
-			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing));
+			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing, cubicBezier));
 		}
 
-		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier = "") {
+		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
 			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative, cubicBezier));
 		}
 
-		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
-			CrayonRunner.Instance.Run (TweenRotationCoroutine(gameObject, targetRotation, duration, easing, destroy, isRelative));
+		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
+			CrayonRunner.Instance.Run (TweenRotationCoroutine(gameObject, targetRotation, duration, easing, destroy, isRelative, cubicBezier));
 		}
 
-		private static void TweenScale(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative) {
-			CrayonRunner.Instance.Run (TweenScaleCoroutine(gameObject, targetScale, duration, easing, destroy, isRelative));
+		private static void TweenScale(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
+			CrayonRunner.Instance.Run (TweenScaleCoroutine(gameObject, targetScale, duration, easing, destroy, isRelative, cubicBezier));
 		}
 
 		// ---
@@ -197,7 +197,7 @@ namespace Crayon
 
 		// TODO: This will need to become more generic to handle fade ins, outs, instantiates, destroys, etc.
 		// Actually fade the material
-		private static IEnumerator FadeCoroutine(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy) {
+		private static IEnumerator FadeCoroutine(GameObject gameObject, FadeDirection fadeDirection, float opacity, float duration, Easing easing, bool destroy, string cubicBezier) {
 			// Debug.Log ("Fade Called on GameObject " + gameObject.name);
 			// elapsedTime
 			float elapsedTime = 0;
@@ -226,7 +226,7 @@ namespace Crayon
 					// this interpolates color
 					float t = elapsedTime / duration;
 					// shift 't' based on the easing function
-					t = Utils.GetT (t, easing);
+					t = Utils.GetT (t, easing, cubicBezier);
 					elapsedTime += Time.deltaTime;
 					Color currentColor = Color.Lerp (startColor, endColor, t);
 					m.SetColor ("_Color", currentColor);
@@ -239,7 +239,7 @@ namespace Crayon
 		}
 
 
-		private static IEnumerator TweenColorCoroutine(GameObject gameObject, Material startMaterial, Material endMaterial, float duration, Easing easing) {
+		private static IEnumerator TweenColorCoroutine(GameObject gameObject, Material startMaterial, Material endMaterial, float duration, Easing easing, string cubicBezier) {
 
 
 			// Debug.Log ("Fade Called on GameObject " + gameObject.name);
@@ -281,7 +281,7 @@ namespace Crayon
 					// this interpolates color
 					float t = elapsedTime / duration;
 					// shift 't' based on the easing function
-					t = Utils.GetT (t, easing);
+					t = Utils.GetT (t, easing, cubicBezier);
 					elapsedTime += Time.deltaTime;
 					m.Lerp (startMaterial, endMaterial, t);
 					yield return null;
@@ -291,14 +291,14 @@ namespace Crayon
 
 		}
 
-		private static IEnumerator TweenPositionCoroutine(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier = "") {
+		private static IEnumerator TweenPositionCoroutine(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
 
 			// Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms
 			// or relative to current position
-			Vector3 startPosition = gameObject.transform.position;
+			Vector3 startPosition = gameObject.transform.localPosition;
 			Vector3 endPosition;
 			if (isRelative) {
 				// the supplied Vector3 is relative to the original position
@@ -308,7 +308,7 @@ namespace Crayon
 			}
 
 			if (duration < 0.0001f) {
-				gameObject.transform.position = endPosition;
+				gameObject.transform.localPosition = endPosition;
 			} else {
 
 				while (elapsedTime < duration) {
@@ -319,24 +319,24 @@ namespace Crayon
 					elapsedTime += Time.deltaTime;
 					// set the position
 					Vector3 interpolatedPosition = Vector3.Lerp (startPosition, endPosition, t);
-					gameObject.transform.position = interpolatedPosition;
+					gameObject.transform.localPosition = interpolatedPosition;
 					yield return null;
 				}
-				gameObject.transform.position = endPosition;
+				gameObject.transform.localPosition = endPosition;
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
 
 		}
 
-		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative) {
+		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
 
 			// Debug.Log ("TweenRotation Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
 			float elapsedTime = 0;
 			// are we moving in absolute terms
 			// or relative to current position
-			Quaternion startRotation = gameObject.transform.rotation;
+			Quaternion startRotation = gameObject.transform.localRotation;
 			Quaternion endRotation;
 			if (isRelative) {
 				// the supplied Quaternion is relative to the original position
@@ -346,27 +346,27 @@ namespace Crayon
 			}
 
 			if (duration < 0.0001f) {
-				gameObject.transform.rotation = endRotation;
+				gameObject.transform.localRotation = endRotation;
 			} else {
 				while (elapsedTime < duration) {
 					// this interpolates position
 					float t = elapsedTime / duration;
 					// shift 't' based on the easing function
-					t = Utils.GetT (t, easing);
+					t = Utils.GetT (t, easing, cubicBezier);
 					elapsedTime += Time.deltaTime;
 					// set the position
 					Quaternion interpolatedRotation = Quaternion.Slerp (startRotation, endRotation, t);
-					gameObject.transform.rotation = interpolatedRotation;
+					gameObject.transform.localRotation = interpolatedRotation;
 					yield return null;
 				}
-				gameObject.transform.rotation = endRotation;
+				gameObject.transform.localRotation = endRotation;
 			}
 			if (destroy)
 				GameObject.Destroy (gameObject);
 
 		}
 
-		private static IEnumerator TweenScaleCoroutine(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative) {
+		private static IEnumerator TweenScaleCoroutine(GameObject gameObject, Vector3 targetScale, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
 
 			// Debug.Log ("TweenScale Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
 			// elapsedTime
@@ -390,7 +390,7 @@ namespace Crayon
 					// this interpolates position
 					float t = elapsedTime / duration;
 					// shift 't' based on the easing function
-					t = Utils.GetT (t, easing);
+					t = Utils.GetT (t, easing, cubicBezier);
 					elapsedTime += Time.deltaTime;
 					// set the position
 					Vector3 interpolatedScale = Vector3.Lerp (startScale, endScale, t);

@@ -12,11 +12,11 @@ public class TestCubicBezier : MonoBehaviour {
 
 		if (index == 0) {
 
-			gameObject.SetRelativePosition (new Vector3 (0.0f, 5.0f, 0.0f), 3.0f, Easing.CubicInOut);
+			// gameObject.SetRelativePosition (new Vector3 (0.0f, 5.0f, 0.0f), 3.0f, Easing.CubicInOut);
 
 		} else {
 
-			gameObject.SetRelativePositionCB (new Vector3 (0.0f, 5.0f, 0.0f), 3.0f, Easing.Custom, "0.645,0.045,0.355,1");
+			// gameObject.SetRelativePositionCB (new Vector3 (0.0f, 5.0f, 0.0f), 3.0f, Easing.Custom, "0.645,0.045,0.355,1");
 
 		}
 		

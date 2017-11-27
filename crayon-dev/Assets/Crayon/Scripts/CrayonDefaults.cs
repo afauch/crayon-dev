@@ -9,6 +9,7 @@ namespace Crayon {
 
 		public const float _duration = 10.0f;
 		public const Easing _easing = Easing.Linear;
+		public const string _cubicBezier = "";
 
 	}
 

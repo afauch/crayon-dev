@@ -19,7 +19,8 @@ namespace Crayon {
 		public delegate void FreezeTransformDelegate ();
 		public FreezeTransformDelegate OnFreezeTransform;
 
-		private string _currentState = null;
+		private string _currentMatchKey = null;
+		private CrayonStateType _currentState = CrayonStateType.Default; 
 		private Vector3 _originalPosition;
 		private Quaternion _originalRotation;
 		private Vector3 _originalScale;
@@ -32,19 +33,33 @@ namespace Crayon {
 				SubscribeToParent (true);
 			}
 
+			// TODO: This is a hack and should be cleaned up.
+			_currentState = CrayonStateType.Default;
 			FreezeTransform ();
 
 		}
 
 		void Update() {
 
+			if (_currentState == CrayonStateType.Default) {
+
+				FreezeTransform ();
+
+			}
+
 		}
 
 		public void FreezeTransform () {
 
-			_originalPosition = gameObject.transform.localPosition;
-			_originalRotation = gameObject.transform.localRotation;
-			_originalScale = gameObject.transform.localScale;
+			if (gameObject.transform.localPosition != _originalPosition ||
+			   gameObject.transform.localRotation != _originalRotation ||
+			   gameObject.transform.localScale != _originalScale) {
+
+				_originalPosition = gameObject.transform.localPosition;
+				_originalRotation = gameObject.transform.localRotation;
+				_originalScale = gameObject.transform.localScale;
+
+			}
 
 			if (OnFreezeTransform != null)
 				OnFreezeTransform ();
@@ -68,6 +83,8 @@ namespace Crayon {
 			// Transform[] t = gameObject.GetComponentsInParent<Transform> ();
 			CrayonStateManager[] parent = gameObject.GetComponentsInParent<CrayonStateManager> ();
 
+			try {
+
 			if (subscribe) { // If true, subscribe
 				parent [1].OnChangeState += ChangeState;
 				parent [1].OnFreezeTransform += FreezeTransform;
@@ -75,6 +92,13 @@ namespace Crayon {
 				parent [1].OnChangeState -= ChangeState;
 				parent [1].OnFreezeTransform -= FreezeTransform;
 			}
+
+			} catch {
+
+				Debug.LogWarning ("No parent to subscribe to.");
+
+			}
+
 		}
 
 		public void LoadPreset() {
@@ -99,7 +123,7 @@ namespace Crayon {
 			string matchKey = stateType.ToString().ToLower() + customState;
 
 			// Don't do anything if we're already on the right state
-			if (matchKey == _currentState)
+			if (matchKey == _currentMatchKey)
 				return;
 
 			CrayonState state;
@@ -113,28 +137,29 @@ namespace Crayon {
 
 				if (state._tweenColor) {
 					// Debug.Log ("TweenColor is true");
-					gameObject.SetColor (state._color, state._duration, state._easing);
+					gameObject.SetColor (state._color, state._duration, state._easing, state._customEasing);
 				}
 
 				if (state._tweenPosition) {
 					// Debug.Log ("TweenPosition is true");					
 					Vector3 relativePosition = new Vector3 (_originalPosition.x + state._relativePosition.x, _originalPosition.y + state._relativePosition.y, _originalPosition.z + state._relativePosition.z);
-					gameObject.SetPosition (relativePosition, state._duration, state._easing);
+					gameObject.SetPosition (relativePosition, state._duration, state._easing, state._customEasing);
 				}
 
 				if (state._tweenRotation) {
 					// Debug.Log ("TweenRotation is true");					
 					Vector3 relativeRotation = new Vector3 (_originalRotation.eulerAngles.x + state._relativeRotation.x, _originalRotation.eulerAngles.y + state._relativeRotation.y, _originalRotation.eulerAngles.z + state._relativeRotation.z);
-					gameObject.SetRotation (relativeRotation, state._duration, state._easing);
+					gameObject.SetRotation (relativeRotation, state._duration, state._easing, state._customEasing);
 				}
 
 				if (state._tweenScale) {
 					// Debug.Log ("TweenScale is true");					
 					Vector3 relativeScale = new Vector3 (_originalScale.x * state._relativeScale.x, _originalScale.y * state._relativeScale.y, _originalScale.z * state._relativeScale.z);
-					gameObject.SetScale (relativeScale, state._duration, state._easing);
+					gameObject.SetScale (relativeScale, state._duration, state._easing, state._customEasing);
 				}
 
-				_currentState = matchKey;
+				_currentMatchKey = matchKey;
+				_currentState = state._crayonStateType;
 
 			} else {
 				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);

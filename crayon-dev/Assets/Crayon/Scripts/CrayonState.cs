@@ -26,7 +26,7 @@ namespace Crayon {
 
 		public bool _tweenColor = true;
 		public Material _material;
-		public Color _color;
+		public Color _color = Color.black;
 
 		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
