@@ -62,6 +62,12 @@ namespace Crayon
 			Fade (gameObject, FadeDirection.Out, opacity, duration, easing, false, cubicBezier);
 		}
 
+		// Set Material
+
+		public static void SetMaterial(this GameObject gameObject, Material material, float duration = Defaults._duration, Easing easing = Defaults._easing, string cubicBezier = Defaults._cubicBezier) {
+			TweenMaterial (gameObject, material, duration, easing, cubicBezier);
+		}
+
 		// Set Color
 
 		// Normal parameters
@@ -177,6 +183,14 @@ namespace Crayon
 			targetMaterial.SetColor("_Color", targetColor);
 			// Call Coroutine
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterial, duration, easing, cubicBezier));
+		}
+
+		private static void TweenMaterial(GameObject gameObject, Material targetMaterial, float duration, Easing easing, string cubicBezier) {
+			// Renderer r = gameObject.GetComponent<Renderer>();
+			Debug.Log("Target Material color: " + targetMaterial.GetColor("_EmissionColor"));
+			Material targetMaterialInstance = Object.Instantiate(targetMaterial);
+			Debug.Log("Target Material Instance color: " + targetMaterialInstance.GetColor("_EmissionColor"));
+			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterialInstance, duration, easing, cubicBezier));
 		}
 
 		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {

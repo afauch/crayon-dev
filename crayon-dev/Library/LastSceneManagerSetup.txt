@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/12 - moving object itself.unity
+- path: Assets/Scenes/13 - tween material.unity
   isLoaded: 1
   isActive: 1

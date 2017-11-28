@@ -82,23 +82,35 @@ namespace Crayon {
 
 			// Debug.Log ("GetUsableMaterial called on " + renderer.material.name);
 
-			Material material = renderer.material;
-			return GetUsableMaterial (material);
+			if (renderer == null) {
+
+				Debug.LogWarning ("No renderer attached to this GameObject, but you're trying to tween material.");
+
+				return null;
+
+			} else {
+
+				Material material = renderer.material;
+				return GetUsableMaterial (material);
+
+			}
 
 		}
 
 		public static Material GetUsableMaterial(Material material) {
 
-			// TODO: More case handling
-			string shaderName = material.shader.name;
-
-			// Turn on FadeMode
-			StandardShaderUtils.ChangeRenderMode(material,StandardShaderUtils.BlendMode.Fade);
-
-			// TODO: Is this efficient?
-			material.enableInstancing = true;
-
-			return material;
+			if (material == null) {
+				Debug.LogWarning ("No material to access.");
+				return null;
+			} else {
+				// TODO: More case handling
+				string shaderName = material.shader.name;
+				// Turn on FadeMode
+				StandardShaderUtils.ChangeRenderMode(material,StandardShaderUtils.BlendMode.Fade);
+				// TODO: Is this efficient?
+				material.enableInstancing = true;
+				return material;
+			}
 
 		}
 

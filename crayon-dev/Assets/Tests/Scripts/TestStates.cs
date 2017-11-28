@@ -19,6 +19,8 @@ public class TestStates : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.Alpha2))
 			gameObject.SetState (CrayonStateType.Hover);
 
+		if (Input.GetKeyUp (KeyCode.Alpha3))
+			gameObject.SetState (CrayonStateType.Selected);
 
 	}
 }

@@ -25,8 +25,10 @@ namespace Crayon {
 		public float _duration;
 
 		public bool _tweenColor = true;
-		public Material _material;
 		public Color _color = Color.black;
+
+		public bool _tweenMaterial = true;
+		public Material _material;
 
 		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
@@ -60,15 +62,27 @@ namespace Crayon {
 			return _crayonMatchKey;
 		}
 
+		void Update() {
+
+			if (_material != null && this._crayonStateType == CrayonStateType.Default)
+				Debug.Log (_material.GetColor ("_EmissionColor"));
+
+		}
+
 
 		public void SetDefaultValues() {
 
 			if (!_defaultHasSet) {
 
-				_tweenColor = true;
 				Renderer r = this.gameObject.GetComponent<Renderer> ();
 				if (r != null) {
+					_tweenMaterial = true;
+					_tweenColor = true;					
+					_material = Instantiate(r.sharedMaterial);
 					_color = r.sharedMaterial.GetColor ("_Color");
+				} else {
+					_tweenMaterial = false;
+					_tweenColor = false;
 				}
 
 				_tweenPosition = true;

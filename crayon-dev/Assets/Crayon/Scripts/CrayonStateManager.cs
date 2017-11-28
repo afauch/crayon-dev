@@ -30,7 +30,7 @@ namespace Crayon {
 
 			InitDictionary ();
 			if (_listenToParent) {
-				Debug.Log ("Calling SubscribeToParent");
+				// Debug.Log ("Calling SubscribeToParent");
 				SubscribeToParent (true);
 			}
 
@@ -149,6 +149,11 @@ namespace Crayon {
 
 
 				// Actually do the tween
+
+				if (state._tweenMaterial) {
+					// Debug.Log ("TweenColor is true");
+					gameObject.SetMaterial (state._material, state._duration, state._easing, state._customEasing);
+				}
 
 				if (state._tweenColor) {
 					// Debug.Log ("TweenColor is true");

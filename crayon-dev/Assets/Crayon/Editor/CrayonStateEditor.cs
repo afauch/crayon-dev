@@ -26,6 +26,9 @@ public class CrayonStateEditor : Editor {
 
 	// State Properties
 
+	SerializedProperty tweenMaterial;
+	SerializedProperty material;
+
 	SerializedProperty tweenColor;
 	SerializedProperty color;
 
@@ -53,6 +56,9 @@ public class CrayonStateEditor : Editor {
 		customEasing = serializedObject.FindProperty ("_customEasing");
 
 		// State Properties
+
+		tweenMaterial = serializedObject.FindProperty ("_tweenMaterial");
+		material = serializedObject.FindProperty ("_material");
 
 		tweenColor = serializedObject.FindProperty ("_tweenColor");
 		color = serializedObject.FindProperty ("_color");
@@ -111,6 +117,14 @@ public class CrayonStateEditor : Editor {
 			_showProperties = EditorGUILayout.Foldout (_showProperties, "Properties");
 
 			if (_showProperties) {
+
+				EditorGUILayout.BeginHorizontal ();
+				EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
+				EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
+				if (tweenMaterial.boolValue) {
+					EditorGUILayout.PropertyField (material, GUIContent.none);
+				}
+				EditorGUILayout.EndHorizontal ();
 
 				EditorGUILayout.BeginHorizontal ();
 				EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));

@@ -16,8 +16,10 @@ namespace Crayon {
 		public float _duration;
 
 		public bool _tweenColor = true;
-		public Material _material;
 		public Color _color;
+
+		public bool _tweenMaterial = true;
+		public Material _material;
 
 		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
@@ -46,8 +48,10 @@ namespace Crayon {
 			_easing = state._easing;
 			_customEasing = state._customEasing;
 
-			_tweenColor = state._tweenColor;
+			_tweenMaterial = state._tweenMaterial;
 			_material = state._material;
+
+			_tweenColor = state._tweenColor;
 			_color = state._color;
 
 			_tweenPosition = state._tweenPosition;
@@ -73,8 +77,10 @@ namespace Crayon {
 			state._easing = _easing;
 			state._customEasing = _customEasing;
 
-			state._tweenColor = _tweenColor;
+			state._tweenMaterial = _tweenMaterial;
 			state._material = _material;
+
+			state._tweenColor = _tweenColor;
 			state._color = _color;
 
 			state._tweenPosition = _tweenPosition;
