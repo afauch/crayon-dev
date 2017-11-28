@@ -68,6 +68,7 @@
      <Compile Include="Assets\Scripts\MyPlayer.cs" />
      <Compile Include="Assets\Scripts\ScaledCurve.cs" />
      <Compile Include="Assets\Scripts\TestingCurves.cs" />
+     <Compile Include="Assets\Tests\Scripts\Rotate.cs" />
      <Compile Include="Assets\Tests\Scripts\TestChangeTexture.cs" />
      <Compile Include="Assets\Tests\Scripts\TestColorTween.cs" />
      <Compile Include="Assets\Tests\Scripts\TestCubicBezier.cs" />

@@ -1,14 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Crayon/Scripts/CrayonNamespace.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Crayon/Scripts/CrayonStateManager.cs">
     <Files>
-      <File FileName="Assets/Crayon/Scripts/CrayonStateGlobals.cs" Line="1" Column="1" />
-      <File FileName="Assets/Crayon/Plugin/CrayonSingleton.cs" Line="1" Column="1" />
-      <File FileName="Assets/Crayon/Editor/CrayonStateEditor.cs" Line="1" Column="1" />
-      <File FileName="Assets/Crayon/Scripts/CrayonNamespace.cs" Line="24" Column="3" />
-      <File FileName="Assets/Crayon/Scripts/CrayonStateManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Crayon/Scripts/CrayonDefaults.cs" Line="1" Column="1" />
-      <File FileName="Assets/Tests/Scripts/TestCubicBezier.cs" Line="1" Column="1" />
+      <File FileName="Assets/Crayon/Scripts/CrayonUtils.cs" Line="1" Column="1" />
+      <File FileName="Assets/Crayon/Scripts/CrayonNamespace.cs" Line="185" Column="1" />
+      <File FileName="Assets/Crayon/Scripts/CrayonStateManager.cs" Line="64" Column="3" />
+      <File FileName="Assets/Crayon/Scripts/CrayonState.cs" Line="28" Column="29" />
+      <File FileName="Assets/Crayon/Scripts/CrayonStateGlobals.cs" Line="40" Column="13" />
+      <File FileName="Assets/Crayon/Editor/CrayonStateEditor.cs" Line="108" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -37,13 +37,19 @@ namespace Crayon {
 		public bool _tweenScale = true;
 		public Vector3 _relativeScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-
+		private bool _defaultHasSet;		// have we assigned the correct default values
 
 		// Constructors
 
 		void OnValidate() {
 
 			UpdateMatchKey ();
+
+			if (_crayonStateType == CrayonStateType.Default) {
+				SetDefaultValues ();
+			} else {
+				_defaultHasSet = false;
+			}
 
 		}
 
@@ -52,6 +58,34 @@ namespace Crayon {
 			if(_crayonStateType == CrayonStateType.Custom)
 				_crayonMatchKey += _customStateType;
 			return _crayonMatchKey;
+		}
+
+
+		public void SetDefaultValues() {
+
+			if (!_defaultHasSet) {
+
+				_tweenColor = true;
+				Renderer r = this.gameObject.GetComponent<Renderer> ();
+				if (r != null) {
+					_color = r.sharedMaterial.GetColor ("_Color");
+				}
+
+				_tweenPosition = true;
+				_relativePosition = Vector3.zero;
+
+				_tweenRotation = true;
+				_relativeRotation = Vector3.zero;
+
+				_tweenScale = true;
+				_relativeScale = new Vector3 (1.0f, 1.0f, 1.0f);
+
+				_defaultHasSet = true;
+				return;
+			} else {
+				return;
+			}
+
 		}
 
 	}

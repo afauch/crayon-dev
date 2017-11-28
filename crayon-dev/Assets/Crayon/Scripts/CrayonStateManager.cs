@@ -20,7 +20,8 @@ namespace Crayon {
 		public FreezeTransformDelegate OnFreezeTransform;
 
 		private string _currentMatchKey = null;
-		private CrayonStateType _currentState = CrayonStateType.Default; 
+		private CrayonState _currentState;
+		private CrayonStateType _currentStateType = CrayonStateType.Default; 
 		private Vector3 _originalPosition;
 		private Quaternion _originalRotation;
 		private Vector3 _originalScale;
@@ -33,19 +34,31 @@ namespace Crayon {
 				SubscribeToParent (true);
 			}
 
+			CrayonStateGlobals.Instance._isTweening[this] = false;
+
 			// TODO: This is a hack and should be cleaned up.
-			_currentState = CrayonStateType.Default;
+			_currentStateType = CrayonStateType.Default;
 			FreezeTransform ();
 
 		}
 
 		void Update() {
 
-			if (_currentState == CrayonStateType.Default) {
+//			if (_currentState == CrayonStateType.Default && !CrayonStateGlobals.Instance._isTweening [this]) {
+//
+//				Debug.Log ("Freezing transform");
+//				FreezeTransform ();
+//
+//			} else {
+//
+//				Debug.Log ("Not freezing transform");
+//
+//			}
 
+
+			if (!CrayonStateGlobals.Instance._isTweening [this])
 				FreezeTransform ();
 
-			}
 
 		}
 
@@ -55,9 +68,9 @@ namespace Crayon {
 			   gameObject.transform.localRotation != _originalRotation ||
 			   gameObject.transform.localScale != _originalScale) {
 
-				_originalPosition = gameObject.transform.localPosition;
-				_originalRotation = gameObject.transform.localRotation;
-				_originalScale = gameObject.transform.localScale;
+				_originalPosition = gameObject.transform.localPosition - _currentState._relativePosition;
+				_originalRotation = Quaternion.Euler(gameObject.transform.localRotation.eulerAngles - _currentState._relativeRotation);
+				_originalScale = new Vector3((gameObject.transform.localScale.x/_currentState._relativeScale.x), (gameObject.transform.localScale.y/_currentState._relativeScale.y), (gameObject.transform.localScale.z/_currentState._relativeScale.z));
 
 			}
 
@@ -75,6 +88,8 @@ namespace Crayon {
 			foreach(CrayonState state in states) {
 				_allStatesByMatchKey.Add (state._crayonMatchKey, state);
 			}
+
+			_currentState = _allStatesByMatchKey["default"];
 
 		}
 
@@ -158,8 +173,10 @@ namespace Crayon {
 					gameObject.SetScale (relativeScale, state._duration, state._easing, state._customEasing);
 				}
 
+
 				_currentMatchKey = matchKey;
-				_currentState = state._crayonStateType;
+				_currentState = state;
+				_currentStateType = state._crayonStateType;
 
 			} else {
 				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);

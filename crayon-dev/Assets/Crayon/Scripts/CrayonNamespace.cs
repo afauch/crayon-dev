@@ -180,7 +180,24 @@ namespace Crayon
 		}
 
 		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
+
 			CrayonRunner.Instance.Run (TweenPositionCoroutine(gameObject, targetPosition, duration, easing, destroy, isRelative, cubicBezier));
+
+//			// TODO: This method works - expand it out to the other methods
+//			// Tell CrayonStateGlobals that we're tweening
+//			CrayonStateManager sm = gameObject.GetComponent<CrayonStateManager> ();
+//			if(sm != null)
+//				CrayonStateGlobals.Instance._isTweening [sm] = true;
+//
+//			CrayonRunner.Instance.Run (TweenPositionCoroutineWithCallback(gameObject, targetPosition, duration, easing, destroy, isRelative, cubicBezier, done => {
+//					if(done) {
+//						Debug.Log("TweenPosition finished.");
+//						CrayonStateGlobals.Instance._isTweening [sm] = false;
+//					} else {
+//						Debug.Log("There was an error with the tween.");
+//					}
+//			}));
+
 		}
 
 		private static void TweenRotation(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {
@@ -327,6 +344,46 @@ namespace Crayon
 			if (destroy)
 				GameObject.Destroy (gameObject);
 
+		}
+
+		private static IEnumerator TweenPositionCoroutineWithCallback(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier, System.Action<bool> done) {
+
+			// Debug.Log ("TweenPosition Called on GameObject " + gameObject.name + " and isRelative is " + isRelative);
+			// elapsedTime
+			float elapsedTime = 0;
+			// are we moving in absolute terms
+			// or relative to current position
+			Vector3 startPosition = gameObject.transform.localPosition;
+			Vector3 endPosition;
+			if (isRelative) {
+				// the supplied Vector3 is relative to the original position
+				endPosition = startPosition + targetPosition;
+			} else {
+				endPosition = targetPosition;
+			}
+
+			if (duration < 0.0001f) {
+				gameObject.transform.localPosition = endPosition;
+			} else {
+
+				while (elapsedTime < duration) {
+					// this interpolates position
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing, cubicBezier);
+					elapsedTime += Time.deltaTime;
+					// set the position
+					Vector3 interpolatedPosition = Vector3.Lerp (startPosition, endPosition, t);
+					gameObject.transform.localPosition = interpolatedPosition;
+					yield return null;
+				}
+				gameObject.transform.localPosition = endPosition;
+			}
+			if (destroy)
+				GameObject.Destroy (gameObject);
+
+			// Trigger callback
+			done (true);
 		}
 
 		private static IEnumerator TweenRotationCoroutine(GameObject gameObject, Quaternion targetRotation, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {

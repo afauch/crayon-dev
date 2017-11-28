@@ -25,20 +25,20 @@ namespace Crayon {
 				if (instance == null) {
 					CrayonStateGlobals i = GameObject.FindObjectOfType<CrayonStateGlobals> ();
 					if (i == null) {
-						Debug.Log ("No CrayonStateGlobals found - creating a new GameObject");
+						// Debug.Log ("No CrayonStateGlobals found - creating a new GameObject");
 						GameObject g = GameObject.Instantiate (new GameObject ("[CrayonStateGlobals]"));
 						CrayonStateGlobals c = g.AddComponent<CrayonStateGlobals> ();
 						instance = c;
 						instance.InitializeInEditor ();
 						return c;
 					} else {
-						Debug.Log ("instance was null but found an instance of CrayonStateGlobals.");
+						// Debug.Log ("instance was null but found an instance of CrayonStateGlobals.");
 						instance = i;
 						instance.InitializeInEditor ();
 						return i;
 					}
 				} else {
-					Debug.Log ("instance is not null - returning instance.");
+					// Debug.Log ("instance is not null - returning instance.");
 					return instance;
 				}
 			}
@@ -49,6 +49,8 @@ namespace Crayon {
 
 		public Dictionary<string, CrayonPreset> _presetsById;			// these are presets of CrayonStateManagers (think of them like CSS classes or Sketch style presets)
 		public string[] _presetChoices;
+
+		public Dictionary<CrayonStateManager, bool> _isTweening = new Dictionary<CrayonStateManager, bool> ();		// This is used to check whether a particular StateManager is currently tweening
 
 		public void InitializeInEditor() {
 			Debug.Log ("Initializing CrayonStateGlobals.");
