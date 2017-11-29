@@ -175,6 +175,9 @@ namespace Crayon
 		}
 
 		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing, string cubicBezier) {
+
+			Debug.Log ("TweenColor called.");
+
 			// Create instance of material
 			Renderer r = gameObject.GetComponent<Renderer>();
 			if (r == null)
@@ -186,6 +189,9 @@ namespace Crayon
 		}
 
 		private static void TweenMaterial(GameObject gameObject, Material targetMaterial, float duration, Easing easing, string cubicBezier) {
+
+			Debug.Log ("TweenMaterial called.");
+
 			// Renderer r = gameObject.GetComponent<Renderer>();
 			Debug.Log("Target Material color: " + targetMaterial.GetColor("_EmissionColor"));
 			Material targetMaterialInstance = Object.Instantiate(targetMaterial);
@@ -306,6 +312,8 @@ namespace Crayon
 				// mode if you're tweening between two Opaque Materials
 				startMaterial = Utils.GetUsableMaterial (startMaterial);
 				endMaterial = Utils.GetUsableMaterial (endMaterial);
+
+				Debug.Log ("EndMaterial color is " + endMaterial.GetColor ("_EmissionColor"));
 
 				while (elapsedTime < duration) {
 

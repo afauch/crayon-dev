@@ -147,6 +147,10 @@ namespace Crayon {
 			// TODO: Add conditionals to make this more efficient
 			if (state != null) {
 
+				// Error message
+				if (state._tweenMaterial && state._tweenColor) {
+					Debug.LogWarningFormat ("Both Material and Color are tweening for {0}. This may lead to unexpected results. Turn off either Material or Color on the Crayon State Manager component for {0}.", gameObject.name);
+				}
 
 				// Actually do the tween
 

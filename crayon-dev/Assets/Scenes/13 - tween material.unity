@@ -300,10 +300,10 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.2
-  _tweenColor: 0
-  _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenMaterial: 1
   _material: {fileID: 2100000, guid: 02027b24a6f994a2a99e9db34785abda, type: 2}
+  _tweenColor: 0
+  _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenPosition: 0
   _relativePosition: {x: 2, y: 2, z: 2}
   _tweenRotation: 0
@@ -341,10 +341,10 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 
   _duration: 0.2
+  _tweenMaterial: 1
+  _material: {fileID: 2100000, guid: 156b041c2262a4f2883e74e01888798e, type: 2}
   _tweenColor: 1
   _color: {r: 0, g: 0, b: 0, a: 1}
-  _tweenMaterial: 1
-  _material: {fileID: 1276458424}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
   _tweenRotation: 1
@@ -368,10 +368,10 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.2
-  _tweenColor: 0
-  _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenMaterial: 1
   _material: {fileID: 2100000, guid: d28f7acebbbed4f7a8b4d1c96c71934b, type: 2}
+  _tweenColor: 0
+  _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenPosition: 0
   _relativePosition: {x: 2, y: 2, z: 2}
   _tweenRotation: 0
@@ -576,10 +576,10 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.6
-  _tweenColor: 0
-  _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _tweenMaterial: 0
   _material: {fileID: 0}
+  _tweenColor: 0
+  _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 1, z: 0}
   _tweenRotation: 1
@@ -603,10 +603,10 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 
   _duration: 0.6
-  _tweenColor: 0
-  _color: {r: 1, g: 0.3602941, b: 0.3602941, a: 1}
   _tweenMaterial: 0
   _material: {fileID: 0}
+  _tweenColor: 0
+  _color: {r: 1, g: 0.3602941, b: 0.3602941, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
   _tweenRotation: 1
@@ -625,80 +625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationRate: {x: 0, y: 0.3, z: 0}
---- !u!21 &1276458424
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: EmissiveRed(Clone)
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
-  m_LightmapFlags: 1
-  m_EnableInstancingVariants: 1
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _BumpScale: 1
-    - _Cutoff: 0.5
-    - _DetailNormalMapScale: 1
-    - _DstBlend: 10
-    - _GlossMapScale: 1
-    - _Glossiness: 0
-    - _GlossyReflections: 1
-    - _Metallic: 0
-    - _Mode: 2
-    - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _SmoothnessTextureChannel: 0
-    - _SpecularHighlights: 1
-    - _SrcBlend: 5
-    - _UVSec: 0
-    - _ZWrite: 0
-    m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
-    - _EmissionColor: {r: 1, g: 0.29411763, b: 0.29411763, a: 1}
 --- !u!21 &1793741423
 Material:
   serializedVersion: 6

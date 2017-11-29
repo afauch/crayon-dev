@@ -12,6 +12,7 @@ public class CrayonStateEditor : Editor {
 	float _labelsWidth = 112.0f;
 	bool _showTransition = false;
 	bool _showProperties = false;
+	bool _isDefault;
 
 	// State Id
 
@@ -108,59 +109,75 @@ public class CrayonStateEditor : Editor {
 			}
 
 		}
-
-		// State Properties
+			
 
 		// Hide values for Default states
-		if (crayonStateType.enumValueIndex != 0) {
 
-			_showProperties = EditorGUILayout.Foldout (_showProperties, "Properties");
+		_isDefault = crayonStateType.enumValueIndex == 0 ? true : false;
 
-			if (_showProperties) {
+		_showProperties = EditorGUILayout.Foldout (_showProperties, "Properties");
 
-				EditorGUILayout.BeginHorizontal ();
-				EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
-				EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
-				if (tweenMaterial.boolValue) {
-					EditorGUILayout.PropertyField (material, GUIContent.none);
-				}
-				EditorGUILayout.EndHorizontal ();
 
-				EditorGUILayout.BeginHorizontal ();
-				EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
-				EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
-				if (tweenColor.boolValue) {
-					EditorGUILayout.PropertyField (color, GUIContent.none);
-				}
-				EditorGUILayout.EndHorizontal ();
+		if (_showProperties) {
 
-				EditorGUILayout.BeginHorizontal ();
-				EditorGUILayout.PropertyField (tweenPosition, GUIContent.none, GUILayout.Width (_checkboxWidth));
-				EditorGUILayout.LabelField ("Relative Position", GUILayout.Width (_labelsWidth));
-				if (tweenPosition.boolValue) {
-					EditorGUILayout.PropertyField (relativePosition, GUIContent.none);
-				}
-				EditorGUILayout.EndHorizontal ();
 
-				EditorGUILayout.BeginHorizontal ();
-				EditorGUILayout.PropertyField (tweenRotation, GUIContent.none, GUILayout.Width (_checkboxWidth));
-				EditorGUILayout.LabelField ("Relative Rotation", GUILayout.Width (_labelsWidth));
-				if (tweenRotation.boolValue) {
-					EditorGUILayout.PropertyField (relativeRotation, GUIContent.none);
-				}
-				EditorGUILayout.EndHorizontal ();
+			// State Properties
 
-				EditorGUILayout.BeginHorizontal ();
-				EditorGUILayout.PropertyField (tweenScale, GUIContent.none, GUILayout.Width (_checkboxWidth));
-				EditorGUILayout.LabelField ("Relative Scale", GUILayout.Width (_labelsWidth));
-				if (tweenScale.boolValue) {
-					EditorGUILayout.PropertyField (relativeScale, GUIContent.none);
-				}
-				EditorGUILayout.EndHorizontal ();
-
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUI.BeginDisabledGroup (tweenColor.boolValue == true);
+			EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
+			if (tweenMaterial.boolValue) {
+				EditorGUI.BeginDisabledGroup (_isDefault);
+				EditorGUILayout.PropertyField (material, GUIContent.none);
+				EditorGUI.EndDisabledGroup ();
 			}
+			EditorGUI.EndDisabledGroup ();
+			EditorGUILayout.EndHorizontal ();
+
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUI.BeginDisabledGroup (tweenMaterial.boolValue == true);
+			EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
+			if (tweenColor.boolValue) {
+				EditorGUI.BeginDisabledGroup (_isDefault);
+				EditorGUILayout.PropertyField (color, GUIContent.none);
+				EditorGUI.EndDisabledGroup ();
+			}
+			EditorGUI.EndDisabledGroup ();
+			EditorGUILayout.EndHorizontal ();
+
+
+			EditorGUI.BeginDisabledGroup (_isDefault);
+
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenPosition, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Position", GUILayout.Width (_labelsWidth));
+			if (tweenPosition.boolValue) {
+				EditorGUILayout.PropertyField (relativePosition, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
+
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenRotation, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Rotation", GUILayout.Width (_labelsWidth));
+			if (tweenRotation.boolValue) {
+				EditorGUILayout.PropertyField (relativeRotation, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
+
+			EditorGUILayout.BeginHorizontal ();
+			EditorGUILayout.PropertyField (tweenScale, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.LabelField ("Relative Scale", GUILayout.Width (_labelsWidth));
+			if (tweenScale.boolValue) {
+				EditorGUILayout.PropertyField (relativeScale, GUIContent.none);
+			}
+			EditorGUILayout.EndHorizontal ();
+
+			EditorGUI.EndDisabledGroup ();
 
 		}
+			
 
 		// Save the changes back to the object
 		EditorUtility.SetDirty(target);

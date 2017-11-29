@@ -24,11 +24,11 @@ namespace Crayon {
 		public string _customEasing;
 		public float _duration;
 
-		public bool _tweenColor = true;
-		public Color _color = Color.black;
-
 		public bool _tweenMaterial = true;
 		public Material _material;
+
+		public bool _tweenColor = false;
+		public Color _color = Color.black;
 
 		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
@@ -67,6 +67,10 @@ namespace Crayon {
 			if (_material != null && this._crayonStateType == CrayonStateType.Default)
 				Debug.Log (_material.GetColor ("_EmissionColor"));
 
+			if (this._crayonStateType == CrayonStateType.Default)
+				Debug.Log ("TweenColor is" + _tweenColor + " on GameObject " + this.gameObject.name);
+			
+
 		}
 
 
@@ -77,8 +81,8 @@ namespace Crayon {
 				Renderer r = this.gameObject.GetComponent<Renderer> ();
 				if (r != null) {
 					_tweenMaterial = true;
-					_tweenColor = true;					
-					_material = Instantiate(r.sharedMaterial);
+					_tweenColor = false; // just a default that can be overridden by the user		
+					_material = r.sharedMaterial;
 					_color = r.sharedMaterial.GetColor ("_Color");
 				} else {
 					_tweenMaterial = false;
