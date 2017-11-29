@@ -9,10 +9,8 @@ using System.IO;
 using UnityEditor;
 #endif
 
-
 namespace Crayon
 {
-
 	/// <summary>
 	/// This is the high-level class that stores user-defined presets
 	/// of Crayon States.
@@ -53,7 +51,7 @@ namespace Crayon
 		}
 
 		public Dictionary<string, CrayonPreset> _presetsById; // These are presets of CrayonStateManagers (think of them like CSS classes or Sketch style presets).
-		public string[] _presetChoices;
+		[HideInInspector] public string[] _presetChoices;
 		public Dictionary<CrayonStateManager, bool> _isTweening = new Dictionary<CrayonStateManager, bool> ();	// This is used to check whether a particular StateManager is currently in the process of tweening.
 
 		/// <summary>
@@ -231,6 +229,7 @@ namespace Crayon
 		/// </summary>
 		public void DeleteAllPresets()
 		{
+			Debug.LogWarning ("Deleting all user presets from Crayon > UserPresets.");
 			string presetsPath = Application.dataPath + "/Crayon/UserPresets/";
 			// Go through all the files in the UserPresets folder and add to Dictionary
 			DirectoryInfo info = new DirectoryInfo(presetsPath);

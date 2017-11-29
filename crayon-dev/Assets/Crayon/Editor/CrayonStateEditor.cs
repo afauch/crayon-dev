@@ -71,8 +71,6 @@ public class CrayonStateEditor : Editor
 		tweenScale = serializedObject.FindProperty ("_tweenScale");
 		relativeScale = serializedObject.FindProperty ("_relativeScale");
 
-
-
 	}
 
 	public override void OnInspectorGUI()
@@ -84,6 +82,7 @@ public class CrayonStateEditor : Editor
 
 		EditorGUILayout.LabelField ("State", EditorStyles.boldLabel);
 		EditorGUILayout.PropertyField (crayonStateType, GUIContent.none);
+		// If it's a Custom state, add an extra field for editing the name.
 		if (crayonStateType.enumValueIndex == (crayonStateType.enumNames.Length - 1))
 		{
 			EditorGUILayout.PropertyField (customStateType, new GUIContent("Custom State Name"));
@@ -119,10 +118,14 @@ public class CrayonStateEditor : Editor
 				switch (tweenAppearanceMode.enumValueIndex)
 				{
 					case 0:
+						EditorGUI.BeginDisabledGroup (_isDefault);
 						EditorGUILayout.PropertyField (material, GUIContent.none);
+						EditorGUI.EndDisabledGroup ();
 						break;
 					case 1:
+						EditorGUI.BeginDisabledGroup (_isDefault);
 						EditorGUILayout.PropertyField (color, GUIContent.none);
+						EditorGUI.EndDisabledGroup ();
 						break;
 					case 2:
 						// Debug.Log ("Opacity feature not yet implemented.");

@@ -28,7 +28,6 @@ namespace Crayon
 
 		private string _currentMatchKey = null;
 		private CrayonState _currentState;
-		private CrayonStateType _currentStateType = CrayonStateType.Default; 
 		private Vector3 _originalPosition;
 		private Quaternion _originalRotation;
 		private Vector3 _originalScale;
@@ -43,11 +42,7 @@ namespace Crayon
 			}
 
 			CrayonStateGlobals.Instance._isTweening[this] = false;
-
-			// TODO: This is a hack and should be cleaned up.
-			_currentStateType = CrayonStateType.Default;
 			FreezeTransform ();
-
 		}
 
 		void Update() {
@@ -210,8 +205,6 @@ namespace Crayon
 				// Update the StateManager to reflect the new CrayonState.
 				_currentMatchKey = matchKey;
 				_currentState = state;
-				_currentStateType = state._crayonStateType;
-
 			}
 			else
 			{
