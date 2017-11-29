@@ -6,6 +6,14 @@ namespace Crayon.Core
 {
 
 	/// <summary>
+	/// FadeDirection enum used in the CrayonExtension methods.
+	/// </summary>
+	public enum FadeDirection {
+		In,
+		Out
+	}
+
+	/// <summary>
 	/// This class handles variations from the publicly-exposed extension methods and reconfigures them for use by
 	/// more generic coroutines.
 	/// </summary>

@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace Crayon {
+namespace Crayon
+{
 
-	// Stores instances of Defaults
-	public static class Defaults {
-
+	/// <summary>
+	/// Defaults used across Crayon.
+	/// </summary>
+	public static class Defaults
+	{
 		public const float _duration = 0.8f;
 		public const Easing _easing = Easing.Linear;
 		public const string _cubicBezier = "";
-
 	}
 
 }

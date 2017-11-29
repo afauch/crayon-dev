@@ -54,7 +54,7 @@
      <Compile Include="Assets\Crayon\Plugin\Easing.cs" />
      <Compile Include="Assets\Crayon\Plugin\StandardShaderUtils.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonDefaults.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonEnums.cs" />
+     <Compile Include="Assets\Crayon\Scripts\CrayonEasing.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonExtensions.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonPreset.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonRouter.cs" />

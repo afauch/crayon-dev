@@ -1,15 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
+
 using UnityEngine;
 
-namespace Crayon {
+namespace Crayon
+{
 
+	/// <summary>
+	/// Helper class that mirrors CrayonState and holds data in format that can be serialized and saved into presets.
+	/// </summary>
 	[System.Serializable]
-	public class CrayonStateData {
+	public class CrayonStateData
+	{
 
 		public CrayonStateType _crayonStateType;
 		public string _customStateType = "";
-		public string _crayonMatchKey; // A match key for finding custom states
+		public string _crayonMatchKey;
 
 		public Easing _easing = Easing.CubicInOut;
 		public string _customEasing;
@@ -17,11 +22,7 @@ namespace Crayon {
 
 		public bool _tweenAppearance = true;
 		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
-
-		// public bool _tweenColor = true;
 		public Color _color;
-
-		// public bool _tweenMaterial = true;
 		public Material _material;
 
 		public bool _tweenPosition = true;
@@ -33,16 +34,20 @@ namespace Crayon {
 		public bool _tweenScale = true;
 		public Vector3 _relativeScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-
-		// Constructor from CrayonState
-		public CrayonStateData (CrayonState stateToSave) {
-
+		/// <summary>
+		/// Constructor: Create a new CrayonStateData instance from a CrayonState.
+		/// </summary>
+		public CrayonStateData (CrayonState stateToSave)
+		{
 			SaveData (stateToSave);
-
 		}
 
-		public void SaveData(CrayonState state) {
-
+		/// <summary>
+		/// Saves data on transitions and properties from a CrayonState.
+		/// </summary>
+		public void SaveData(CrayonState state)
+		{
+			
 			_crayonStateType = state._crayonStateType;
 			_customStateType = state._customStateType;
 			_crayonMatchKey = state._crayonMatchKey;
@@ -53,11 +58,7 @@ namespace Crayon {
 
 			_tweenAppearance = state._tweenAppearance;
 			_tweenAppearanceMode = state._tweenAppearanceMode;
-
-			// _tweenMaterial = state._tweenMaterial;
 			_material = state._material;
-
-			// _tweenColor = state._tweenColor;
 			_color = state._color;
 
 			_tweenPosition = state._tweenPosition;
@@ -71,9 +72,15 @@ namespace Crayon {
 
 		}
 
-		public void LoadData(GameObject g) {
+		/// <summary>
+		/// Adds a CrayonState to the specified GameObject, then loads in data on
+		/// transitions and properties from the CrayonStateData class.
+		/// </summary>
+		/// <param name="g">The green component.</param>
+		public void LoadData(GameObject gameObject)
+		{
 
-			CrayonState state = g.AddComponent<CrayonState> ();
+			CrayonState state = gameObject.AddComponent<CrayonState> ();
 
 			state._crayonStateType = _crayonStateType;
 			state._customStateType = _customStateType;

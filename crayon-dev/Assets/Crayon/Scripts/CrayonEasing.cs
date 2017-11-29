@@ -1,8 +1,13 @@
-﻿namespace Crayon {
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-	// Easing
+namespace Crayon {
+
+	/// <summary>
+	/// Easing values used across the Crayon namespace.
+	/// </summary>
 	[System.Serializable]
-	public enum Easing {
+	public enum Easing
+	{
 		BackIn,
 		BackOut,
 		BackInOut,
@@ -33,11 +38,4 @@
 		QuinticInOut,
 		Custom
 	}
-
-	// FadeDirection
-	public enum FadeDirection {
-		In,
-		Out
-	}
-
 }

@@ -1,11 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
+
+using System.Collections;
 using UnityEngine;
 
-namespace Crayon {
+namespace Crayon
+{
 
-	public enum CrayonStateType {
+	/// <summary>
+	/// Standard states for Crayon state transitions
+	/// </summary>
+	public enum CrayonStateType
+	{
 		Default,
 		Hover,
 		Selected,
@@ -13,26 +18,32 @@ namespace Crayon {
 		Custom
 	}
 
-	public enum CrayonTweenAppearanceMode {
+	/// <summary>
+	/// Used for toggling between Material, Color-Only, and Opacity-Only tweens
+	/// </summary>
+	public enum CrayonTweenAppearanceMode
+	{
 		Material = 0,
 		Color = 1,
 		Opacity = 2
 	}
 
+	/// <summary>
+	/// Component that can be added to a GameObject for toggling states with Crayon.
+	/// </summary>
 	[RequireComponent(typeof(CrayonStateManager))]
-	public class CrayonState : MonoBehaviour {
+	public class CrayonState : MonoBehaviour
+	{
 		
 		public CrayonStateType _crayonStateType;
-		public string _customStateType = "";
-		public string _crayonMatchKey; // A match key for finding custom states
+		public string _customStateType = "";	// If the state is a custom state, this is the user-assigned ID that refers to the state
+		public string _crayonMatchKey;	// A match key for finding custom states
 
 		public Easing _easing = Easing.CubicInOut;
 		public string _customEasing;
 		public float _duration = Crayon.Defaults._duration;
 
-		// Catch-all category for appearance
-		[Tooltip ("Choose between tweening the full material, the color only, or opacity only.")]
-		public bool _tweenAppearance = false;
+		public bool _tweenAppearance = false;	// Catch-all category for appearance
 		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
 		public Material _material;
 		public Color _color = Color.black;
@@ -46,42 +57,62 @@ namespace Crayon {
 		public bool _tweenScale = true;
 		public Vector3 _relativeScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-		private bool _defaultHasSet;		// have we assigned the correct default values
+		private bool _defaultHasSet;	// If this is a Default state, have we assigned the correct values?
 
-		// Constructors
-
-		void OnValidate() {
-
+		/// <summary>
+		/// On a Unity Editor event.
+		/// </summary>
+		void OnValidate()
+		{
 			UpdateMatchKey ();
-
-			if (_crayonStateType == CrayonStateType.Default) {
+			if (_crayonStateType == CrayonStateType.Default)
+			{
 				SetDefaultValues ();
-			} else {
+			}
+			else
+			{
 				_defaultHasSet = false;
 			}
-
 		}
 
-		public string UpdateMatchKey() {
+		/// <summary>
+		/// Update the unique match key for this state.
+		/// </summary>
+		/// <returns>The match key as a string.</returns>
+		public string UpdateMatchKey()
+		{
 			_crayonMatchKey = _crayonStateType.ToString ().ToLower ();
 			if(_crayonStateType == CrayonStateType.Custom)
 				_crayonMatchKey += _customStateType;
 			return _crayonMatchKey;
 		}
 
-		public void SetDefaultValues() {
+		/// <summary>
+		/// If this state is a Default state, lock in certain state values to prevent errors.
+		/// </summary>
+		public void SetDefaultValues()
+		{
 
-			if (!_defaultHasSet) {
+			if (!_defaultHasSet)
+			{
 
 				Renderer r = this.gameObject.GetComponent<Renderer> ();
-				if (r != null) {	
+				if (r != null)
+				{	
 					_material = r.sharedMaterial;
-					if(_material.HasProperty("_Color")) {
+
+					// Error handling for unconventional materials.
+					if(_material.HasProperty("_Color"))
+					{
 						_color = r.sharedMaterial.GetColor ("_Color");
-					} else {
+					}
+					else
+					{
 						Debug.LogWarningFormat ("{0} is using a special shader, unfortunately Crayon doesn't know how to tween it.", this.gameObject.name);
 					}
-				} else {
+				}
+				else
+				{
 					_tweenAppearance = false;
 				}
 
@@ -96,7 +127,10 @@ namespace Crayon {
 
 				_defaultHasSet = true;
 				return;
-			} else {
+
+			}
+			else
+			{
 				return;
 			}
 
