@@ -3,6 +3,12 @@ using UnityEngine;
 using UnityEditor;
 using Crayon;
 
+public enum MaterialTweenType {
+	Material = 0,
+	Color = 1,
+	Opacity = 2
+}
+
 [CustomEditor(typeof(CrayonState))]
 [CanEditMultipleObjects]
 public class CrayonStateEditor : Editor {

@@ -176,8 +176,6 @@ namespace Crayon
 
 		private static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing, string cubicBezier) {
 
-			Debug.Log ("TweenColor called.");
-
 			// Create instance of material
 			Renderer r = gameObject.GetComponent<Renderer>();
 			if (r == null)
@@ -190,12 +188,10 @@ namespace Crayon
 
 		private static void TweenMaterial(GameObject gameObject, Material targetMaterial, float duration, Easing easing, string cubicBezier) {
 
-			Debug.Log ("TweenMaterial called.");
-
 			// Renderer r = gameObject.GetComponent<Renderer>();
-			Debug.Log("Target Material color: " + targetMaterial.GetColor("_EmissionColor"));
+			// Debug.Log("Target Material color: " + targetMaterial.GetColor("_EmissionColor"));
 			Material targetMaterialInstance = Object.Instantiate(targetMaterial);
-			Debug.Log("Target Material Instance color: " + targetMaterialInstance.GetColor("_EmissionColor"));
+			// Debug.Log("Target Material Instance color: " + targetMaterialInstance.GetColor("_EmissionColor"));
 			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterialInstance, duration, easing, cubicBezier));
 		}
 
@@ -313,7 +309,7 @@ namespace Crayon
 				startMaterial = Utils.GetUsableMaterial (startMaterial);
 				endMaterial = Utils.GetUsableMaterial (endMaterial);
 
-				Debug.Log ("EndMaterial color is " + endMaterial.GetColor ("_EmissionColor"));
+				// Debug.Log ("EndMaterial color is " + endMaterial.GetColor ("_EmissionColor"));
 
 				while (elapsedTime < duration) {
 

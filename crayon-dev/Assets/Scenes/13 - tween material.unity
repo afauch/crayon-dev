@@ -341,9 +341,9 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 
   _duration: 0.2
-  _tweenMaterial: 1
+  _tweenMaterial: 0
   _material: {fileID: 2100000, guid: 156b041c2262a4f2883e74e01888798e, type: 2}
-  _tweenColor: 1
+  _tweenColor: 0
   _color: {r: 0, g: 0, b: 0, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}

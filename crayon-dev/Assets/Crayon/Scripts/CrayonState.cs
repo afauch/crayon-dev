@@ -64,11 +64,11 @@ namespace Crayon {
 
 		void Update() {
 
-			if (_material != null && this._crayonStateType == CrayonStateType.Default)
-				Debug.Log (_material.GetColor ("_EmissionColor"));
+			// if (_material != null && this._crayonStateType == CrayonStateType.Default)
+				// Debug.Log (_material.GetColor ("_EmissionColor"));
 
-			if (this._crayonStateType == CrayonStateType.Default)
-				Debug.Log ("TweenColor is" + _tweenColor + " on GameObject " + this.gameObject.name);
+			// if (this._crayonStateType == CrayonStateType.Default)
+				// Debug.Log ("TweenColor is" + _tweenColor + " on GameObject " + this.gameObject.name);
 			
 
 		}
@@ -80,8 +80,8 @@ namespace Crayon {
 
 				Renderer r = this.gameObject.GetComponent<Renderer> ();
 				if (r != null) {
-					_tweenMaterial = true;
-					_tweenColor = false; // just a default that can be overridden by the user		
+					// _tweenMaterial = true;
+					// _tweenColor = false; // just a default that can be overridden by the user		
 					_material = r.sharedMaterial;
 					_color = r.sharedMaterial.GetColor ("_Color");
 				} else {

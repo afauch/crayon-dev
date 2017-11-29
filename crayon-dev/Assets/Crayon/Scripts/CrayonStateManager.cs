@@ -188,7 +188,7 @@ namespace Crayon {
 				_currentStateType = state._crayonStateType;
 
 			} else {
-				Debug.LogWarning (stateType + " has not been assigned for " + gameObject.name);
+				Debug.LogWarning ("State '" + stateType + "' has not been assigned for " + gameObject.name);
 			}
 
 		}
