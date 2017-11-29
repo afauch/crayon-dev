@@ -1,17 +1,80 @@
-﻿using UnityEngine;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace Crayon {
+using UnityEngine;
 
-	// Methods for doing things like 
-	public static class Utils {
+namespace Crayon.Core
+{
+	/// <summary>
+	/// Static utility class for helper functions 
+	/// </summary>
+	public static class Utils
+	{
 
-		// Returns an Easing enum from a string input
-		public static Easing GetEasing(string easing) {
+		/// <summary>
+		/// Given a renderer, return a material with the correct settings that can be used for fading color/opacity.
+		/// </summary>
+		public static Material GetUsableMaterial(Renderer renderer)
+		{
+			if (renderer == null)
+			{
+				Debug.LogWarning ("No renderer attached to this GameObject, but you're trying to tween material.");
+				return null;
+			}
+			else
+			{
+				Material material = renderer.material;
+				return GetUsableMaterial (material);
+			}
+		}
+
+		/// <summary>
+		/// Given a material, return a material with the correct settings that can be used for fading color/opacity.
+		/// </summary>
+		public static Material GetUsableMaterial(Material material) {
+
+			if (material == null)
+			{
+				Debug.LogWarning ("No material to access.");
+				return null;
+			}
+			else
+			{
+				// Additional case handling can go here
+				string shaderName = material.shader.name;
+				// Turn on FadeMode
+				StandardShaderUtils.ChangeRenderMode(material,StandardShaderUtils.BlendMode.Fade);
+				material.enableInstancing = true;
+				return material;
+			}
+		}
+
+		/// <summary>
+		/// Given a material, return an RGBA color that can be used for fading.
+		/// </summary>
+		public static Color GetUsableColor(Material material) {
+			Color c;
+			if(material.HasProperty("_Color"))
+			{
+				c = material.GetColor ("_Color");
+				c = new Color(c.r, c.g, c.b, c.a);
+			}
+			else
+			{
+				Debug.LogWarningFormat ("{0} is using a shader that Crayon unfortunately can't handle.", material);
+				c = Color.white;
+			}
+			return c;
+		}
+
+
+		/// <summary>
+		/// Returns an Easing enum from a string input
+		/// </summary>
+		public static Easing GetEasing(string easing)
+		{
 			easing = easing.ToLower ();
 			switch (easing)
 			{
-			// TODO: define all in/out versions here
-
 			case "back": return Easing.BackInOut;
 			case "bounce": return Easing.BounceInOut;
 			case "circular": return Easing.CircularInOut;
@@ -26,9 +89,11 @@ namespace Crayon {
 			}
 		}
 
-		// Returns t based on easing
-		public static float GetT(float t, Easing easing, string cubicBezier = "") {
-
+		/// <summary>
+		/// Returns input 'T' based on a specfied easing function.
+		/// </summary>
+		public static float GetT(float t, Easing easing, string cubicBezier = "")
+		{
 			switch (easing) {
 
 			case Easing.BackIn: return EasingTypes.Back.In (t);
@@ -72,68 +137,23 @@ namespace Crayon {
 			case Easing.Custom:	return GetCustomT (cubicBezier, t);
 
 			default: return t;
-			}
-		}
-
-		// Given a renderer, return a material that can be used for fading color/opacity
-		public static Material GetUsableMaterial(Renderer renderer) {
-
-			// Debug.Log ("GetUsableMaterial called on " + renderer.material.name);
-
-			if (renderer == null) {
-
-				Debug.LogWarning ("No renderer attached to this GameObject, but you're trying to tween material.");
-
-				return null;
-
-			} else {
-
-				Material material = renderer.material;
-				return GetUsableMaterial (material);
 
 			}
-
 		}
 
-		public static Material GetUsableMaterial(Material material) {
-
-			if (material == null) {
-				Debug.LogWarning ("No material to access.");
-				return null;
-			} else {
-				// TODO: More case handling
-				string shaderName = material.shader.name;
-				// Turn on FadeMode
-				StandardShaderUtils.ChangeRenderMode(material,StandardShaderUtils.BlendMode.Fade);
-				// TODO: Is this efficient?
-				material.enableInstancing = true;
-				return material;
-			}
-
-		}
-
-		// Given a renderer and material, return an RGBA color that can be used for fading
-		public static Color GetUsableColor(Material material) {
-
-			// TODO: This method could be eliminated if color logic is not required
-			Color c;
-			c = material.GetColor ("_Color");
-			c = new Color(c.r, c.g, c.b, c.a);
-			return c;
-
-		}
-
-		public static float GetCustomT(string cubicBezier, float x) {
-
-			// Debug.Log("GetCustomT called");
-
-			// TODO: Add error handling for bad inputs
-
+		/// <summary>
+		/// If a custom cubic bezier curve is used, this returns the correct T value.
+		/// </summary>
+		/// <returns>Adjusted T based on cubic bezier curve.</returns>
+		public static float GetCustomT(string cubicBezier, float x)
+		{
 			// Parse string
 			string[] numArray = cubicBezier.Split (',');
 
-			if (numArray.Length != 4) {
-				Debug.LogWarning ("Cubic Bezier input incorrect.");
+			// Error Handling
+			if (numArray.Length != 4)
+			{
+				Debug.LogWarning ("Cubic Bezier input incorrect. Format should be a string: 'P0,P1,P2,P3'.");
 				return 0.0f;
 			}
 
@@ -143,32 +163,31 @@ namespace Crayon {
 			float c = float.Parse(numArray[2]);
 			float d = float.Parse(numArray[3]);
 
-			// TODO: Need to revert this to the correct cubic bezier solver function
-
+			// Return the correct T.
 			return GetTJavascriptRendition (a, b, c, d, x);
 
 		}
-
-		// C# Implementation of cubic bezier approximation,
-		// adapted from this answer
-		// TODO: Check for attribution / licensing
-		// https://stackoverflow.com/questions/11696736/recreating-css3-transitions-cubic-bezier-curve
-		// Adapting from this codepen:
-		// https://codepen.io/anon/pen/LOzLjY
-
-		public static float GetTJavascriptRendition(float p1x, float p1y, float p2x, float p2y, float t) {
-
-			// STEP 1: Create a new UnitBezier object
+			
+		/// <summary>
+		/// Given a value T, and four cubic bezier parameters (like CSS), returns an approximate curved T value.
+		/// Adapted from the JavaScript solution posted on StackOverflow and CodePen by Mario Gonzalez:
+		/// https://stackoverflow.com/questions/11696736/recreating-css3-transitions-cubic-bezier-curve
+		//  https://codepen.io/anon/pen/LOzLjY
+		/// </summary>
+		/// <returns>Adjusted T based on cubic bezier curve.</returns>
+		public static float GetTJavascriptRendition(float p1x, float p1y, float p2x, float p2y, float t)
+		{
+			// Create a new UnitBezier object
 			UnitBezier curve = new UnitBezier(p1x, p1y, p2x, p2y);
-
-			// STEP 2: Solve for t.
+			// Solve for T.
 			return curve.solve (t, curve._epsilon);
-
 		}
-
 	}
 
-	// TODO: Reorganize this somewhere else?
+	/// <summary>
+	/// Helper class for evaluating T given a custom cubic bezier curve.
+	/// Adapted from JavaScript solution by Mario Gonzalez.
+	/// </summary>
 	public class UnitBezier {
 
 		public float _p1x;
@@ -187,21 +206,19 @@ namespace Crayon {
 		public float _epsilon = 0.00001f;
 
 		// constructor function
-		public UnitBezier(float p1x, float p1y, float p2x, float p2y) {
-
+		public UnitBezier(float p1x, float p1y, float p2x, float p2y)
+		{
 			_p1x = p1x;
 			_p1y = p1y;
 			_p2x = p2x;
 			_p2y = p2y;
-
 			Init ();
-
 		}
 
-		// pre-calculate the polynomial coefficients
+		// Pre-calculate the polynomial coefficients
 		// First and last control points are implied to be (0,0) and (1.0, 1.0)
-		void Init() {
-
+		void Init()
+		{
 			_cx = 3.0f * _p1x;
 			_bx = 3.0f * (_p2x - _p1x) - _cx;
 			_ax = 1.0f - _cx - _bx;
@@ -209,25 +226,25 @@ namespace Crayon {
 			_cy = 3.0f * _p1y;
 			_by = 3.0f * (_p2y - _p1y) - _cy;
 			_ay = 1.0f - _cy - _by;
-
 		}
 
-		public float sampleCurveX(float t) {
+		public float sampleCurveX(float t)
+		{
 			return ((_ax * t + _bx) * t + _cx) * t;
 		}
 
-		public float sampleCurveY(float t) {
+		public float sampleCurveY(float t)
+		{
 			return ((_ay * t + _by) * t + _cy) * t;
 		}
 
-		public float sampleCurveDerivativeX(float t) {
+		public float sampleCurveDerivativeX(float t)
+		{
 			return (3.0f * _ax * t + 2.0f * _bx) * t + _cx;
 		}
 
-		public float solveCurveX(float x, float epsilon) {
-
-
-
+		public float solveCurveX(float x, float epsilon)
+		{
 			float t0;
 			float t1;
 			float t2;
@@ -270,7 +287,8 @@ namespace Crayon {
 		}
 
 		// Find new T as a function of Y along curve X
-		public float solve(float x, float epsilon) {
+		public float solve(float x, float epsilon)
+		{
 			return sampleCurveY( solveCurveX (x, epsilon) );
 		}
 

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Crayon {
+namespace Crayon.Core
+{
 
 	/// <summary>
 	/// This class contains the coroutines that actually execute the tweens asynchronously.

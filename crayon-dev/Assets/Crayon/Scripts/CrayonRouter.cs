@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace Crayon
+using UnityEngine;
+
+namespace Crayon.Core
 {
 
 	/// <summary>

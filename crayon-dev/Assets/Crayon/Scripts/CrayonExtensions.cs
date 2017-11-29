@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿// Licensed under the MIT License. See LICENSE in the project root for license information.
 
-namespace Crayon {
+using UnityEngine;
+using Crayon.Core;
+
+namespace Crayon
+{
 
 	/// <summary>
 	/// These are the GameObject extension methods that can be used to quickly set common parameters used in 3D UI design.
 	/// </summary>
-	public static class CrayonExtensions {
+	public static class CrayonExtensions
+	{
 
 		/// <summary>
 		/// Fades in a GameObject (and its children) to full opacity.
