@@ -3,12 +3,6 @@ using UnityEngine;
 using UnityEditor;
 using Crayon;
 
-public enum MaterialTweenType {
-	Material = 0,
-	Color = 1,
-	Opacity = 2
-}
-
 [CustomEditor(typeof(CrayonState))]
 [CanEditMultipleObjects]
 public class CrayonStateEditor : Editor {
@@ -32,6 +26,9 @@ public class CrayonStateEditor : Editor {
 	SerializedProperty duration;
 
 	// State Properties
+
+	SerializedProperty tweenAppearance;
+	SerializedProperty tweenAppearanceMode;
 
 	SerializedProperty tweenMaterial;
 	SerializedProperty material;
@@ -63,6 +60,9 @@ public class CrayonStateEditor : Editor {
 		customEasing = serializedObject.FindProperty ("_customEasing");
 
 		// State Properties
+
+		tweenAppearance = serializedObject.FindProperty ("_tweenAppearance");
+		tweenAppearanceMode = serializedObject.FindProperty ("_tweenAppearanceMode");
 
 		tweenMaterial = serializedObject.FindProperty ("_tweenMaterial");
 		material = serializedObject.FindProperty ("_material");
@@ -130,28 +130,49 @@ public class CrayonStateEditor : Editor {
 			// State Properties
 
 			EditorGUILayout.BeginHorizontal ();
-			EditorGUI.BeginDisabledGroup (tweenColor.boolValue == true);
-			EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
-			EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
-			if (tweenMaterial.boolValue) {
-				EditorGUI.BeginDisabledGroup (_isDefault);
-				EditorGUILayout.PropertyField (material, GUIContent.none);
-				EditorGUI.EndDisabledGroup ();
+			EditorGUILayout.PropertyField (tweenAppearance, GUIContent.none, GUILayout.Width (_checkboxWidth));
+			EditorGUILayout.PropertyField (tweenAppearanceMode, GUIContent.none, GUILayout.Width (_labelsWidth));
+			if (tweenAppearance.boolValue) {
+
+				switch (tweenAppearanceMode.enumValueIndex) {
+				case 0:
+					EditorGUILayout.PropertyField (material, GUIContent.none);
+					break;
+				case 1:
+					EditorGUILayout.PropertyField (color, GUIContent.none);
+					break;
+				case 2:
+					// Debug.Log ("Opacity feature not yet implemented.");
+					break;
+				}
+
+
 			}
-			EditorGUI.EndDisabledGroup ();
 			EditorGUILayout.EndHorizontal ();
 
-			EditorGUILayout.BeginHorizontal ();
-			EditorGUI.BeginDisabledGroup (tweenMaterial.boolValue == true);
-			EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
-			EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
-			if (tweenColor.boolValue) {
-				EditorGUI.BeginDisabledGroup (_isDefault);
-				EditorGUILayout.PropertyField (color, GUIContent.none);
-				EditorGUI.EndDisabledGroup ();
-			}
-			EditorGUI.EndDisabledGroup ();
-			EditorGUILayout.EndHorizontal ();
+//			EditorGUILayout.BeginHorizontal ();
+//			EditorGUI.BeginDisabledGroup (tweenColor.boolValue == true);
+//			EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
+//			EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
+//			if (tweenMaterial.boolValue) {
+//				EditorGUI.BeginDisabledGroup (_isDefault);
+//				EditorGUILayout.PropertyField (material, GUIContent.none);
+//				EditorGUI.EndDisabledGroup ();
+//			}
+//			EditorGUI.EndDisabledGroup ();
+//			EditorGUILayout.EndHorizontal ();
+//
+//			EditorGUILayout.BeginHorizontal ();
+//			EditorGUI.BeginDisabledGroup (tweenMaterial.boolValue == true);
+//			EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
+//			EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
+//			if (tweenColor.boolValue) {
+//				EditorGUI.BeginDisabledGroup (_isDefault);
+//				EditorGUILayout.PropertyField (color, GUIContent.none);
+//				EditorGUI.EndDisabledGroup ();
+//			}
+//			EditorGUI.EndDisabledGroup ();
+//			EditorGUILayout.EndHorizontal ();
 
 
 			EditorGUI.BeginDisabledGroup (_isDefault);

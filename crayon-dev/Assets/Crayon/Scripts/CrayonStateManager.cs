@@ -147,22 +147,37 @@ namespace Crayon {
 			// TODO: Add conditionals to make this more efficient
 			if (state != null) {
 
-				// Error message
-				if (state._tweenMaterial && state._tweenColor) {
-					Debug.LogWarningFormat ("Both Material and Color are tweening for {0}. This may lead to unexpected results. Turn off either Material or Color on the Crayon State Manager component for {0}.", gameObject.name);
+
+				if (state._tweenAppearance) {
+
+					// Determine the tween method based on the enum selected
+					switch (state._tweenAppearanceMode) {
+					case CrayonTweenAppearanceMode.Material:
+						gameObject.SetMaterial (state._material, state._duration, state._easing, state._customEasing);
+						break;
+					case CrayonTweenAppearanceMode.Color:
+						gameObject.SetColor (state._color, state._duration, state._easing, state._customEasing);
+						break;
+					}
+						
 				}
+
+//				// Error message
+//				if (state._tweenMaterial && state._tweenColor) {
+//					Debug.LogWarningFormat ("Both Material and Color are tweening for {0}. This may lead to unexpected results. Turn off either Material or Color on the Crayon State Manager component for {0}.", gameObject.name);
+//				}
 
 				// Actually do the tween
 
-				if (state._tweenMaterial) {
-					// Debug.Log ("TweenColor is true");
-					gameObject.SetMaterial (state._material, state._duration, state._easing, state._customEasing);
-				}
-
-				if (state._tweenColor) {
-					// Debug.Log ("TweenColor is true");
-					gameObject.SetColor (state._color, state._duration, state._easing, state._customEasing);
-				}
+//				if (state._tweenMaterial) {
+//					// Debug.Log ("TweenColor is true");
+//					gameObject.SetMaterial (state._material, state._duration, state._easing, state._customEasing);
+//				}
+//
+//				if (state._tweenColor) {
+//					// Debug.Log ("TweenColor is true");
+//					gameObject.SetColor (state._color, state._duration, state._easing, state._customEasing);
+//				}
 
 				if (state._tweenPosition) {
 					// Debug.Log ("TweenPosition is true");					

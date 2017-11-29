@@ -190,9 +190,13 @@ namespace Crayon
 
 			// Renderer r = gameObject.GetComponent<Renderer>();
 			// Debug.Log("Target Material color: " + targetMaterial.GetColor("_EmissionColor"));
-			Material targetMaterialInstance = Object.Instantiate(targetMaterial);
+			if (targetMaterial != null) {
+				Material targetMaterialInstance = Object.Instantiate (targetMaterial);
+				CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterialInstance, duration, easing, cubicBezier));
+			} else {
+				Debug.LogWarning ("Material for " + gameObject.name + " has not been assigned.");
+			}
 			// Debug.Log("Target Material Instance color: " + targetMaterialInstance.GetColor("_EmissionColor"));
-			CrayonRunner.Instance.Run (TweenColorCoroutine (gameObject, null, targetMaterialInstance, duration, easing, cubicBezier));
 		}
 
 		private static void TweenPosition(GameObject gameObject, Vector3 targetPosition, float duration, Easing easing, bool destroy, bool isRelative, string cubicBezier) {

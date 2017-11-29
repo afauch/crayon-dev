@@ -15,10 +15,13 @@ namespace Crayon {
 		public string _customEasing;
 		public float _duration;
 
-		public bool _tweenColor = true;
+		public bool _tweenAppearance = true;
+		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
+
+		// public bool _tweenColor = true;
 		public Color _color;
 
-		public bool _tweenMaterial = true;
+		// public bool _tweenMaterial = true;
 		public Material _material;
 
 		public bool _tweenPosition = true;
@@ -48,10 +51,13 @@ namespace Crayon {
 			_easing = state._easing;
 			_customEasing = state._customEasing;
 
-			_tweenMaterial = state._tweenMaterial;
+			_tweenAppearance = state._tweenAppearance;
+			_tweenAppearanceMode = state._tweenAppearanceMode;
+
+			// _tweenMaterial = state._tweenMaterial;
 			_material = state._material;
 
-			_tweenColor = state._tweenColor;
+			// _tweenColor = state._tweenColor;
 			_color = state._color;
 
 			_tweenPosition = state._tweenPosition;
@@ -77,10 +83,11 @@ namespace Crayon {
 			state._easing = _easing;
 			state._customEasing = _customEasing;
 
-			state._tweenMaterial = _tweenMaterial;
+			state._tweenAppearance = _tweenAppearance;
+			state._tweenAppearanceMode = _tweenAppearanceMode;
+
 			state._material = _material;
 
-			state._tweenColor = _tweenColor;
 			state._color = _color;
 
 			state._tweenPosition = _tweenPosition;

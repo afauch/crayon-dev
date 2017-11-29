@@ -13,6 +13,12 @@ namespace Crayon {
 		Custom
 	}
 
+	public enum CrayonTweenAppearanceMode {
+		Material = 0,
+		Color = 1,
+		Opacity = 2
+	}
+
 	[RequireComponent(typeof(CrayonStateManager))]
 	public class CrayonState : MonoBehaviour {
 		
@@ -24,10 +30,12 @@ namespace Crayon {
 		public string _customEasing;
 		public float _duration;
 
-		public bool _tweenMaterial = true;
+		// Catch-all category for appearance
+		public bool _tweenAppearance = false;
+		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
+		// public bool _tweenMaterial = true;
 		public Material _material;
-
-		public bool _tweenColor = false;
+		// public bool _tweenColor = false;
 		public Color _color = Color.black;
 
 		public bool _tweenPosition = true;
@@ -85,8 +93,7 @@ namespace Crayon {
 					_material = r.sharedMaterial;
 					_color = r.sharedMaterial.GetColor ("_Color");
 				} else {
-					_tweenMaterial = false;
-					_tweenColor = false;
+					_tweenAppearance = false;
 				}
 
 				_tweenPosition = true;

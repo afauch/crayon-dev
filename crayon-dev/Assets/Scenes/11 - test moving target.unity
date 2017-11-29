@@ -342,16 +342,16 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.2
-  _tweenMaterial: 1
-  _material: {fileID: 0}
-  _tweenColor: 1
-  _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
-  _tweenPosition: 0
-  _relativePosition: {x: 2, y: 2, z: 2}
-  _tweenRotation: 0
-  _relativeRotation: {x: 0, y: -90, z: 0}
-  _tweenScale: 0
-  _relativeScale: {x: 2, y: 2, z: 2}
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
+  _material: {fileID: 1401221977}
+  _color: {r: 0.9764706, g: 0.36862746, b: 0.36862746, a: 1}
+  _tweenPosition: 1
+  _relativePosition: {x: 0, y: 0, z: 0}
+  _tweenRotation: 1
+  _relativeRotation: {x: 0, y: 0, z: 0}
+  _tweenScale: 1
+  _relativeScale: {x: 1, y: 1, z: 1}
 --- !u!114 &195812083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listenToParent: 1
   _newPresetId: <Enter A Preset Name>
-  _presetToLoad: 
+  _presetToLoad: <Choose Preset>
 --- !u!114 &195812084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,9 +383,9 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 
   _duration: 0.2
-  _tweenMaterial: 1
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 1401221977}
-  _tweenColor: 1
   _color: {r: 0.9764706, g: 0.36862746, b: 0.36862746, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
@@ -590,9 +590,9 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.6
-  _tweenMaterial: 0
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 0}
-  _tweenColor: 0
   _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 1, z: 0}
@@ -617,9 +617,9 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 
   _duration: 0.6
-  _tweenMaterial: 0
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 0}
-  _tweenColor: 0
   _color: {r: 1, g: 0.3602941, b: 0.3602941, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}

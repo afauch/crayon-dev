@@ -300,9 +300,9 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.2
-  _tweenMaterial: 1
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 2100000, guid: 02027b24a6f994a2a99e9db34785abda, type: 2}
-  _tweenColor: 0
   _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenPosition: 0
   _relativePosition: {x: 2, y: 2, z: 2}
@@ -341,9 +341,9 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 
   _duration: 0.2
-  _tweenMaterial: 0
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 2100000, guid: 156b041c2262a4f2883e74e01888798e, type: 2}
-  _tweenColor: 0
   _color: {r: 0, g: 0, b: 0, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
@@ -368,9 +368,9 @@ MonoBehaviour:
   _easing: 18
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.2
-  _tweenMaterial: 1
+  _tweenAppearance: 1
+  _tweenAppearanceMode: 0
   _material: {fileID: 2100000, guid: d28f7acebbbed4f7a8b4d1c96c71934b, type: 2}
-  _tweenColor: 0
   _color: {r: 0.33823532, g: 1, b: 0.42494923, a: 1}
   _tweenPosition: 0
   _relativePosition: {x: 2, y: 2, z: 2}
@@ -576,9 +576,9 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 0.0,1.4,.083,0.67
   _duration: 0.6
-  _tweenMaterial: 0
+  _tweenAppearance: 0
+  _tweenAppearanceMode: 0
   _material: {fileID: 0}
-  _tweenColor: 0
   _color: {r: 1, g: 0, b: 0.84827614, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 1, z: 0}
@@ -603,9 +603,9 @@ MonoBehaviour:
   _easing: 11
   _customEasing: 
   _duration: 0.6
-  _tweenMaterial: 0
+  _tweenAppearance: 0
+  _tweenAppearanceMode: 0
   _material: {fileID: 0}
-  _tweenColor: 0
   _color: {r: 1, g: 0.3602941, b: 0.3602941, a: 1}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
