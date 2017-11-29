@@ -68,6 +68,10 @@ public class CrayonStateManagerEditor : Editor {
 
 		}
 
+		if (GUILayout.Button ("Add State")) {
+			myScript.AddState ();
+		}
+
 		// Save the changes back to the object
 		EditorUtility.SetDirty(target);
 

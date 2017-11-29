@@ -28,6 +28,9 @@ namespace Crayon {
 
 		void Awake() {
 
+			// This is just to remove the Unity warning that the variable is unused,
+			// even though it is in editor scripts.
+
 			InitDictionary ();
 			if (_listenToParent) {
 				// Debug.Log ("Calling SubscribeToParent");
@@ -43,18 +46,6 @@ namespace Crayon {
 		}
 
 		void Update() {
-
-//			if (_currentState == CrayonStateType.Default && !CrayonStateGlobals.Instance._isTweening [this]) {
-//
-//				Debug.Log ("Freezing transform");
-//				FreezeTransform ();
-//
-//			} else {
-//
-//				Debug.Log ("Not freezing transform");
-//
-//			}
-
 
 			if (!CrayonStateGlobals.Instance._isTweening [this])
 				FreezeTransform ();
@@ -86,7 +77,12 @@ namespace Crayon {
 			CrayonState[] states = GetComponents<CrayonState> ();
 
 			foreach(CrayonState state in states) {
-				_allStatesByMatchKey.Add (state._crayonMatchKey, state);
+				CrayonState check;
+				if (!_allStatesByMatchKey.TryGetValue (state._crayonMatchKey, out check)) {
+					_allStatesByMatchKey.Add (state._crayonMatchKey, state);
+				} else {
+					Debug.LogWarningFormat ("There are multiple states of the same type on {0}. Please check your states.", this.gameObject.name);
+				}
 			}
 
 			_currentState = _allStatesByMatchKey["default"];
@@ -122,6 +118,10 @@ namespace Crayon {
 
 		public void SavePreset() {
 			CrayonStateGlobals.Instance.SavePreset (this.gameObject, _newPresetId, this);
+		}
+
+		public void AddState() {
+			this.gameObject.AddComponent<CrayonState> ();
 		}
 
 		public void ChangeState(CrayonStateType stateType, string customState = "") {

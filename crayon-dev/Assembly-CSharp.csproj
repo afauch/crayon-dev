@@ -76,6 +76,7 @@
      <Compile Include="Assets\Tests\Scripts\TestFadeInNew.cs" />
      <Compile Include="Assets\Tests\Scripts\TestStates.cs" />
      <Compile Include="Assets\Tests\Scripts\TestTransformTween.cs" />
+     <None Include="Assets\Crayon\UserPresets\my-preset-1.txt" />
      <None Include="Assets\Shaders\3DText.shader" />
      <None Include="Assets\Shaders\ChangeMaterial.shader" />
  <Reference Include="UnityEngine.UI">

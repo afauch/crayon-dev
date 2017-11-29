@@ -29,11 +29,7 @@ public class CrayonStateEditor : Editor {
 
 	SerializedProperty tweenAppearance;
 	SerializedProperty tweenAppearanceMode;
-
-	SerializedProperty tweenMaterial;
 	SerializedProperty material;
-
-	SerializedProperty tweenColor;
 	SerializedProperty color;
 
 	SerializedProperty tweenPosition;
@@ -63,11 +59,7 @@ public class CrayonStateEditor : Editor {
 
 		tweenAppearance = serializedObject.FindProperty ("_tweenAppearance");
 		tweenAppearanceMode = serializedObject.FindProperty ("_tweenAppearanceMode");
-
-		tweenMaterial = serializedObject.FindProperty ("_tweenMaterial");
 		material = serializedObject.FindProperty ("_material");
-
-		tweenColor = serializedObject.FindProperty ("_tweenColor");
 		color = serializedObject.FindProperty ("_color");
 
 		tweenPosition = serializedObject.FindProperty ("_tweenPosition");
@@ -89,9 +81,6 @@ public class CrayonStateEditor : Editor {
 
 		CrayonState myScript = (CrayonState)target;
 
-		// DrawDefaultInspector();
-
-
 		// State Id
 		EditorGUILayout.LabelField ("State", EditorStyles.boldLabel);
 		EditorGUILayout.PropertyField (crayonStateType, GUIContent.none);
@@ -103,8 +92,6 @@ public class CrayonStateEditor : Editor {
 		// State Easing
 
 		_showTransition = EditorGUILayout.Foldout (_showTransition, "Transition");
-
-		// EditorGUILayout.LabelField("Easing", EditorStyles.boldLabel);
 
 		if (_showTransition) {
 
@@ -133,7 +120,6 @@ public class CrayonStateEditor : Editor {
 			EditorGUILayout.PropertyField (tweenAppearance, GUIContent.none, GUILayout.Width (_checkboxWidth));
 			EditorGUILayout.PropertyField (tweenAppearanceMode, GUIContent.none, GUILayout.Width (_labelsWidth));
 			if (tweenAppearance.boolValue) {
-
 				switch (tweenAppearanceMode.enumValueIndex) {
 				case 0:
 					EditorGUILayout.PropertyField (material, GUIContent.none);
@@ -145,35 +131,8 @@ public class CrayonStateEditor : Editor {
 					// Debug.Log ("Opacity feature not yet implemented.");
 					break;
 				}
-
-
 			}
 			EditorGUILayout.EndHorizontal ();
-
-//			EditorGUILayout.BeginHorizontal ();
-//			EditorGUI.BeginDisabledGroup (tweenColor.boolValue == true);
-//			EditorGUILayout.PropertyField (tweenMaterial, GUIContent.none, GUILayout.Width (_checkboxWidth));
-//			EditorGUILayout.LabelField ("Material", GUILayout.Width (_labelsWidth));
-//			if (tweenMaterial.boolValue) {
-//				EditorGUI.BeginDisabledGroup (_isDefault);
-//				EditorGUILayout.PropertyField (material, GUIContent.none);
-//				EditorGUI.EndDisabledGroup ();
-//			}
-//			EditorGUI.EndDisabledGroup ();
-//			EditorGUILayout.EndHorizontal ();
-//
-//			EditorGUILayout.BeginHorizontal ();
-//			EditorGUI.BeginDisabledGroup (tweenMaterial.boolValue == true);
-//			EditorGUILayout.PropertyField (tweenColor, GUIContent.none, GUILayout.Width (_checkboxWidth));
-//			EditorGUILayout.LabelField ("Color", GUILayout.Width (_labelsWidth));
-//			if (tweenColor.boolValue) {
-//				EditorGUI.BeginDisabledGroup (_isDefault);
-//				EditorGUILayout.PropertyField (color, GUIContent.none);
-//				EditorGUI.EndDisabledGroup ();
-//			}
-//			EditorGUI.EndDisabledGroup ();
-//			EditorGUILayout.EndHorizontal ();
-
 
 			EditorGUI.BeginDisabledGroup (_isDefault);
 
@@ -208,7 +167,6 @@ public class CrayonStateEditor : Editor {
 
 		// Save the changes back to the object
 		EditorUtility.SetDirty(target);
-
 		serializedObject.ApplyModifiedProperties ();
 
 	}

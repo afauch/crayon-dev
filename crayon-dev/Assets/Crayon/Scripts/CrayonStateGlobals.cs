@@ -150,8 +150,8 @@ namespace Crayon {
 				_presetsById.Remove (preset._id);
 
 			_presetsById.Add(preset._id, preset);
-			Debug.Log ("Crayon Preset " + preset._id + " Saved");
-			Debug.Log ("Number of items in preset dict: " + _presetsById.Count);
+			Debug.LogWarningFormat ("Crayon preset {0} was saved.", preset._id);
+			// Debug.Log ("Number of items in preset dict: " + _presetsById.Count);
 
 			sentBy._newPresetId = null;
 

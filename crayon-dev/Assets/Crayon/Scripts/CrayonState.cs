@@ -28,14 +28,13 @@ namespace Crayon {
 
 		public Easing _easing = Easing.CubicInOut;
 		public string _customEasing;
-		public float _duration;
+		public float _duration = Crayon.Defaults._duration;
 
 		// Catch-all category for appearance
+		[Tooltip ("Choose between tweening the full material, the color only, or opacity only.")]
 		public bool _tweenAppearance = false;
 		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
-		// public bool _tweenMaterial = true;
 		public Material _material;
-		// public bool _tweenColor = false;
 		public Color _color = Color.black;
 
 		public bool _tweenPosition = true;
@@ -70,28 +69,18 @@ namespace Crayon {
 			return _crayonMatchKey;
 		}
 
-		void Update() {
-
-			// if (_material != null && this._crayonStateType == CrayonStateType.Default)
-				// Debug.Log (_material.GetColor ("_EmissionColor"));
-
-			// if (this._crayonStateType == CrayonStateType.Default)
-				// Debug.Log ("TweenColor is" + _tweenColor + " on GameObject " + this.gameObject.name);
-			
-
-		}
-
-
 		public void SetDefaultValues() {
 
 			if (!_defaultHasSet) {
 
 				Renderer r = this.gameObject.GetComponent<Renderer> ();
-				if (r != null) {
-					// _tweenMaterial = true;
-					// _tweenColor = false; // just a default that can be overridden by the user		
+				if (r != null) {	
 					_material = r.sharedMaterial;
-					_color = r.sharedMaterial.GetColor ("_Color");
+					if(_material.HasProperty("_Color")) {
+						_color = r.sharedMaterial.GetColor ("_Color");
+					} else {
+						Debug.LogWarningFormat ("{0} is using a special shader, unfortunately Crayon doesn't know how to tween it.", this.gameObject.name);
+					}
 				} else {
 					_tweenAppearance = false;
 				}
