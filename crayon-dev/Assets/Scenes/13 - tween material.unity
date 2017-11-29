@@ -423,8 +423,8 @@ MonoBehaviour:
   _duration: 10
   _tweenAppearance: 0
   _tweenAppearanceMode: 0
-  _material: {fileID: 2100000, guid: 1a7f834fc47384c88afe4a06a80cec39, type: 2}
-  _color: {r: 0, g: 0, b: 0, a: 1}
+  _material: {fileID: 2100000, guid: d56812537e80a45c8803e5301f2a430f, type: 2}
+  _color: {r: 0, g: 0, b: 0, a: 0}
   _tweenPosition: 1
   _relativePosition: {x: 0, y: 0, z: 0}
   _tweenRotation: 1

@@ -236,16 +236,6 @@ namespace Crayon {
 			_presetChoices = new string[0];
 
 		}
-//
-//		public int GetIntFromString(string choice) {
-//
-//			for (int i = 0; i < _presetChoices.Length; i++) {
-//				if (choice == _presetChoices [i]) {
-//					return i;
-//				}
-//			}
-//
-//		}
 
 		public void DeleteAllPresets() {
 
