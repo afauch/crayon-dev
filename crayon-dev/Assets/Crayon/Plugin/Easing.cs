@@ -1,9 +1,7 @@
-﻿using UnityEngine;
+﻿// Functions taken from Tween.js - Licensed under the MIT license at https://github.com/sole/tween.js
 
-/* 
- * Functions taken from Tween.js - Licensed under the MIT license
- * at https://github.com/sole/tween.js
- */
+using UnityEngine;
+
 public class EasingTypes
 {
 

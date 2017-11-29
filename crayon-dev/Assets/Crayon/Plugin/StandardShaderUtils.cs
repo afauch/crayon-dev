@@ -1,8 +1,4 @@
-﻿/// <summary>
-/// Source:
-/// bellicapax
-/// https://answers.unity.com/questions/1004666/change-material-rendering-mode-in-runtime.html
-/// </summary>
+﻿// Source: bellicapax at https://answers.unity.com/questions/1004666/change-material-rendering-mode-in-runtime.html
 
 using UnityEngine;
 
@@ -15,9 +11,7 @@ public static class StandardShaderUtils
 		Fade,
 		Transparent
 	}
-
-	// TODO: Delete Debug Log
-
+		
 	public static void ChangeRenderMode(Material standardShaderMaterial, BlendMode blendMode)
 	{
 		switch (blendMode)

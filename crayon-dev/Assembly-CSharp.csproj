@@ -53,18 +53,18 @@
   <ItemGroup>
      <Compile Include="Assets\Crayon\Plugin\Easing.cs" />
      <Compile Include="Assets\Crayon\Plugin\StandardShaderUtils.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonDefaults.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonEasing.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonExtensions.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonPreset.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonRouter.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonRunner.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonState.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonStateData.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonStateGlobals.cs" />
      <Compile Include="Assets\Crayon\Scripts\CrayonStateManager.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonTweenCoroutines.cs" />
-     <Compile Include="Assets\Crayon\Scripts\CrayonUtils.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonDefaults.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonEasing.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonExtensions.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonPreset.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonRouter.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonStateData.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonTweenCoroutines.cs" />
+     <Compile Include="Assets\Crayon\Scripts\Library\CrayonUtils.cs" />
      <Compile Include="Assets\Scripts\CustomColorClass.cs" />
      <Compile Include="Assets\Scripts\MyPlayer.cs" />
      <Compile Include="Assets\Scripts\ScaledCurve.cs" />
