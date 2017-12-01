@@ -12,7 +12,8 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 1
   m_CustomRenderQueue: 3000
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3

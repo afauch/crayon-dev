@@ -184,7 +184,6 @@ namespace Crayon
 		/// <summary>
 		/// Transitions the GameObject to a position relative to its current position.
 		/// </summary>
-		/// <param name="gameObject">The GameObject to modify.</param>
 		/// <param name="targetPosition">The desired offset from the GameObject's current position.</param>
 		/// <param name="duration">The duration of the transition.</param>
 		/// <param name="easing">Easing function that the transition should follow.</param>

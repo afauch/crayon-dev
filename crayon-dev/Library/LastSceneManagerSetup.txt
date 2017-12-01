@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/11 - test moving target.unity
+- path: Assets/Scenes/18 - button example.unity
   isLoaded: 1
   isActive: 1

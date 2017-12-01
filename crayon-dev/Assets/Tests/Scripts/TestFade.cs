@@ -8,12 +8,17 @@ public class TestFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		gameObject.FadeIn (10.0f);
+		gameObject.FadeIn (1.0f);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+
+		
+		}
 		
 	}
 }

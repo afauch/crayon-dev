@@ -1,0 +1,116 @@
+{
+    "_id": "CTA-1",
+    "_crayonStatesData": [
+        {
+            "_crayonStateType": 0,
+            "_customStateType": "",
+            "_crayonMatchKey": "default",
+            "_easing": 11,
+            "_customEasing": "",
+            "_duration": 0.800000011920929,
+            "_tweenAppearance": true,
+            "_tweenAppearanceMode": 1,
+            "_color": {
+                "r": 0.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "_material": {
+                "instanceID": 9834
+            },
+            "_tweenPosition": true,
+            "_relativePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenRotation": true,
+            "_relativeRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenScale": true,
+            "_relativeScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        },
+        {
+            "_crayonStateType": 1,
+            "_customStateType": "",
+            "_crayonMatchKey": "hover",
+            "_easing": 11,
+            "_customEasing": "",
+            "_duration": 0.800000011920929,
+            "_tweenAppearance": true,
+            "_tweenAppearanceMode": 1,
+            "_color": {
+                "r": 1.0,
+                "g": 0.6397058963775635,
+                "b": 0.6397058963775635,
+                "a": 1.0
+            },
+            "_material": {
+                "instanceID": 9848
+            },
+            "_tweenPosition": true,
+            "_relativePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": -1.0
+            },
+            "_tweenRotation": true,
+            "_relativeRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenScale": true,
+            "_relativeScale": {
+                "x": 1.2999999523162842,
+                "y": 1.2999999523162842,
+                "z": 1.2999999523162842
+            }
+        },
+        {
+            "_crayonStateType": 2,
+            "_customStateType": "",
+            "_crayonMatchKey": "selected",
+            "_easing": 11,
+            "_customEasing": "",
+            "_duration": 0.800000011920929,
+            "_tweenAppearance": true,
+            "_tweenAppearanceMode": 1,
+            "_color": {
+                "r": 1.0,
+                "g": 0.7597362399101257,
+                "b": 0.24264705181121827,
+                "a": 1.0
+            },
+            "_material": {
+                "instanceID": 9782
+            },
+            "_tweenPosition": true,
+            "_relativePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenRotation": true,
+            "_relativeRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "_tweenScale": true,
+            "_relativeScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }
+    ]
+}
