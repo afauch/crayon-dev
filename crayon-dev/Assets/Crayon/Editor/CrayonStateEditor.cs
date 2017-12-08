@@ -33,6 +33,7 @@ public class CrayonStateEditor : Editor
 	SerializedProperty tweenAppearanceMode;
 	SerializedProperty material;
 	SerializedProperty color;
+	SerializedProperty opacity;
 
 	SerializedProperty tweenPosition;
 	SerializedProperty relativePosition;
@@ -61,6 +62,7 @@ public class CrayonStateEditor : Editor
 		tweenAppearanceMode = serializedObject.FindProperty ("_tweenAppearanceMode");
 		material = serializedObject.FindProperty ("_material");
 		color = serializedObject.FindProperty ("_color");
+		opacity = serializedObject.FindProperty ("_opacity");
 
 		tweenPosition = serializedObject.FindProperty ("_tweenPosition");
 		relativePosition = serializedObject.FindProperty ("_relativePosition");
@@ -128,8 +130,10 @@ public class CrayonStateEditor : Editor
 						EditorGUI.EndDisabledGroup ();
 						break;
 					case 2:
-						// Debug.Log ("Opacity feature not yet implemented.");
-						break;
+						EditorGUI.BeginDisabledGroup (_isDefault);
+						EditorGUILayout.PropertyField (opacity, GUIContent.none);
+						EditorGUI.EndDisabledGroup ();
+					break;
 				}
 			}
 			EditorGUILayout.EndHorizontal ();

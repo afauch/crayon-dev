@@ -153,7 +153,8 @@ namespace Crayon
 		public void ChangeState(CrayonStateType stateType, string customState = "")
 		{
 			// Call the delegate so any downstream items know to change as well.
-			if (OnChangeState != null) {
+			if (OnChangeState != null)
+			{
 				OnChangeState (stateType, customState);
 			}
 
@@ -180,6 +181,9 @@ namespace Crayon
 						break;
 					case CrayonTweenAppearanceMode.Color:
 						gameObject.SetColor (state._color, state._duration, state._easing, state._customEasing);
+						break;
+					case CrayonTweenAppearanceMode.Opacity:
+						gameObject.SetOpacity (state._opacity, state._duration, state._easing, state._customEasing);
 						break;
 					}
 				}

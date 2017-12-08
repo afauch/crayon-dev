@@ -47,6 +47,7 @@ namespace Crayon
 		public CrayonTweenAppearanceMode _tweenAppearanceMode = CrayonTweenAppearanceMode.Material;
 		public Material _material;
 		public Color _color = Color.black;
+		public float _opacity = 1.0f;
 
 		public bool _tweenPosition = true;
 		public Vector3 _relativePosition;
