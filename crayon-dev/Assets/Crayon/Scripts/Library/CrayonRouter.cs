@@ -51,16 +51,26 @@ namespace Crayon.Core
 		/// </summary>
 		public static void TweenColor(GameObject gameObject, Color targetColor, float duration, Easing easing, string cubicBezier)
 		{
-			// Create instance of material
-			Renderer r = gameObject.GetComponent<Renderer>();
-			if (r == null)
+
+			// Is this a sprite renderer?
+			SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+			if (sr != null)
 			{
-				Debug.LogWarningFormat ("{0} needs a renderer component.", gameObject.name);
-				return;
+				Debug.LogWarning ("Is a sprite");
+				CrayonRunner.Instance.Run (CrayonTweenCoroutines.TweenSpriteCoroutine(gameObject, sr.color, targetColor, duration, easing, cubicBezier));
 			}
-			Material targetMaterial = Object.Instantiate(r.material);
-			targetMaterial.SetColor("_Color", targetColor);
-			CrayonRunner.Instance.Run (CrayonTweenCoroutines.TweenMaterialCoroutine (gameObject, null, targetMaterial, duration, easing, cubicBezier));
+			else
+			{
+				// Create instance of material
+				Renderer r = gameObject.GetComponent<Renderer> ();
+				if (r == null) {
+					Debug.LogWarningFormat ("{0} needs a renderer component.", gameObject.name);
+					return;
+				}
+				Material targetMaterial = Object.Instantiate (r.material);
+				targetMaterial.SetColor ("_Color", targetColor);
+				CrayonRunner.Instance.Run (CrayonTweenCoroutines.TweenMaterialCoroutine (gameObject, null, targetMaterial, duration, easing, cubicBezier));
+			}
 		}
 
 		/// <summary>

@@ -70,6 +70,7 @@ namespace Crayon.Core
 		/// </summary>
 		public static IEnumerator TweenMaterialCoroutine(GameObject gameObject, Material startMaterial, Material endMaterial, float duration, Easing easing, string cubicBezier) {
 			float elapsedTime = 0;
+
 			// get the starting material and color
 			Renderer r = gameObject.GetComponent<Renderer>();
 			// this is the material we'll tween
@@ -107,6 +108,49 @@ namespace Crayon.Core
 					yield return null;
 				}
 				m.CopyPropertiesFromMaterial(endMaterial);
+			}
+
+		}
+
+		/// <summary>
+		/// Coroutine for tweening material or color-only properties.
+		/// </summary>
+		public static IEnumerator TweenSpriteCoroutine(GameObject gameObject, Color startColor, Color endColor, float duration, Easing easing, string cubicBezier) {
+			float elapsedTime = 0;
+
+			// get the starting material and color
+			SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+
+			// If start material is null, assume we're tweening FROM the current material
+			if (startColor == null)
+			{
+				startColor = sr.color;
+			}
+
+			// If end material is null, assume we're tweening TO the current material
+			if (endColor == null)
+			{
+				endColor = sr.color;
+			}
+
+			// Skip ahead if this is meant to be an immediate transition.
+			if (duration < 0.0001f)
+			{
+				sr.color = endColor;
+			}
+			else
+			{
+				while (elapsedTime < duration)
+				{
+					float t = elapsedTime / duration;
+					// shift 't' based on the easing function
+					t = Utils.GetT (t, easing, cubicBezier);
+					elapsedTime += Time.deltaTime;
+					Color currentColor = Color.Lerp (startColor, endColor, t);
+					sr.color = currentColor;
+					yield return null;
+				}
+				sr.color = endColor;
 			}
 
 		}

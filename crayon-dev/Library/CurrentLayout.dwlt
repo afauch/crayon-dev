@@ -110,7 +110,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 7213
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 7268
+  controlID: 48
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -264,8 +264,8 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 19
+    x: 0.00033283234
+    y: 94.00032
     width: 696
     height: 644
   m_MaximizeOnPlay: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 58a0f8ff289dfafff8a4faff6abcfaffbabdfafff8befaff58c1faffbaa6fbffbcccffff86d0ffff1cfcffff00000000bc3c0000a84b0000d24b0000
+    m_ExpandedIDs: 1cfcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -615,7 +615,8 @@ MonoBehaviour:
     m_ScenePaths: []
     m_ShowAllHits: 0
     m_SearchArea: 0
-    m_Folders: []
+    m_Folders:
+    - Assets/Crayon/Scripts/Library
   m_ViewMode: 0
   m_StartGridSize: 16
   m_LastFolders: []
@@ -626,7 +627,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: d6320000
     m_LastClickedID: 13014
-    m_ExpandedIDs: 000000001a2600001e2600004626000066260000682600007a2600007c2600001c2700001e270000
+    m_ExpandedIDs: 00000000182600003226000054260000782600007a260000922600006a2700006c270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -654,7 +655,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000001a2600002c2600004626000066260000682600007c2600001c2700001e270000
+    m_ExpandedIDs: 0000000018260000222600003226000054260000782600007a260000922600006a2700006c270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

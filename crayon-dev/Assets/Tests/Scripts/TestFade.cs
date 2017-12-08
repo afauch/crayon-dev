@@ -8,7 +8,6 @@ public class TestFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		gameObject.FadeIn (1.0f);
 
 	}
 	
@@ -17,6 +16,7 @@ public class TestFade : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 
+			gameObject.FadeIn (1.0f);
 		
 		}
 		
